@@ -88,6 +88,24 @@ public class LinkedList{
         head = head.next;
         
     }
+    public void removeLast(){
+        if(size==0){
+            System.out.println("Empty Linked list");
+            return;
+        }
+        else if(size==1){
+            head=tail=null;
+            size=0;
+            return;
+        }
+        Node prev = head;
+        for(int i=0;i<size-2;i++){
+            prev = prev.next;
+        }
+        prev.next = null;
+        tail = prev;
+        size--;
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.printLinkedList();
@@ -99,6 +117,8 @@ public class LinkedList{
         ll.printLinkedList();
         System.out.println(ll.size);
         ll.removeFirst();
+        ll.printLinkedList();
+        ll.removeLast();
         ll.printLinkedList();
 
     }
