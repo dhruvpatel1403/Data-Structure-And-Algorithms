@@ -75,6 +75,19 @@ public class LinkedList{
     public void size(){
         System.out.println(size);
     }
+    public void removeFirst(){
+        if(size==0){
+            System.out.println("Can Not Remove element");
+            return;
+        }
+        size--;
+        if(size==1){
+            head = tail = null;
+            return;
+        }
+        head = head.next;
+        
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.printLinkedList();
@@ -85,6 +98,8 @@ public class LinkedList{
         ll.addInMiddle(1,6);
         ll.printLinkedList();
         System.out.println(ll.size);
+        ll.removeFirst();
+        ll.printLinkedList();
 
     }
 }
