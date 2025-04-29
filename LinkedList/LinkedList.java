@@ -36,18 +36,40 @@ public class LinkedList{
     } 
 
     public void printLinkedList(){
+        if(head==null){
+            System.out.println("Empty Linked List");
+            return;
+        }
         Node temp = head;
 
         while(temp != null){
-            System.out.print(temp.data+ " ");
+            System.out.print(temp.data+ " --> ");
             temp = temp.next;
         }
+        System.out.println("null");
+    }
+    public void addInMiddle(int index,int data){
+        Node temp=head;
+        int i=0;
+        
+        while(i<index-1){
+            temp=temp.next;
+            i++;
+        }
+
+        Node newNode = new Node(data);
+        newNode.next = temp.next;
+        temp.next = newNode;
     }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
+        ll.printLinkedList();
         ll.addFirst(5);
         ll.addFirst(6);
         ll.addLast(7);
         ll.printLinkedList();
+        ll.addInMiddle(1,6);
+        ll.printLinkedList();
+
     }
 }
