@@ -164,15 +164,62 @@ public class LinkedList{
         Node curr = temp.next;
         temp.next = curr.next;
     }
+
+    public Node findMyMid(Node head){
+        Node slow=head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    public boolean palindrom(){
+        if(head ==null || head.next == null){
+            return true;
+        }
+
+        // 1) find middle
+        Node mid = findMyMid(head);
+
+        // 2) Reverse Second half rigth part
+        Node prev = null;
+        Node curr = mid;
+        Node next;
+
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node right = prev;
+        Node left = head;
+        
+        // 3) compare left with rigth
+
+        while(right != null){
+            if(left.data != right.data){
+                return false;
+            }
+            right = right.next;
+            left = left.next;
+        }
+
+        return true;
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.printLinkedList();
-        ll.addFirst(5);
-        ll.addFirst(6);
-        ll.addLast(7);
+        ll.addFirst(2);
+        ll.addFirst(1);
+        // ll.addLast(1);
         // ll.printLinkedList();
-        ll.addInMiddle(1,6);
-        ll.printLinkedList();
+        ll.addInMiddle(1,2);
+        // ll.printLinkedList();
         // System.out.println(ll.size);
         // ll.removeFirst();
         // ll.printLinkedList();
@@ -182,7 +229,8 @@ public class LinkedList{
         // System.out.println(ll.recSearch(6,head,0));
         // ll.reverse();
         ll.printLinkedList();
-        ll.deleteNthFromEnd(4);
-        ll.printLinkedList();
+        // ll.deleteNthFromEnd(4);
+        // ll.printLinkedList();
+        System.out.println(ll.palindrom());
     } 
 }
