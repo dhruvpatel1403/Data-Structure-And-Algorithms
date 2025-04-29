@@ -137,23 +137,37 @@ public class LinkedList{
         }
         return recSearch(key, temp.next, ++i);
     }
+    public void reverse(){
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        head = prev;
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.printLinkedList();
         ll.addFirst(5);
         ll.addFirst(6);
         ll.addLast(7);
-        ll.printLinkedList();
+        // ll.printLinkedList();
         ll.addInMiddle(1,6);
         ll.printLinkedList();
-        System.out.println(ll.size);
-        ll.removeFirst();
+        // System.out.println(ll.size);
+        // ll.removeFirst();
+        // ll.printLinkedList();
+        // ll.removeLast();
+        // ll.printLinkedList();
+        // System.out.println(ll.search(6));
+        // System.out.println(ll.recSearch(6,head,0));
+        ll.reverse();
         ll.printLinkedList();
-        ll.removeLast();
-        ll.printLinkedList();
-        System.out.println(ll.search(5));
-        Node temp = head;
-        int i=0;
-        System.out.println(ll.recSearch(6,temp,i));
     } 
 }
