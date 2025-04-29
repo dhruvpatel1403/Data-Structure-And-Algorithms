@@ -10,7 +10,10 @@ public class LinkedList{
     }
     public static Node head;
     public static Node tail;
+    public static int size = 0;
+
     public void addFirst(int data){
+        size++;
         Node newNode = new Node(data);
 
         if(head==null){
@@ -23,6 +26,7 @@ public class LinkedList{
         head = newNode;
     }
     public void addLast(int data){
+        size++;
         Node newNode = new Node(data);
 
         if(head == null){
@@ -36,6 +40,7 @@ public class LinkedList{
     } 
 
     public void printLinkedList(){
+
         if(head==null){
             System.out.println("Empty Linked List");
             return;
@@ -49,6 +54,11 @@ public class LinkedList{
         System.out.println("null");
     }
     public void addInMiddle(int index,int data){
+        if(index == 0){
+            addFirst(data);
+            return;
+        }
+        size++;
         Node temp=head;
         int i=0;
         
@@ -58,8 +68,12 @@ public class LinkedList{
         }
 
         Node newNode = new Node(data);
+        // i = ind-1 and temp = prev element
         newNode.next = temp.next;
         temp.next = newNode;
+    }
+    public void size(){
+        System.out.println(size);
     }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
@@ -70,6 +84,7 @@ public class LinkedList{
         ll.printLinkedList();
         ll.addInMiddle(1,6);
         ll.printLinkedList();
+        System.out.println(ll.size);
 
     }
 }
