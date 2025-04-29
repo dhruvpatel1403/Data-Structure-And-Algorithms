@@ -106,6 +106,37 @@ public class LinkedList{
         tail = prev;
         size--;
     }
+    public int search(int key){
+        if(size==0){
+            return -1;
+        }
+        Node temp = head;
+        // for(int i=0;i<size;i++){
+        //     if(temp.data==key){
+        //         return i;
+        //     }
+        //     temp = temp.next;
+        // }
+        int i=0;
+        while(temp != null){
+            if(temp.data==key){
+                return i;
+            }
+            temp = temp.next;
+            i++;
+        }
+        return -1;
+    }
+    public int recSearch(int key,Node temp,int i){
+        if(temp == null){
+            System.out.println("key Not found");
+            return -1;
+        }
+        if(temp.data == key){
+            return i;
+        }
+        return recSearch(key, temp.next, ++i);
+    }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.printLinkedList();
@@ -120,6 +151,9 @@ public class LinkedList{
         ll.printLinkedList();
         ll.removeLast();
         ll.printLinkedList();
-
-    }
+        System.out.println(ll.search(5));
+        Node temp = head;
+        int i=0;
+        System.out.println(ll.recSearch(6,temp,i));
+    } 
 }
