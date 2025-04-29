@@ -33,11 +33,21 @@ public class LinkedList{
         tail.next = newNode;
 
         tail = newNode;
+    } 
+
+    public void printLinkedList(){
+        Node temp = head;
+
+        while(temp != null){
+            System.out.print(temp.data+ " ");
+            temp = temp.next;
+        }
     }
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(5);
         ll.addFirst(6);
         ll.addLast(7);
+        ll.printLinkedList();
     }
 }
