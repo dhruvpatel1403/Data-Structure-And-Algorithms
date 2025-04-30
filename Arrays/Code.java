@@ -30,9 +30,28 @@ public class Code{
         }
         System.out.println("Element Not Found");
     }
+    public static void reverseArray(int arr[]){
+        int si=0;
+        int ei = arr.length-1;
+        while(si<ei){
+            int temp = arr[si];
+            arr[si] = arr[ei];
+            arr[ei] = temp;
+            si++;
+            ei--;
+        }
+    }
+    public static void printArray(int arr[]){
+        for(int i=0;i<arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
+    }
     public static void main(String args[]){
         int arr[] = {1,2,3,4,5};
         // search(arr, 0, 0);
-        binarySearch(arr, 2);
+        // binarySearch(arr, 2);
+        reverseArray(arr);
+        printArray(arr);
     }
 }
