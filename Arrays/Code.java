@@ -66,13 +66,27 @@ public class Code{
             System.out.println();
         }
     }
+    public static void subArraySum(int arr[]){
+        int max_sum = Integer.MIN_VALUE;
+        for(int i =0;i<arr.length;i++){
+            for(int j=i;j<arr.length;j++){
+                int sum=0;
+                for(int k=i;k<=j;k++){
+                    sum+=arr[k];
+                }
+                max_sum = Math.max(max_sum,sum);
+            }
+        }
+        System.out.println("Maximum Sub array sum is : "+max_sum);
+    }
     public static void main(String args[]){
-        int arr[] = {1,2,3,4,5};
+        int arr[] = {-1,2,-3,4,5};
         // search(arr, 0, 0);
         // binarySearch(arr, 2);
         // reverseArray(arr);
         // printArray(arr);
         // pairsInArray(arr);
-        printSubArray(arr);
+        // printSubArray(arr);
+        subArraySum(arr);
     }
 }
