@@ -130,8 +130,22 @@ public class Code{
         }
         System.out.println(trappedWater);
     }
+
+    public static void buySell(int arr[]){
+        int buyPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]-buyPrice>0){
+                maxProfit=Math.max(arr[i]-buyPrice,maxProfit);
+            }
+            else{
+                buyPrice = arr[i];
+            }
+        }
+        System.out.println(maxProfit);
+    }
     public static void main(String args[]){
-        int arr[] = {4,2,0,6,3,2,5};
+        int arr[] = {7,1,5,3,6,4};
         // search(arr, 0, 0);
         // binarySearch(arr, 2);
         // reverseArray(arr);
@@ -142,5 +156,6 @@ public class Code{
         maxSumPrefix(arr);
         kdanesAlgo(arr);
         trappindWater(arr);
+        buySell(arr);
     }
 }
