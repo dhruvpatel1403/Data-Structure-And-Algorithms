@@ -97,6 +97,16 @@ public class Code{
         }
         System.out.println(max_sum);
     }
+    public static void kdanesAlgo(int arr[]){
+        int sum=0;
+        int max_sum = Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            sum += arr[i];
+            max_sum = Math.max(sum,max_sum);
+            sum = Math.max(sum,0);
+        }
+        System.out.println(max_sum);
+    }
     
     public static void main(String args[]){
         int arr[] = {-1,2,-3,4,5};
@@ -108,5 +118,6 @@ public class Code{
         // printSubArray(arr);
         subArraySum(arr);
         maxSumPrefix(arr);
+        kdanesAlgo(arr);
     }
 }
