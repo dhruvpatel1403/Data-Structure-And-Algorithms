@@ -2,6 +2,31 @@ package ArrayList;
 import java.util.*;
 
 public class List {
+    public static boolean FindSum(int arr[],int target){
+        int breakPoint = arr[0];
+        for(int i=1;i<arr.length-1;i++){
+            if(arr[i]>arr[i+1]){
+                breakPoint = i;
+                break;
+            }
+        }
+        int rp = breakPoint;
+        int lp = breakPoint+1;
+        int n = arr.length;
+        while(lp != rp){
+            int sum = arr[lp] + arr[rp];
+            if(sum == target){
+                return true;
+            }
+            else if(sum>target){
+                rp = (n+rp-1)%(n);
+            }
+            else{
+                lp = (lp+1) % n; 
+            }
+        }
+        return false;
+    }
 
     public static boolean monotone(ArrayList<Integer> list){
         boolean inc = true;
@@ -87,16 +112,17 @@ public class List {
         }
         return false;
     }
-    public static void lonely(ArrayList<Integer> list){
-        Collections.sort(list);
-        if(list.size() >= 2){
-            for(int i=1;i<list.size()-1;i++){
-                if(list.get(i-1) )
-            }
-        }
-    }
+    // public static void lonely(ArrayList<Integer> list){
+    //     Collections.sort(list);
+    //     if(list.size() >= 2){
+    //         for(int i=1;i<list.size()-1;i++){
+    //             if(list.get(i-1) )
+    //         }
+    //     }
+    // }
     public static void main(String args[]){
         ArrayList<Integer> list = new ArrayList<>();
+        int arr[] = {11,15,6,8,9,10};
         list.add(1);
         list.add(3);
         list.add(2);
@@ -111,6 +137,7 @@ public class List {
         // System.out.println(pairSum(list, 16));
         // System.out.println(pariSumRotated(list, 16));
         // System.out.println(monotone(list));
-        System.out.println(monotone(list));
+        // System.out.println(monotone(list));
+        System.out.println(FindSum(arr,35));
     }
 }

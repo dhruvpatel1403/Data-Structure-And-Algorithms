@@ -131,9 +131,9 @@ public class Abc {
     }
     static int count=0;
     public static void main(String[] args) {
-        int n=3;
+        int n=1;
         char arr[][] = new char[n][n];
-        // nQueens(arr,0);
+        nQueens(arr,0);
         // System.out.println("Total Possible solutions : "+count);
         // if(nQueensCheck(arr, 0)){
         //     System.out.println("Possible");
@@ -143,17 +143,17 @@ public class Abc {
         //     System.out.println("Not Possible");
         // }
         // System.out.println(gridWays(3, 3, 0, 0));
-        int[][] sudokuBoard = {
-            {5, 3, 0, 0, 7, 0, 0, 0, 0},
-            {6, 0, 0, 1, 9, 5, 0, 0, 0},
-            {0, 9, 8, 0, 0, 0, 0, 6, 0},
-            {8, 0, 0, 0, 6, 0, 0, 0, 3},
-            {4, 0, 0, 8, 0, 3, 0, 0, 1},
-            {7, 0, 0, 0, 2, 0, 0, 0, 6},
-            {0, 6, 0, 0, 0, 0, 2, 8, 0},
-            {0, 0, 0, 4, 1, 9, 0, 0, 5},
-            {0, 0, 0, 0, 8, 0, 0, 7, 9}
-        };
-        System.out.println(sudoku(sudokuBoard, 0, 0));
+        // int[][] sudokuBoard = {
+        //     {5, 3, 0, 0, 7, 0, 0, 0, 0},
+        //     {6, 0, 0, 1, 9, 5, 0, 0, 0},
+        //     {0, 9, 8, 0, 0, 0, 0, 6, 0},
+        //     {8, 0, 0, 0, 6, 0, 0, 0, 3},
+        //     {4, 0, 0, 8, 0, 3, 0, 0, 1},
+        //     {7, 0, 0, 0, 2, 0, 0, 0, 6},
+        //     {0, 6, 0, 0, 0, 0, 2, 8, 0},
+        //     {0, 0, 0, 4, 1, 9, 0, 0, 5},
+        //     {0, 0, 0, 0, 8, 0, 0, 7, 9}
+        // };
+        // System.out.println(sudoku(sudokuBoard, 0, 0));
     }
 }
