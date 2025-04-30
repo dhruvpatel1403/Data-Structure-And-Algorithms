@@ -47,6 +47,17 @@ public class Code{
         }
         System.out.println();
     }
+    public static void printSubArray(int arr[]){
+        for(int i=0;i<arr.length;i++){
+            for(int j=i;j<arr.length;j++){
+                for(int k=i;k<=j;k++){
+                    System.out.print(arr[k]+" ");
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
+    }
     public static void pairsInArray(int arr[]){
         for(int i=0;i<arr.length;i++){
             for(int j=i+1;j<arr.length;j++){
@@ -61,6 +72,7 @@ public class Code{
         // binarySearch(arr, 2);
         // reverseArray(arr);
         // printArray(arr);
-        pairsInArray(arr);
+        // pairsInArray(arr);
+        printSubArray(arr);
     }
 }
