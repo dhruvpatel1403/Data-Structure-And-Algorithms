@@ -18,9 +18,37 @@ public class Assignment {
         }
         return false;
     }
+    public static void searchInRotated(int arr[],int target,int si,int ei){
+        if(si>ei){
+            System.out.println("Element not found");
+            return;
+        }
+        int mid  = si + (ei-si)/2;
+        if(arr[mid]==target){
+            System.out.println("Element found at : "+ mid);
+            return;
+        }
+        else if(arr[mid]>=arr[si]){
+            if(arr[si]<= target && target<arr[mid]){
+                searchInRotated(arr, target, si, mid-1);
+            }
+            else{
+                searchInRotated(arr, target, mid+1, ei);
+            }
+        }
+        else{
+            if(arr[mid]<target && target<=arr[ei]){
+                searchInRotated(arr, target, mid+1, ei);
+            }
+            else{
+                searchInRotated(arr, target, si, mid-1);
+            }
+        }
+    }
     public static void main(String[] args) {
-        int arr[] = { 1,1,1,2,2,2,3};
-        System.out.println(isTwice(arr));
+        int arr[] = { 10,11,12,4,5,6};
+        // System.out.println(isTwice(arr));
+        searchInRotated(arr, 16, 0, arr.length-1);
     }    
     
 }
