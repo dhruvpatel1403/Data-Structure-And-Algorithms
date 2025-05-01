@@ -1,6 +1,6 @@
 package LinkedList;
 public class LinkedList{
-    public class Node{
+    public static class Node{
         int data;
         Node next;
         public Node(int data){
@@ -211,26 +211,44 @@ public class LinkedList{
 
         return true;
     }
+    public static void isCycle(Node head){
+        Node slow = head;
+        Node fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast){
+                System.out.println("Cycle is present");
+                return;
+            }
+        }
+        System.out.println("cycle not found");
+    }
     public static void main(String[] args) {
-        LinkedList ll = new LinkedList();
-        ll.printLinkedList();
-        ll.addFirst(2);
-        ll.addFirst(1);
-        // ll.addLast(1);
+        // LinkedList ll = new LinkedList();
         // ll.printLinkedList();
-        ll.addInMiddle(1,2);
+        // ll.addFirst(2);
+        // ll.addFirst(1);
+        // // ll.addLast(1);
+        // // ll.printLinkedList();
+        // ll.addInMiddle(1,2);
+        // // ll.printLinkedList();
+        // // System.out.println(ll.size);
+        // // ll.removeFirst();
+        // // ll.printLinkedList();
+        // // ll.removeLast();
+        // // ll.printLinkedList();
+        // // System.out.println(ll.search(6));
+        // // System.out.println(ll.recSearch(6,head,0));
+        // // ll.reverse();
         // ll.printLinkedList();
-        // System.out.println(ll.size);
-        // ll.removeFirst();
-        // ll.printLinkedList();
-        // ll.removeLast();
-        // ll.printLinkedList();
-        // System.out.println(ll.search(6));
-        // System.out.println(ll.recSearch(6,head,0));
-        // ll.reverse();
-        ll.printLinkedList();
-        // ll.deleteNthFromEnd(4);
-        // ll.printLinkedList();
-        System.out.println(ll.palindrom());
+        // // ll.deleteNthFromEnd(4);
+        // // ll.printLinkedList();
+        // System.out.println(ll.palindrom());
+        head = new Node(1);
+        head.next = new Node(2);
+        head.next.next = new Node(3);
+        // head.next.next.next = head;
+        isCycle(head);
     } 
 }
