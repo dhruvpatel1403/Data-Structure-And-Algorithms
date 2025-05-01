@@ -30,6 +30,24 @@ public class Assignment {
             arr[i] = temp;
         }
     }
+    public static void countingSort(int arr[]){
+        int max=arr[0];
+        for(int i=1;i<arr.length;i++){
+            max = Math.max(max,arr[i]);
+        }
+        int freq[] = new int[max+1];
+        for(int i=0;i<arr.length;i++){
+            freq[arr[i]]++;
+        }
+        int j=0;
+        for(int i=0;i<freq.length;i++){
+            while(freq[i]>0){
+                arr[j++] = i;
+                freq[i]--;
+            }
+        }
+    }
+
     public static void printArr(int arr[]){
         for(int i=0;i<arr.length;i++){
             System.out.print(arr[i]+" ");
@@ -39,7 +57,8 @@ public class Assignment {
     public static void main(String[] args) {
         int arr[]= {12,12,3,2,3,1};
         // bubbleSort(arr);
-        selectionSort(arr);
+        // selectionSort(arr);
+        countingSort(arr);
         printArr(arr);
     }
 }
