@@ -224,6 +224,31 @@ public class LinkedList{
         }
         System.out.println("cycle not found");
     }
+    public static void removeCycle(Node head){
+        Node slow = head;
+        Node fast = head;
+        int cycle = 0;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow==fast){
+                cycle = 1;
+                break;
+            }
+        }
+        if(cycle==1){
+            slow = head;
+            Node prev = null;
+            while(slow != fast){
+                slow = slow.next;
+                prev = fast;
+                fast = fast.next;
+            }
+            prev.next = null;
+            System.out.println("Cycle is removed");
+        }
+        
+    }
     public static void main(String[] args) {
         // LinkedList ll = new LinkedList();
         // ll.printLinkedList();
@@ -248,7 +273,9 @@ public class LinkedList{
         head = new Node(1);
         head.next = new Node(2);
         head.next.next = new Node(3);
-        // head.next.next.next = head;
+        head.next.next.next = head.next;
+        // isCycle(head);
+        removeCycle(head);
         isCycle(head);
     } 
 }
