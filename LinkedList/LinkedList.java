@@ -237,6 +237,14 @@ public class LinkedList{
             }
         }
         if(cycle==1){
+            if (slow == head) {
+                while (fast.next != slow) {
+                    fast = fast.next;
+                }
+                fast.next = null;
+                System.out.println("Cycle removed (head was part of the cycle)");
+                return;
+            }
             slow = head;
             Node prev = null;
             while(slow != fast){
@@ -273,7 +281,9 @@ public class LinkedList{
         head = new Node(1);
         head.next = new Node(2);
         head.next.next = new Node(3);
-        head.next.next.next = head.next;
+        head.next.next.next = new Node(4);
+        head.next.next.next.next = new Node(5);
+        head.next.next.next.next.next = head;
         // isCycle(head);
         removeCycle(head);
         isCycle(head);
