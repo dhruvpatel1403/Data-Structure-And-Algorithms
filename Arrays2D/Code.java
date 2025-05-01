@@ -43,9 +43,28 @@ public class Code {
         }
         System.out.println("Diagonal sum is : "+sum);
     }
+    public static void search(int arr[][],int target){
+        int row=arr.length-1;
+        int col = 0;
+        while(row >=0 && col<arr[0].length){
+            if(arr[row][col] == target){
+                System.out.println("Element found at : "+row+" , "+col);
+                return;
+            }
+            else if(arr[row][col]>target){
+                row--;
+            }
+            else{
+                col++;
+            }
+        }
+        System.out.println("Element Not found");
+
+    }
     public static void main(String[] args) {
         int arr[][] = {{1,2,3},{5,6,7},{9,10,11}};
-        spiral(arr);
-        diagonal_sum(arr);
+        // spiral(arr);
+        // diagonal_sum(arr);
+        search(arr, 3);
     }
 }
