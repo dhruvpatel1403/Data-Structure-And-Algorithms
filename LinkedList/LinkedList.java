@@ -1,6 +1,6 @@
 package LinkedList;
 public class LinkedList{
-    public static class Node{
+    public class Node{
         int data;
         Node next;
         public Node(int data){
@@ -257,6 +257,44 @@ public class LinkedList{
         }
         
     }
+    public void zigZagLL(){
+        //mid
+        Node slow = head;
+        Node fast = head.next;
+        while(fast != null && fast.next !=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        // reverse after mid
+        Node mid = slow.next;
+
+        slow.next = null;
+
+        Node prev = null;
+        Node curr = mid;
+        Node next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        
+        // connect left with right
+        Node left = head;
+        Node right = prev;
+
+        while(left != null && right != null){
+            Node leftNext = left.next;
+            Node rightNext = right.next;
+            left.next = right;
+            right.next = leftNext;
+
+            left = leftNext;
+            right = rightNext;
+        }
+    }
     public static void main(String[] args) {
         // LinkedList ll = new LinkedList();
         // ll.printLinkedList();
@@ -278,14 +316,25 @@ public class LinkedList{
         // // ll.deleteNthFromEnd(4);
         // // ll.printLinkedList();
         // System.out.println(ll.palindrom());
-        head = new Node(1);
-        head.next = new Node(2);
-        head.next.next = new Node(3);
-        head.next.next.next = new Node(4);
-        head.next.next.next.next = new Node(5);
-        head.next.next.next.next.next = head;
+        // head = new Node(1);
+        // head.next = new Node(2);
+        // head.next.next = new Node(3);
+        // head.next.next.next = new Node(4);
+        // head.next.next.next.next = new Node(5);
+        // head.next.next.next.next.next = head;
+        // // isCycle(head);
+        // removeCycle(head);
         // isCycle(head);
-        removeCycle(head);
-        isCycle(head);
+        LinkedList ll = new LinkedList();
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.addLast(5);
+        // ll.addLast(6);
+        ll.printLinkedList();
+        ll.zigZagLL();
+        ll.printLinkedList();
+
     } 
 }
