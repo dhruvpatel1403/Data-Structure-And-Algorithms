@@ -14,8 +14,32 @@ public class StringCode {
         }
         System.out.println("String is palindrome");
     }
+    public static void shortestPath(String str){
+        int x=0;
+        int y=0;
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)=='N'){
+                y++;
+            }
+            else if(str.charAt(i)=='S'){
+                y--;
+            }
+            else if(str.charAt(i)=='E'){
+                x--;
+            }
+            else{
+                x++;
+            }
+        }
+        int x2 = x*x;
+        int y2=y*y;
+        double ans = Math.sqrt(x2+y2);
+        System.out.println(ans);
+    }
     public static void main(String[] args) {
-        String str = "abcban";
-        isPalindrome(str);
+        // String str = "abcban";
+        // isPalindrome(str);
+        String str = "NSNSNSNNEEE";
+        shortestPath(str);
     }
 }
