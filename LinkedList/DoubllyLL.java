@@ -48,6 +48,21 @@ public class DoubllyLL {
         newNode.prev = tail;
         tail=newNode;
     }
+    public void removeFirst(){
+        if(head == null){
+            System.out.println("Linked List is empty");
+            return;
+        }
+
+        size--;
+        if(head == tail){
+            head=tail = null;
+            return;
+        }
+        head=head.next;
+        head.prev = null;
+
+    }
     public static void main(String args[]){
         DoubllyLL dll = new DoubllyLL();
         dll.addFirst(1);
@@ -55,5 +70,8 @@ public class DoubllyLL {
         dll.addFirst(3);
         dll.addLast(0);
         dll.printLL();
+        dll.removeFirst();
+        dll.printLL();
+
     }
 }
