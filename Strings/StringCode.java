@@ -60,6 +60,22 @@ public class StringCode {
         }
         System.out.println("answer is : "+ans);
     }
+    public static void stringCompre(String str,StringBuilder ans){
+        int i=0;
+        while(i<str.length()){
+            int count=1;
+            ans.append(str.charAt(i));
+            while( i < str.length()-1 && str.charAt(i)==str.charAt(i+1)){
+                count++;
+                i++;
+            }
+            if(count>1){
+                ans.append(count);
+            }
+            i++;
+        }
+        System.out.println(ans);
+    }
     public static void main(String[] args) {
         // String str = "abcban";
         // isPalindrome(str);
@@ -67,7 +83,9 @@ public class StringCode {
         // shortestPath(str);
         // String arr[] = {"fine","hii","hello"};
         // findMax(arr);
-        String str = "i am fine";
-        converter(str, new StringBuilder(""));
+        // String str = "i am fine";
+        // converter(str, new StringBuilder(""));
+        String str = "abbbbccc";
+        stringCompre(str, new StringBuilder(""));
     }
 }
