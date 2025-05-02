@@ -1,4 +1,5 @@
 package Strings;
+import java.util.*;
 
 public class StringCode {
     public static void isPalindrome(String str){
@@ -76,6 +77,24 @@ public class StringCode {
         }
         System.out.println(ans);
     }
+    public static void stringAnna(String str1,String str2){
+        if(str1.length()!=str2.length()){
+            System.out.println("String are not anagram ");
+            return;
+        }
+        str1= str1.toLowerCase();
+        str2 = str2.toLowerCase();
+        char arr1[] = str1.toCharArray();
+        char arr2[] = str2.toCharArray();
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        if(Arrays.equals(arr1, arr2)){
+            System.out.println("String are anagram");
+        }
+        else{
+            System.out.println("String are not anagram ");
+        }
+    }
     public static void main(String[] args) {
         // String str = "abcban";
         // isPalindrome(str);
@@ -85,7 +104,10 @@ public class StringCode {
         // findMax(arr);
         // String str = "i am fine";
         // converter(str, new StringBuilder(""));
-        String str = "abbbbccc";
-        stringCompre(str, new StringBuilder(""));
+        // String str = "abbbbccc";
+        // stringCompre(str, new StringBuilder(""));
+        String str1 = "race";
+        String str2 = "car";
+        stringAnna(str1, str2);
     }
 }
