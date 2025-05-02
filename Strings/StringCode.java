@@ -45,12 +45,29 @@ public class StringCode {
         }
         System.out.println("max is : "+max);
     }
+    public static void converter(String str,StringBuilder ans){
+        ans.append(Character.toUpperCase(str.charAt(0)));
+        for(int i=1;i<str.length();i++){
+            if(str.charAt(i)==' '){
+                ans.append(str.charAt(i));
+                i++;
+                ans.append(Character.toUpperCase(str.charAt(i)));
+            }
+            else{
+                ans.append(str.charAt(i));
+            }
+
+        }
+        System.out.println("answer is : "+ans);
+    }
     public static void main(String[] args) {
         // String str = "abcban";
         // isPalindrome(str);
         // String str = "NSNSNSNNEEE";
         // shortestPath(str);
-        String arr[] = {"fine","hii","hello"};
-        findMax(arr);
+        // String arr[] = {"fine","hii","hello"};
+        // findMax(arr);
+        String str = "i am fine";
+        converter(str, new StringBuilder(""));
     }
 }
