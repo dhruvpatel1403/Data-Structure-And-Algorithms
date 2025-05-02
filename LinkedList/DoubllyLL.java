@@ -61,7 +61,18 @@ public class DoubllyLL {
         }
         head=head.next;
         head.prev = null;
-
+    }
+    public void removeLast(){
+        if(head==null){
+            System.out.println("Cannot remove LL is empty");
+            return;
+        }
+        size--;
+        if(head==tail){
+            head = tail = null;
+        }
+        tail = tail.prev;
+        tail.next = null;
     }
     public static void main(String args[]){
         DoubllyLL dll = new DoubllyLL();
@@ -71,6 +82,8 @@ public class DoubllyLL {
         dll.addLast(0);
         dll.printLL();
         dll.removeFirst();
+        dll.printLL();
+        dll.removeLast();
         dll.printLL();
 
     }
