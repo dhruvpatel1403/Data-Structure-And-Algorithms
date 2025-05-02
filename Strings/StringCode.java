@@ -36,10 +36,21 @@ public class StringCode {
         double ans = Math.sqrt(x2+y2);
         System.out.println(ans);
     }
+    public static void findMax(String arr[]){
+        String max = arr[0];
+        for(int i=1;i<arr.length;i++){
+            if(max.compareTo(arr[i])<0){
+                max= arr[i];
+            }
+        }
+        System.out.println("max is : "+max);
+    }
     public static void main(String[] args) {
         // String str = "abcban";
         // isPalindrome(str);
-        String str = "NSNSNSNNEEE";
-        shortestPath(str);
+        // String str = "NSNSNSNNEEE";
+        // shortestPath(str);
+        String arr[] = {"fine","hii","hello"};
+        findMax(arr);
     }
 }
