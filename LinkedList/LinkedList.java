@@ -1,6 +1,6 @@
 package LinkedList;
 public class LinkedList{
-    public class Node{
+    public static class Node{
         int data;
         Node next;
         public Node(int data){
@@ -295,6 +295,55 @@ public class LinkedList{
             right = rightNext;
         }
     }
+    public static Node mergeLL(Node head){
+        if(head == null || head.next == null){
+            return head;
+        }
+        Node mid = getMid(head);
+        Node right = mid.next;
+        mid.next = null;
+        Node left = head;
+        Node newLeft = mergeLL(left);
+        Node newRight = mergeLL(right);
+        return merge(newLeft , newRight);
+    }
+    public static Node getMid(Node head){
+        Node slow= head;
+        Node fast = head.next;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+    public static Node merge(Node left,Node right){
+        Node mergedLL = new Node(-1);
+        Node temp = mergedLL;
+        while(left!= null && right!= null){
+            if(left.data <=right.data){
+                temp.next = left;
+                temp = temp.next;
+                left = left.next;
+            }
+            else{
+                temp.next = right;
+                temp = temp.next;
+                right = right.next;
+            }
+        }
+        while(left != null){
+            temp.next = left;
+            temp = temp.next;
+            left = left.next;
+        }
+        while(right != null){
+            temp.next = right;
+            temp = temp.next;
+            right = right.next;
+        }
+
+        return mergedLL.next;
+    }
     public static void main(String[] args) {
         // LinkedList ll = new LinkedList();
         // ll.printLinkedList();
@@ -326,14 +375,13 @@ public class LinkedList{
         // removeCycle(head);
         // isCycle(head);
         LinkedList ll = new LinkedList();
-        ll.addLast(1);
-        ll.addLast(2);
-        ll.addLast(3);
-        ll.addLast(4);
         ll.addLast(5);
-        // ll.addLast(6);
+        ll.addLast(4);
+        ll.addLast(3);
+        ll.addLast(2);
+        ll.addLast(1);
         ll.printLinkedList();
-        ll.zigZagLL();
+        ll.head = ll.mergeLL(ll.head);
         ll.printLinkedList();
 
     } 
