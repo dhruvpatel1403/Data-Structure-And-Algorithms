@@ -10,7 +10,13 @@ public class BitsCode {
             System.out.println("Ith bit is 0");
         }
     }
+    public static void setIthBit(int number, int i){
+        System.out.println((number | (1<<i)));
+    }
+    public static void clearIthBit(int number,int i){
+        System.out.println(number & (~(1<<i)));
+    }
     public static void main(String[] args) {
-        getIthBit(16, 3);
+        clearIthBit(16, 4);
     }
 }
