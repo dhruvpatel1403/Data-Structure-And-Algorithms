@@ -25,8 +25,17 @@ public class BitsCode {
         int bitmask = (-1 << (j+1)) | (~(-1<<i));
         System.out.println(number & bitmask);
     }
+    public static void isPowerOf2(int number){
+        if((number & (number-1)) == 0){
+            System.out.println("Power of 2");
+        }
+        else{
+            System.out.println("Not Power of 2");
+        }
+    }
     public static void main(String[] args) {
         // clearLastIthBit(15, 1);
-        clearInRange(15, 0, 3);
+        // clearInRange(15, 0, 3);
+        isPowerOf2(15);
     }
 }
