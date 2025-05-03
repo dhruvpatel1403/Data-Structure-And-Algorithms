@@ -33,9 +33,20 @@ public class BitsCode {
             System.out.println("Not Power of 2");
         }
     }
+    public static void countSetBits(int number){
+        int count = 0;
+        while(number > 0){
+            if((number & 1) != 0 ){
+                count++;
+            }
+            number = number >> 1;
+        }
+        System.out.println("Count of set bit is : "+count);
+    }
     public static void main(String[] args) {
         // clearLastIthBit(15, 1);
         // clearInRange(15, 0, 3);
-        isPowerOf2(15);
+        // isPowerOf2(15);
+        countSetBits(16);
     }
 }
