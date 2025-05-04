@@ -64,6 +64,15 @@ public class Code {
     // //         System.out.println(head.data);
     // //     }
     // }
+    public static void pushAtBottom(int data,Stack<Integer> s){
+        if(s.isEmpty()){
+            s.push(data);
+            return;
+        }
+        int val = s.pop();
+        pushAtBottom(data, s);
+        s.push(val);
+    }
     public static void main(String args[]){
         // Stack s = new Stack();
         // s.push(5);
@@ -77,7 +86,8 @@ public class Code {
         s.push(4);
         s.push(3);
         s.push(2);
-        while ((!s.isEmpty())) {
+        pushAtBottom(1, s);
+        while(!s.isEmpty()){
             System.out.println(s.peek());
             s.pop();
         }
