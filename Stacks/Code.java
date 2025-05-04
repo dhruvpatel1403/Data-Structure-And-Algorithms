@@ -73,6 +73,19 @@ public class Code {
         pushAtBottom(data, s);
         s.push(val);
     }
+    public static void reverse(String str){
+        Stack<Character> s = new Stack<>();
+        StringBuilder sb = new StringBuilder("");
+        int i=0;
+        while(i<str.length()){
+            s.push(str.charAt(i));
+            i++;
+        }
+        while(!s.isEmpty()){
+            sb.append(s.pop());
+        }
+        System.out.println(sb);
+    }
     public static void main(String args[]){
         // Stack s = new Stack();
         // s.push(5);
@@ -82,14 +95,15 @@ public class Code {
         //     s.peek();
         //     s.pop();
         // }
-        Stack<Integer> s = new Stack<>();
-        s.push(4);
-        s.push(3);
-        s.push(2);
-        pushAtBottom(1, s);
-        while(!s.isEmpty()){
-            System.out.println(s.peek());
-            s.pop();
-        }
+        // Stack<Integer> s = new Stack<>();
+        // s.push(4);
+        // s.push(3);
+        // s.push(2);
+        // pushAtBottom(1, s);
+        // while(!s.isEmpty()){
+        //     System.out.println(s.peek());
+        //     s.pop();
+        // }
+        reverse("iamfine");
     }
 }
