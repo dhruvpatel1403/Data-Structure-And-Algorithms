@@ -54,11 +54,18 @@ public class BitsCode {
         }
         System.out.println(ans);
     }
+    public static void swap(int a,int b){
+        a=a^b;
+        b=a^b;
+        a=a^b;
+        System.out.println("a "+a+" b "+b);
+    }
     public static void main(String[] args) {
         // clearLastIthBit(15, 1);
         // clearInRange(15, 0, 3);
         // isPowerOf2(15);
         // countSetBits(16);
-        fastExpo(5, 3);
+        // fastExpo(5, 3);
+        swap(5, 3);
     }
 }
