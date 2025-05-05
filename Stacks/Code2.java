@@ -51,8 +51,50 @@ public class Code2 {
         }
         return false;
     }
+    public static void findMaxArea(int arr[]){
+        Stack<Integer> s = new Stack<>();
+        int left[] = new int[arr.length];
+        int right[] = new int[arr.length]; 
+        int max_area = Integer.MIN_VALUE;
+        //find next small right
+        for(int i=arr.length-1;i>=0;i--){
+            while(!s.isEmpty() && arr[s.peek()]>=arr[i]){
+                s.pop();
+            }
+            if(s.isEmpty()){
+                right[i] = arr.length;
+            }
+            else{
+                right[i] = s.peek();
+            }
+            s.push(i);
+        }
+
+        //find next small left
+        for(int i=0;i<arr.length;i++){
+            while(!s.isEmpty() && arr[s.peek()]>=arr[i]){
+                s.pop();
+            }
+            if(s.isEmpty()){
+                left[i] = -1;
+            }
+            else{
+                left[i] = s.peek();
+            }
+            s.push(i);
+        }
+        //find area
+        for(int i=0;i<arr.length;i++){
+            int wd = right[i] - left[i] -1;
+            int area = arr[i] * wd;
+            max_area = Math.max(max_area,area);
+        }
+        System.out.println("Max are : " + max_area);
+    }
     public static void main(String[] args) {
         // System.out.println(validPara("[[()({})]{}]"));
-        System.out.println(duplicate("((a+b)+(c+((d))))"));
+        // System.out.println(duplicate("((a+b)+(c+((d))))"));
+        int arr[] = {2,1,5,6,2,3};
+        findMaxArea(arr);
     }
 }
