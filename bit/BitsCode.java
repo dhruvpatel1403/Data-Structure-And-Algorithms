@@ -43,10 +43,22 @@ public class BitsCode {
         }
         System.out.println("Count of set bit is : "+count);
     }
+    public static void fastExpo(int a,int n){
+        int ans = 1;
+        while(n>0){
+            if((n&1) != 0){
+                ans = ans * a;
+            }
+            a=a*a;
+            n = n>>1;
+        }
+        System.out.println(ans);
+    }
     public static void main(String[] args) {
         // clearLastIthBit(15, 1);
         // clearInRange(15, 0, 3);
         // isPowerOf2(15);
-        countSetBits(16);
+        // countSetBits(16);
+        fastExpo(5, 3);
     }
 }
