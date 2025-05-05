@@ -60,12 +60,19 @@ public class BitsCode {
         a=a^b;
         System.out.println("a "+a+" b "+b);
     }
+    public static void addOne(int n){
+        n = -(~n);
+        System.out.println(n);
+    }
     public static void main(String[] args) {
         // clearLastIthBit(15, 1);
         // clearInRange(15, 0, 3);
         // isPowerOf2(15);
         // countSetBits(16);
         // fastExpo(5, 3);
-        swap(5, 3);
+        // swap(5, 3);
+        addOne(5);
+        char ch = 'A';
+        System.out.println((char)(ch | ' '));
     }
 }
