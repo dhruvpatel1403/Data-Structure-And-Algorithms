@@ -70,14 +70,27 @@ public class Code {
         }
         return tilling(n-1)+tilling(n-2);
     }
+    public static void removeDup(String str,int i,boolean arr[],StringBuilder ans){
+        if(i==str.length()){
+            System.out.println(ans);
+            return;
+        }
+        if(!arr[str.charAt(i)-'a']){
+            ans.append(str.charAt(i));
+            arr[str.charAt(i)-'a'] = true;
+        }
+        removeDup(str, i+1, arr, ans);
+    }
     public static void main(String[] args) {
         // printInDec(5);
         // printInInc(5);
         // System.out.println(findFact(5));
         // System.out.println(findSumOfN(5));
-        // int arr[] = {1,4,5,2,12,3,2};
+        // 
         // findFirstOcc(arr, 2, arr.length-1);
         // System.out.println(powerOpti(5, 4));
-        System.out.println(tilling(4));
+        // System.out.println(tilling(4));
+        boolean arr[] = new boolean[26];
+        removeDup("helloiamfine", 0, arr, new StringBuilder(""));
     }
 }
