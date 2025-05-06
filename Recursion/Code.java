@@ -64,13 +64,20 @@ public class Code {
         }
         return powersq;
     }
+    public static int tilling(int n){
+        if(n==0 || n==1){
+            return 1;
+        }
+        return tilling(n-1)+tilling(n-2);
+    }
     public static void main(String[] args) {
         // printInDec(5);
         // printInInc(5);
         // System.out.println(findFact(5));
         // System.out.println(findSumOfN(5));
-        int arr[] = {1,4,5,2,12,3,2};
+        // int arr[] = {1,4,5,2,12,3,2};
         // findFirstOcc(arr, 2, arr.length-1);
-        System.out.println(powerOpti(5, 4));
+        // System.out.println(powerOpti(5, 4));
+        System.out.println(tilling(4));
     }
 }
