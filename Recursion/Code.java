@@ -25,10 +25,24 @@ public class Code {
         }
         return n + findSumOfN(n-1);
     }
+    public static int findFirstOcc(int arr[],int target,int i){
+        if(i==arr.length){
+            System.out.println("Target not found in array");
+            return -1;
+        }
+        if(arr[i]==target){
+            System.out.println("Index is : "+i);
+            return i;
+        }
+        return findFirstOcc(arr, target, i+1);
+    }
     public static void main(String[] args) {
         // printInDec(5);
         // printInInc(5);
         // System.out.println(findFact(5));
-        System.out.println(findSumOfN(5));
+        // System.out.println(findSumOfN(5));
+        int arr[] = {1,4,5,2,12,3,2};
+        findFirstOcc(arr, 2, 0);
+
     }
 }
