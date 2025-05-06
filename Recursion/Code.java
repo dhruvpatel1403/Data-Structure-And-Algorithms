@@ -87,6 +87,16 @@ public class Code {
         }
         return friendsPair(n-1)+(n-1)*friendsPair(n-2);
     }
+    public static void printBinaryString(int n,String str,int choice){
+        if(n==0){
+            System.out.println(str);
+            return;
+        }
+        printBinaryString(n-1, str+"0",0);
+        if(choice == 0){
+            printBinaryString(n-1, str+"1", 1);
+        }
+    }
     public static void main(String[] args) {
         // printInDec(5);
         // printInInc(5);
@@ -98,6 +108,7 @@ public class Code {
         // System.out.println(tilling(4));
         // boolean arr[] = new boolean[26];
         // removeDup("helloiamfine", 0, arr, new StringBuilder(""));
-        System.out.println(friendsPair(5));
+        // System.out.println(friendsPair(5));
+        printBinaryString(3, "", 0);
     }
 }
