@@ -47,13 +47,19 @@ public class Code {
         }
         return findFirstOcc(arr, target, i-1);
     }
+    public static int power(int x,int n){
+        if(n==1){
+            return x;
+        }
+        return x*power(x, n-1);
+    }
     public static void main(String[] args) {
         // printInDec(5);
         // printInInc(5);
         // System.out.println(findFact(5));
         // System.out.println(findSumOfN(5));
         int arr[] = {1,4,5,2,12,3,2};
-        findFirstOcc(arr, 2, arr.length-1);
-
+        // findFirstOcc(arr, 2, arr.length-1);
+        System.out.println(power(5, 4));
     }
 }
