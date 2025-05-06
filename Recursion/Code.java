@@ -53,6 +53,17 @@ public class Code {
         }
         return x*power(x, n-1);
     }
+    public static int powerOpti(int x,int n){
+        if(n==1){
+            return x;
+        }
+        int half = powerOpti(x, n/2);
+        int powersq = half*half;
+        if(n % 2 != 0){
+            powersq = powersq * x;
+        }
+        return powersq;
+    }
     public static void main(String[] args) {
         // printInDec(5);
         // printInInc(5);
@@ -60,6 +71,6 @@ public class Code {
         // System.out.println(findSumOfN(5));
         int arr[] = {1,4,5,2,12,3,2};
         // findFirstOcc(arr, 2, arr.length-1);
-        System.out.println(power(5, 4));
+        System.out.println(powerOpti(5, 4));
     }
 }
