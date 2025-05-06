@@ -97,6 +97,15 @@ public class Code {
             printBinaryString(n-1, str+"1", 1);
         }
     }
+    public static void convertEng(int n,String arr[]){
+        if(n==0){
+            return;
+        }
+        int val = n % 10;
+        convertEng(n/10,arr);
+        System.out.print(arr[val] +" ");
+    }
+    public static void count(int i,String str,int count)
     public static void main(String[] args) {
         // printInDec(5);
         // printInInc(5);
@@ -109,6 +118,8 @@ public class Code {
         // boolean arr[] = new boolean[26];
         // removeDup("helloiamfine", 0, arr, new StringBuilder(""));
         // System.out.println(friendsPair(5));
-        printBinaryString(3, "", 0);
+        // printBinaryString(3, "", 0);
+        String arr[] = {"Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"};
+        convertEng(2019, arr);
     }
 }
