@@ -81,6 +81,12 @@ public class Code {
         }
         removeDup(str, i+1, arr, ans);
     }
+    public static int friendsPair(int n){
+        if(n== 0 || n==1){
+            return n;
+        }
+        return friendsPair(n-1)+(n-1)*friendsPair(n-2);
+    }
     public static void main(String[] args) {
         // printInDec(5);
         // printInInc(5);
@@ -90,7 +96,8 @@ public class Code {
         // findFirstOcc(arr, 2, arr.length-1);
         // System.out.println(powerOpti(5, 4));
         // System.out.println(tilling(4));
-        boolean arr[] = new boolean[26];
-        removeDup("helloiamfine", 0, arr, new StringBuilder(""));
+        // boolean arr[] = new boolean[26];
+        // removeDup("helloiamfine", 0, arr, new StringBuilder(""));
+        System.out.println(friendsPair(5));
     }
 }
