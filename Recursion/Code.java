@@ -105,7 +105,7 @@ public class Code {
         convertEng(n/10,arr);
         System.out.print(arr[val] +" ");
     }
-    public static void count(int i,String str,int count)
+
     public static void main(String[] args) {
         // printInDec(5);
         // printInInc(5);
