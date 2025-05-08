@@ -35,6 +35,16 @@ public class Code2 {
         }
         System.out.println(main);
     }
+    public static void reverse(Queue<Integer> q){
+        Stack<Integer> s = new Stack<>();
+        while(!q.isEmpty()){
+            s.push(q.remove());
+        }
+        while(!s.isEmpty()){
+            q.add(s.pop());
+        }
+        System.out.println(q);
+    }
     public static void main(String args[]){
         String str = "aabccxb";
         // nonRepeating(str);
@@ -50,6 +60,7 @@ public class Code2 {
         q.add(9);
         q.add(10);
         System.out.println(q);
-        interLeave(q);
+        // interLeave(q);
+        reverse(q);
     }
 }
