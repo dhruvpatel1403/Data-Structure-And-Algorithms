@@ -27,22 +27,22 @@ public class Code {
     }
     public static void fract(int weight[],int value[],int capacity){
         int maxValue = 0;
-        int ratio[] = new int[value.length];
+        double ratio[] = new double[value.length];
         for(int i=0;i<value.length;i++){
-            ratio[i] = value[i] / weight[i];
+            ratio[i] = value[i] / (double)weight[i];
         }
-        int rationSort[][] = new int[ratio.length][2];
+        double rationSort[][] = new double[ratio.length][2];
         for(int i=0;i<ratio.length;i++){
             rationSort[i][0] = i;
-            rationSort[i][1] = ratio[i];
+            rationSort[i][1] = (double)ratio[i];
         }
         Arrays.sort(rationSort,Comparator.comparingDouble(o -> o[1]));
         for(int i=rationSort.length-1;i>=0;i--){
-            if(capacity>=weight[rationSort[i][0]]){
-                maxValue = value[rationSort[i][0]];
-                capacity = capacity - weight[rationSort[i][0]];
+            if(capacity>=weight[(int)rationSort[i][0]]){
+                maxValue += value[(int)rationSort[i][0]];
+                capacity = capacity - weight[(int)rationSort[i][0]];
             }else{
-                maxValue = capacity * ratio[rationSort[i][0]];
+                maxValue += capacity * (double)ratio[(int)rationSort[i][0]];
                 break;
             }
         }
