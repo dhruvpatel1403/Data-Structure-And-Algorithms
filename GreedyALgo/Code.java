@@ -25,9 +25,36 @@ public class Code {
         System.out.println(ans);
         System.out.println(maxAct);
     }
+    public static void fract(int weight[],int value[],int capacity){
+        int maxValue = 0;
+        int ratio[] = new int[value.length];
+        for(int i=0;i<value.length;i++){
+            ratio[i] = value[i] / weight[i];
+        }
+        int rationSort[][] = new int[ratio.length][2];
+        for(int i=0;i<ratio.length;i++){
+            rationSort[i][0] = i;
+            rationSort[i][1] = ratio[i];
+        }
+        Arrays.sort(rationSort,Comparator.comparingDouble(o -> o[1]));
+        for(int i=rationSort.length-1;i>=0;i--){
+            if(capacity>=weight[rationSort[i][0]]){
+                maxValue = value[rationSort[i][0]];
+                capacity = capacity - weight[rationSort[i][0]];
+            }else{
+                maxValue = capacity * ratio[rationSort[i][0]];
+                break;
+            }
+        }
+        System.out.println(maxValue);
+    }
     public static void main(String[] args) {
-        int start[] = {1,3,0,5,8,5};
-        int end[] = {2,4,6,7,9,9};
-        Activity(start, end);
+        // int start[] = {1,3,0,5,8,5};
+        // int end[] = {2,4,6,7,9,9};
+        // Activity(start, end);
+        int value[] = {60,100,120};
+        int weight[] = {10,20,30};
+        int capacity = 50;
+        fract(weight, value, capacity);
     }
 }
