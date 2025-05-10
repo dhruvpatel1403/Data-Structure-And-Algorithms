@@ -3,16 +3,23 @@ import java.util.*;
 
 public class Code {
     public static void Activity(int start[],int end[]){
+        int activity[][] = new int[start.length][3];
+        for(int i=0;i<start.length;i++){
+            activity[i][0] = i;
+            activity[i][1] = start[i];
+            activity[i][2] = end[i];
+        }
+        Arrays.sort(activity,Comparator.comparingDouble(o -> o[2]));
         int maxAct = 0;
         ArrayList<Integer> ans = new ArrayList<>();
         maxAct = 1;
-        ans.add(0);
-        int lastEnd = end[0];
+        ans.add(activity[0][0]);
+        int lastEnd = activity[0][0];
         for(int i=1;i<start.length;i++){
-            if(start[i]>=lastEnd){
+            if(activity[i][1]>=lastEnd){
                 maxAct++;
-                lastEnd = end[i];
-                ans.add(i);
+                lastEnd = activity[i][2];
+                ans.add(activity[i][0]);
             }
         }
         System.out.println(ans);
