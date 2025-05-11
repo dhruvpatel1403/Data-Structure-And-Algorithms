@@ -48,13 +48,23 @@ public class Code {
         }
         System.out.println(maxValue);
     }
+    public static void minAbsDIff(int arr1[],int arr2[]){
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        int minDif = 0;
+        for(int i=0;i<arr1.length;i++){
+            minDif += Math.abs(arr1[i]-arr2[i]);
+        }
+        System.out.println(minDif);
+    }
     public static void main(String[] args) {
         // int start[] = {1,3,0,5,8,5};
         // int end[] = {2,4,6,7,9,9};
         // Activity(start, end);
         int value[] = {60,100,120};
         int weight[] = {10,20,30};
-        int capacity = 50;
-        fract(weight, value, capacity);
+        // int capacity = 50;
+        // fract(weight, value, capacity);
+        minAbsDIff(value, weight);
     }
 }
