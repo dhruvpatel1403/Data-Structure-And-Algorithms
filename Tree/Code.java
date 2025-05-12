@@ -96,6 +96,14 @@ public class Code {
             int rh = height(root.right);
             return Math.max(lh,rh) + 1;   
         }
+        public static int countNodes(Node root){
+            if(root == null){
+                return 0;
+            }
+            int lh = countNodes(root.left);
+            int rh = countNodes(root.right);
+            return lh + rh + 1;   
+        }
     }  
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -108,8 +116,9 @@ public class Code {
         // System.out.println();
         // tree.postOrder(root);
         // System.out.println();
-        // tree.levelOrder(root);
+        tree.levelOrder(root);
         // System.out.println();
         System.out.println(tree.height(root));
+        System.out.println(tree.countNodes(root));
     }
 }
