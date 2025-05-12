@@ -104,6 +104,14 @@ public class Code {
             int rh = countNodes(root.right);
             return lh + rh + 1;   
         }
+        public static int sumNodes(Node root){
+            if(root == null){
+                return 0;
+            }
+            int lh = sumNodes(root.left);
+            int rh = sumNodes(root.right);
+            return lh + rh + root.data;   
+        }
     }  
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -120,5 +128,6 @@ public class Code {
         // System.out.println();
         System.out.println(tree.height(root));
         System.out.println(tree.countNodes(root));
+        System.out.println(tree.sumNodes(root));
     }
 }
