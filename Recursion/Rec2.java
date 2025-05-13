@@ -33,12 +33,25 @@ public class Rec2 {
             printBinaryString(n, str+"1", 1);
         }
     }
+    public static void towerHonnoi(int n,String src,String helper,String dest){
+
+        if(n==1){
+            System.out.println("Transfer "+ n + " From "+ src +" To "+dest);
+            return;
+        }
+
+        towerHonnoi(n-1, src, dest, helper);
+        System.out.println("Transfer"+ n + " From" + src + " To "+ dest);
+        towerHonnoi(n-1, helper, src, dest);
+
+    }
     public static void main(String[] args) {
         // System.out.println(tilling(3));
         // boolean arr[] = new boolean[26];
         ArrayList<Boolean> list = new ArrayList<>(Collections.nCopies(26,false));
         // removeDuplicates("heeelloiamfine", new StringBuilder(""), 0, list);
         // System.out.println(friendsPair(3));
-        printBinaryString(3, "", 0);
+        // printBinaryString(3, "", 0);
+        towerHonnoi(3, "S","H", "D");
     }
 }
