@@ -120,9 +120,66 @@ public class Code {
             int lh = height(root.left);
             int rh = height(root.right);
             int rd = diameter(root.right);
-    
             return Math.max(Math.max(ld,rd),lh+rh+1);
         }
+    //     public static boolean isSubTree(Node root,Node subroot){
+    //         if(subroot == null){
+    //             return true;
+    //         }
+    //         if(root == null){
+    //             return false;
+    //         }
+    //         if(root.data == subroot.data){
+    //             if(isIdentical(root,subroot)){
+    //                 return true;
+    //             }
+    //         }
+    //         return isSubTree(root.left, subroot.left) || isSubTree(root.right, subroot.right);
+    //     }
+    //     public static boolean isIdentical(Node node,Node subroot){
+    //         if(node == null && subroot == null){
+    //             return false;
+    //         }
+    //         else if(node == null || subroot == null || node.data != subroot.data){
+    //             return false;
+    //         }
+    //         if(!isIdentical(node.left, subroot.left)){
+    //             return false;
+    //         }
+    //         if(!isIdentical(node.right, subroot.right)){
+    //             return false;
+    //         }
+    //         return true;
+    // }
+    public static boolean isSubTree(Node root, Node subroot) {
+        if (subroot == null) {
+            return true;  // An empty subtree is always a subtree
+        }
+        if (root == null) {
+            return false;  // Main tree is empty but subtree is not
+        }
+        if (root.data == subroot.data) {
+            if (isIdentical(root, subroot)) {
+                return true;
+            }
+        }
+        // Check left and right subtrees (but keep subroot the same)
+        return isSubTree(root.left, subroot) || isSubTree(root.right, subroot);
+    }
+
+    public static boolean isIdentical(Node node, Node subroot) {
+        if (node == null && subroot == null) {
+            return true;  // Both are null → identical
+        }
+        if (node == null || subroot == null) {
+            return false;  // Only one is null → not identical
+        }
+        if (node.data != subroot.data) {
+            return false;  // Data mismatch → not identical
+        }
+        // Recursively check left and right subtrees
+        return isIdentical(node.left, subroot.left) && isIdentical(node.right, subroot.right);
+    }
     }  
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -140,6 +197,11 @@ public class Code {
         // System.out.println(tree.height(root));
         // System.out.println(tree.countNodes(root));
         // System.out.println(tree.sumNodes(root));
-        System.out.println(tree.diameter(root));
+        // System.out.println(tree.diameter(root));
+        Node subroot = new Node(2);
+        subroot.left = new Node(4);
+        subroot.right = new Node(5);
+        // subroot.left.left = new Node(8);
+        System.out.println(tree.isSubTree(root, subroot));
     }
 }
