@@ -112,6 +112,17 @@ public class Code {
             int rh = sumNodes(root.right);
             return lh + rh + root.data;   
         }
+        public static int diameter(Node root){
+            if(root==null){
+                return 0;
+            }
+            int ld = diameter(root.left);
+            int lh = height(root.left);
+            int rh = height(root.right);
+            int rd = diameter(root.right);
+    
+            return Math.max(Math.max(ld,rd),lh+rh+1);
+        }
     }  
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -124,10 +135,11 @@ public class Code {
         // System.out.println();
         // tree.postOrder(root);
         // System.out.println();
-        tree.levelOrder(root);
+        // tree.levelOrder(root);
         // System.out.println();
-        System.out.println(tree.height(root));
-        System.out.println(tree.countNodes(root));
-        System.out.println(tree.sumNodes(root));
+        // System.out.println(tree.height(root));
+        // System.out.println(tree.countNodes(root));
+        // System.out.println(tree.sumNodes(root));
+        System.out.println(tree.diameter(root));
     }
 }
