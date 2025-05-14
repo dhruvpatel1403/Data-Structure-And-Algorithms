@@ -344,6 +344,34 @@ public class LinkedList{
 
         return mergedLL.next;
     }
+    public Node deleteNodes(Node head, int m, int n) {
+        if (head == null || m <= 0 || n < 0) {
+            return head; // Handle invalid cases
+        }
+
+        Node current = head;
+        while (current != null) {
+            // Step 1: Keep m nodes
+            for (int i = 1; i < m && current != null; i++) {
+                current = current.next;
+            }
+            if (current == null) {
+                break; // No more nodes to process
+            }
+
+            // Step 2: Skip n nodes
+            Node temp = current.next;
+            for (int i = 1; i <= n && temp != null; i++) {
+                temp = temp.next;
+            }
+            current.next = temp; // Link to the node after the deleted section
+
+            // Move to the next segment
+            current = temp;
+        }
+
+        return head;
+    }
     public static void main(String[] args) {
         // LinkedList ll = new LinkedList();
         // ll.printLinkedList();
@@ -380,9 +408,11 @@ public class LinkedList{
         ll.addLast(3);
         ll.addLast(2);
         ll.addLast(1);
+        // ll.printLinkedList();
+        // ll.head = ll.mergeLL(ll.head);
+        // ll.printLinkedList();
         ll.printLinkedList();
-        ll.head = ll.mergeLL(ll.head);
+        ll.deleteNodes(head, 1, 1);
         ll.printLinkedList();
-
     } 
 }
