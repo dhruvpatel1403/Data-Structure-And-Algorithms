@@ -382,8 +382,61 @@ public class LinkedList{
             ptrA = (ptrA == null) ? headB : ptrA.next;
             ptrB = (ptrB == null) ? headA : ptrB.next;
         }
-
         return ptrA; // or ptrB (they are equal now)
+    }
+    public Node swapNodes(Node head, int k) {
+        if (head == null || k <= 0) {
+            return head;
+        }
+
+        Node fast = head;
+        Node slow = head;
+        Node node1 = head;
+
+        // Find the k-th node from the beginning (node1)
+        for (int i = 1; i < k && fast != null; i++) {
+            fast = fast.next;
+        }
+        if (fast == null) {
+            return head; // k is larger than the list size
+        }
+        node1 = fast;
+
+        // Find the k-th node from the end (slow will point to it)
+        while (fast.next != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        // Swap the values of node1 and slow
+        int temp = node1.data;
+        node1.data = slow.data;
+        slow.data = temp;
+
+        return head;
+    }
+    public Node oddEvenList(Node head) {
+         if (head == null || head.next == null) {
+            return head; // No need to process
+        }
+        Node odd = head;
+        Node even = head.next;
+        Node evenHead = even; // Save the start of even list
+
+        while (even != null && even.next != null) {
+            // Link odd nodes
+            odd.next = even.next;
+            odd = odd.next;
+
+            // Link even nodes
+            even.next = odd.next;
+            even = even.next;
+        }
+
+        // Attach even list after odd list
+        odd.next = evenHead;
+
+        return head;
     }
     public static void main(String[] args) {
         // LinkedList ll = new LinkedList();
@@ -425,7 +478,8 @@ public class LinkedList{
         // ll.head = ll.mergeLL(ll.head);
         // ll.printLinkedList();
         ll.printLinkedList();
-        ll.deleteNodes(head, 1, 1);
+        // ll.deleteNodes(head, 1, 1);
+        ll.oddEvenList(head);
         ll.printLinkedList();
     } 
 }
