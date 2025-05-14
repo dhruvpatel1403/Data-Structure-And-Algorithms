@@ -372,6 +372,19 @@ public class LinkedList{
 
         return head;
     }
+    public Node getIntersectionNode(Node headA, Node headB) {
+        if (headA == null || headB == null) return null;
+
+        Node ptrA = headA;
+        Node ptrB = headB;
+
+        while (ptrA != ptrB) {
+            ptrA = (ptrA == null) ? headB : ptrA.next;
+            ptrB = (ptrB == null) ? headA : ptrB.next;
+        }
+
+        return ptrA; // or ptrB (they are equal now)
+    }
     public static void main(String[] args) {
         // LinkedList ll = new LinkedList();
         // ll.printLinkedList();
