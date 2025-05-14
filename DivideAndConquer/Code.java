@@ -51,11 +51,44 @@ public class Code {
         arr[i] = temp;
         return i;
     }
+    public static void mergerSort(int arr[],int st,int end){
+        if(st >= end){
+            return;
+        }
+        int mid = st + (end-st)/2;
+        mergerSort(arr, st, mid);
+        mergerSort(arr, mid+1, end);
+        merge(arr,st,end,mid);
+    }
+    public static void merge(int arr[],int st,int end,int mid){
+        int temp[] = new int[end-st+1];
+        int i = st;
+        int j = mid+1;
+        int k = 0;
+        while(i<=mid && j<=end){
+            if(arr[i]<arr[j]){
+                temp[k++] = arr[i++];
+            }
+            else{
+                temp[k++] = arr[j++];
+            }
+        }
+        while(i<=mid){
+            temp[k++] = arr[i++];
+        }
+        while(j<=end){
+            temp[k++] = arr[j++];
+        }
+        for(int l = 0,m=st ;l<k;l++,m++){
+            arr[m] = temp[l];
+        }
+    }
     public static void main(String[] args) {
         int[] arr = {4, 5, 6, 7, 0, 1, 2};
         // int target = 0;
         // serchInRotated(arr, 0, arr.length-1, target);
-        quickSort(arr, 0, arr.length-1);
+        // quickSort(arr, 0, arr.length-1);
+        mergerSort(arr, 0, arr.length-1);
         for(int i=0;i<arr.length;i++){
             System.out.print(arr[i]+ " ");
         }
