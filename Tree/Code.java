@@ -255,6 +255,16 @@ public class Code {
                 }
             }
         }
+    }
+    public static void kLevelRecursive(Node root,int k,int i){
+        if(root == null){
+            return;
+        }
+        if(i==k){
+            System.out.print(root.data+" ");
+        }
+        kLevelRecursive(root.left, k, i+1);
+        kLevelRecursive(root.right, k, i+1);
     } 
 } 
     public static void main(String[] args) {
@@ -280,6 +290,7 @@ public class Code {
         // // subroot.left.left = new Node(8);
         // System.out.println(tree.isSubTree(root, subroot));
         // tree.topView(root);
-        tree.printKthLevel(root, 3);
+        // tree.printKthLevel(root, 3);
+        tree.kLevelRecursive(root, 3, 1);
     }
 }
