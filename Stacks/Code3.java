@@ -130,6 +130,25 @@ public class Code3 {
         }
         System.out.println();
     }
+    public static boolean validPara(String str){
+        Stack<Character> s =new Stack<>();
+        for(int i=0;i<str.length();i++){
+            char curr = str.charAt(i);
+            if(curr == '(' || curr == '{' || curr == '['){
+                s.push(curr);
+            }else{
+                if(s.isEmpty()){
+                    return false;
+                }else{
+                    s.pop();
+                }
+            }
+        }
+        if(!s.isEmpty()){
+            return false;
+        }
+        return true;
+    }
     public static void main(String[] args) {
         // reverse("iamfine");
         int arr[] = {100,80,60,70,60,85,100,120};
@@ -137,6 +156,7 @@ public class Code3 {
         // findnextLesser(arr);
         // findPrevGreater(arr);
         // findPrevLesser(arr);
-        stockSpan(arr);
+        // stockSpan(arr);
+        System.out.println(validPara("({{}}])"));
     }
 }
