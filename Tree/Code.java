@@ -222,7 +222,41 @@ public class Code {
         }
         System.out.println();
     }
-    }  
+    public static void printKthLevel(Node root,int k){
+        Queue<Node> q =new LinkedList<>();
+        q.add(root);
+        int i = 1;
+        q.add(null);
+        if(k==1){
+            System.out.println(root.data);
+            return;
+        }
+        else{
+            while(!q.isEmpty()){
+                Node curr = q.remove();
+                if(curr == null){
+                    if(q.isEmpty()){
+                        break;
+                    }
+                    else{
+                        q.add(null);
+                        i++;
+                    }
+                }else{
+                    if(i==k){
+                        System.out.print(curr.data+" ");
+                    }
+                    if(curr.left != null){
+                        q.add(curr.left);
+                    }
+                    if(curr.right != null){
+                        q.add(curr.right);
+                    }
+                }
+            }
+        }
+    } 
+} 
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         BinnaryTree tree = new BinnaryTree();
@@ -245,6 +279,7 @@ public class Code {
         // subroot.right = new Node(5);
         // // subroot.left.left = new Node(8);
         // System.out.println(tree.isSubTree(root, subroot));
-        tree.topView(root);
+        // tree.topView(root);
+        tree.printKthLevel(root, 3);
     }
 }

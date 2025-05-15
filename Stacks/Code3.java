@@ -139,8 +139,11 @@ public class Code3 {
             }else{
                 if(s.isEmpty()){
                     return false;
-                }else{
+                }else if(curr == ')' || curr == '}' || curr == ']'){
                     s.pop();
+                }
+                else{
+                    return false;
                 }
             }
         }
@@ -157,6 +160,6 @@ public class Code3 {
         // findPrevGreater(arr);
         // findPrevLesser(arr);
         // stockSpan(arr);
-        System.out.println(validPara("({{}}])"));
+        System.out.println(validPara("({{}})"));
     }
 }
