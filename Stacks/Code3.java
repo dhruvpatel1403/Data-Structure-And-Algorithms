@@ -14,7 +14,33 @@ public class Code3 {
         }
         System.out.println(ans);
     }
+    public static void findNextGreater(int arr[]){
+        Stack<Integer> s = new Stack<>();
+        int nextGr[] = new int[arr.length];
+        for(int i = arr.length-1;i>=0;i--){
+            //while
+            while(!s.isEmpty() && arr[s.peek()]<=arr[i]){
+                s.pop();
+            }
+            //if else
+            if(s.isEmpty()){
+                nextGr[i] = -1;
+            }else{
+                nextGr[i] = arr[s.peek()];
+            }
+            // push s
+            s.push(i);
+        }
+        for(int i=0;i<arr.length;i++){
+            System.out.print(nextGr[i]+" ");
+        }
+        System.out.println();
+    }
+    
     public static void main(String[] args) {
-        reverse("iamfine");
+        // reverse("iamfine");
+        int arr[] = {4,5,1,7,0,2,3};
+        // findNextGreater(arr);
+        findnextLesser(arr);
     }
 }
