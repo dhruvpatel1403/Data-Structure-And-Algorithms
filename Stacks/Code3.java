@@ -83,13 +83,36 @@ public class Code3 {
         }
         System.out.println();
     }
-    
+    public static void findPrevLesser(int arr[]){
+        Stack<Integer> s = new Stack<>();
+        int n = arr.length;
+        int prevLs[] = new int[n];
+        for(int i=0;i<n;i++){
+            //while
+            while(!s.empty() && arr[s.peek()]>=arr[i]){
+                s.pop();
+            }
+            //if else
+            if(s.isEmpty()){
+                prevLs[i] = -1;
+            }else{
+                prevLs[i] = arr[s.peek()];
+            }
+            // push in stack
+            s.push(i);
+        }
+        for(int i=0;i<n;i++){
+            System.out.print(prevLs[i]+" ");
+        }
+        System.out.println();
+    }
     
     public static void main(String[] args) {
         // reverse("iamfine");
         int arr[] = {4,5,1,7,0,2,3};
         // findNextGreater(arr);
         // findnextLesser(arr);
-        findPrevGreater(arr);
+        // findPrevGreater(arr);
+        findPrevLesser(arr);
     }
 }
