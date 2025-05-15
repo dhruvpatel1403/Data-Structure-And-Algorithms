@@ -106,13 +106,37 @@ public class Code3 {
         }
         System.out.println();
     }
-    
+    public static void stockSpan(int arr[]){
+        Stack<Integer> s = new Stack<>();
+        int n= arr.length;
+        int span[] = new int[n];
+        for(int i=0;i<arr.length;i++){
+            //while
+            while(!s.isEmpty() && arr[s.peek()]<arr[i]){
+                s.pop();
+            }
+            //if else
+            if(s.isEmpty()){
+                span[i] = i+1;
+            }
+            else{
+                span[i] = i - s.peek();
+            }
+            // push ele in s
+            s.push(i);
+        }
+        for(int i=0;i<n;i++){
+            System.out.print(span[i]+" ");
+        }
+        System.out.println();
+    }
     public static void main(String[] args) {
         // reverse("iamfine");
-        int arr[] = {4,5,1,7,0,2,3};
+        int arr[] = {100,80,60,70,60,85,100,120};
         // findNextGreater(arr);
         // findnextLesser(arr);
         // findPrevGreater(arr);
-        findPrevLesser(arr);
+        // findPrevLesser(arr);
+        stockSpan(arr);
     }
 }
