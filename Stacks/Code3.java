@@ -60,11 +60,36 @@ public class Code3 {
         }
         System.out.println();
     }
+    public static void findPrevGreater(int arr[]){
+        Stack<Integer> s= new Stack<>();
+        int n= arr.length;
+        int prevGr[] = new int[n];
+        for(int i=0;i<n;i++){
+            //while
+            while(!s.isEmpty() && arr[s.peek()]<=arr[i]){
+                s.pop();
+            }
+            //if else
+            if(s.isEmpty()){
+                prevGr[i] = -1;
+            }else{
+                prevGr[i] = arr[s.peek()];
+            }
+            // push in stack
+            s.push(i);
+        }
+        for(int i=0;i<n;i++){
+            System.out.print(prevGr[i]+" ");
+        }
+        System.out.println();
+    }
+    
     
     public static void main(String[] args) {
         // reverse("iamfine");
         int arr[] = {4,5,1,7,0,2,3};
         // findNextGreater(arr);
-        findnextLesser(arr);
+        // findnextLesser(arr);
+        findPrevGreater(arr);
     }
 }
