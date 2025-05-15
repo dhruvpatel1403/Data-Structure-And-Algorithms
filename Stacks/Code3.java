@@ -36,6 +36,30 @@ public class Code3 {
         }
         System.out.println();
     }
+    public static void findnextLesser(int arr[]){
+        Stack<Integer> s= new Stack<>();
+        int n=arr.length;
+        int nextls[] = new int[n];
+        for(int i=n-1;i>=0;i--){
+            //while
+            while(!s.isEmpty() && arr[s.peek()]>=arr[i]){
+                s.pop();
+            }
+
+            //if else
+            if(s.isEmpty()){
+                nextls[i] = -1;
+            }else{
+                nextls[i] = arr[s.peek()];
+            }
+            // push i
+            s.push(i);
+        }
+        for(int i=0;i<n;i++){
+            System.out.print(nextls[i]+" ");
+        }
+        System.out.println();
+    }
     
     public static void main(String[] args) {
         // reverse("iamfine");
