@@ -281,7 +281,31 @@ public class Code {
         }
         return root;
     }
-    
+    public static int minDist(Node root,int n1,int n2){
+        Node lca = lca(root, n1, n2);
+        int dis1 = lcaDist(lca,n1);
+        int dist2 = lcaDist(lca,n2);
+        return dis1+dist2;
+    }
+    public static int lcaDist(Node root,int n){
+        if(root == null){
+            return -1;
+        }
+        if(root.data == n){
+            return 0;
+        }
+        int l = lcaDist(root.left, n);
+        int r = lcaDist(root.right, n);
+        if( l == -1 && r == -1){
+            return -1;
+        }
+        else if(l == -1){
+            return r+1;
+        }
+        else{
+            return l+1;
+        }
+    }
 } 
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -310,7 +334,7 @@ public class Code {
         // Node tar = new Node(4);
         // tree.kLevelRecursive(root, 2, 1);
         // tree.kthAncesster(root, 2, tar, 0);
-        System.out.println(tree.lca(root, 4, 5).data);
-        // System.out.println(tree.minDist(root, 4, 5));
+        // System.out.println(tree.lca(root, 4, 5).data);
+        System.out.println(tree.minDist(root, 4, 5));
     }
 }
