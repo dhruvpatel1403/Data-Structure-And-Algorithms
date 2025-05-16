@@ -262,10 +262,26 @@ public class Code {
         }
         if(i==k){
             System.out.print(root.data+" ");
+            return;
         }
         kLevelRecursive(root.left, k, i+1);
         kLevelRecursive(root.right, k, i+1);
-    } 
+    }
+    public static Node lca(Node root,int n1,int n2){
+        if(root == null || root.data == n1 || root.data == n2){
+            return root;
+        }
+        Node leftlca = lca(root.left, n1, n2);
+        Node rightlca = lca(root.right, n1, n2);
+        if(rightlca == null){
+            return leftlca;
+        }
+        if(leftlca == null){
+            return rightlca;
+        }
+        return root;
+    }
+    
 } 
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -291,6 +307,10 @@ public class Code {
         // System.out.println(tree.isSubTree(root, subroot));
         // tree.topView(root);
         // tree.printKthLevel(root, 3);
-        tree.kLevelRecursive(root, 3, 1);
+        // Node tar = new Node(4);
+        // tree.kLevelRecursive(root, 2, 1);
+        // tree.kthAncesster(root, 2, tar, 0);
+        System.out.println(tree.lca(root, 4, 5).data);
+        // System.out.println(tree.minDist(root, 4, 5));
     }
 }
