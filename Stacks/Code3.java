@@ -152,6 +152,28 @@ public class Code3 {
         }
         return true;
     }
+    public static boolean duplicatePara(String str){
+        Stack<Character> s= new Stack<>();
+        for(int i=0;i<str.length();i++){
+            char curr = str.charAt(i);
+            if(curr == ')'){
+                int count = 0;
+                while(s.peek() != '('){
+                    count++;
+                    s.pop();
+                }
+                if(count<1){
+                    return true;
+                }
+                else{
+                    s.pop();
+                }
+            }else{
+                s.push(curr);
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
         // reverse("iamfine");
         int arr[] = {100,80,60,70,60,85,100,120};
@@ -160,6 +182,7 @@ public class Code3 {
         // findPrevGreater(arr);
         // findPrevLesser(arr);
         // stockSpan(arr);
-        System.out.println(validPara("({{}})"));
+        // System.out.println(validPara("({{}})"));
+        System.out.println(duplicatePara("((a+b)+(b+((c))))"));
     }
 }
