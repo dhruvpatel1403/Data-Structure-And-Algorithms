@@ -306,6 +306,24 @@ public class Code {
             return l+1;
         }
     }
+    public static int kthAncesster(Node root,int k,int n){
+        if(root == null){
+            return -1;
+        }
+        if(root.data == n){
+            return 0;
+        }
+        int l = kthAncesster(root.left, k, n);
+        int r = kthAncesster(root.right, k, n);
+        if(l == -1 && r == -1){
+            return -1;
+        }
+        int max = Math.max(l,r);
+        if(max+1 == k){
+            System.out.println(root.data);
+        }
+        return max+1;
+    }
 } 
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -335,6 +353,7 @@ public class Code {
         // tree.kLevelRecursive(root, 2, 1);
         // tree.kthAncesster(root, 2, tar, 0);
         // System.out.println(tree.lca(root, 4, 5).data);
-        System.out.println(tree.minDist(root, 4, 5));
+        // System.out.println(tree.minDist(root, 4, 5));
+        tree.kthAncesster(root, 1, 4);
     }
 }
