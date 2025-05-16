@@ -324,6 +324,18 @@ public class Code {
         }
         return max+1;
     }
+    public static int transFormSum(Node root){
+        if(root == null){
+            return 0;
+        }
+        int ls = transFormSum(root.left);
+        int rs = transFormSum(root.right);
+        int data = root.data;
+        int left = root.left == null ? 0 : root.left.data;
+        int right = root.right == null ? 0 : root.right.data;
+        root.data = ls+ left + rs +right;
+        return data;
+    }
 } 
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -354,6 +366,9 @@ public class Code {
         // tree.kthAncesster(root, 2, tar, 0);
         // System.out.println(tree.lca(root, 4, 5).data);
         // System.out.println(tree.minDist(root, 4, 5));
-        tree.kthAncesster(root, 1, 4);
+        // tree.kthAncesster(root, 1, 4);
+        tree.levelOrder(root);
+        tree.transFormSum(root);
+        tree.levelOrder(root);
     }
 }
