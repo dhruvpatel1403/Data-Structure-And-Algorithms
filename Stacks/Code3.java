@@ -152,6 +152,48 @@ public class Code3 {
         }
         return true;
     }
+    public static void maxArea(int arr[]){
+        Stack<Integer> s = new Stack<>();
+        int n = arr.length;
+        int nextLs[] = new int[n];
+        for(int i=n-1;i>=0;i--){
+            //while
+            while(!s.isEmpty() && arr[s.peek()]>=arr[i]){
+                s.pop();
+            }
+            //if else
+            if(s.isEmpty()){
+                nextLs[i] = n;
+            }else{
+                nextLs[i] = s.peek();
+            }
+            //push in s
+            s.push(i);
+        }
+        s=new Stack<>();
+        int prevLs[] = new int[n];
+        for(int i=0;i<n;i++){
+            //while
+            while(!s.isEmpty() && arr[s.peek()]>=arr[i]){
+                s.pop();
+            }
+            //if else
+            if(s.isEmpty()){
+                prevLs[i] = -1;
+            }
+            else{
+                prevLs[i] = s.peek();
+            }
+            // push in s
+            s.push(i);
+        }
+        int maxArea = 0;
+        for(int i=0;i<n;i++){
+            int area = (nextLs[i] - prevLs[i] -1)*arr[i];
+            maxArea = Math.max(area,maxArea);
+        }
+        System.out.println("Max area is : "+maxArea);
+    }
     public static boolean duplicatePara(String str){
         Stack<Character> s= new Stack<>();
         for(int i=0;i<str.length();i++){
@@ -176,13 +218,14 @@ public class Code3 {
     }
     public static void main(String[] args) {
         // reverse("iamfine");
-        int arr[] = {100,80,60,70,60,85,100,120};
+        int arr[] = {2,1,5,6,2,3};
         // findNextGreater(arr);
         // findnextLesser(arr);
         // findPrevGreater(arr);
         // findPrevLesser(arr);
         // stockSpan(arr);
         // System.out.println(validPara("({{}})"));
-        System.out.println(duplicatePara("((a+b)+(b+((c))))"));
+        // System.out.println(duplicatePara("((a+b)+(b+((c))))"));
+        maxArea(arr);
     }
 }
