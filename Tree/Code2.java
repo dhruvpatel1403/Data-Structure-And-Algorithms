@@ -73,19 +73,30 @@ public class Code2 {
                 }
             }
         }
+        public static int heightOfBT(Node root){
+            if(root == null){
+                return 0;
+            }
+            int lh = heightOfBT(root.left);
+            int rh = heightOfBT(root.right);
+            return Math.max(lh,rh)+1;
+        }
+        
     }
     
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
-        System.out.println(root.data);
-        tree.preOrder(root);
-        System.out.println();
-        tree.inOrder(root);
-        System.out.println();
-        tree.postOrder(root);
-        System.out.println();
-        tree.levelOrder(root);
+        // System.out.println(root.data);
+        // tree.preOrder(root);
+        // System.out.println();
+        // tree.inOrder(root);
+        // System.out.println();
+        // tree.postOrder(root);
+        // System.out.println();
+        // tree.levelOrder(root);
+        System.out.println(tree.heightOfBT(root));
+
     }
 }
