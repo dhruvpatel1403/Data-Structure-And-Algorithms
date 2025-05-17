@@ -97,7 +97,37 @@ public class Code2 {
             int rs = sumOfNode(root.right);
             return ls+rs+root.data;
         }
+        public static int diameterOfBT(Node root){
+            if(root == null){
+                return 0;
+            }
+            int ld = diameterOfBT(root.left);
+            int rd = diameterOfBT(root.right);
+            int lh = heightOfBT(root.left);
+            int rh = heightOfBT(root.right);
+            int selfD = lh+rh+1;
+            return Math.max(Math.max(ld,rd),selfD);
+        }
+        static class DiaInfo{
+            int height;
+            int diameter;
+            public DiaInfo(int h,int d){
+                this.height = h;
+                this.diameter = d;
+            }
+        }
+        public static DiaInfo diaOpt(Node root){
+            if(root == null){
+                return new DiaInfo(0, 0);
+            }
+            DiaInfo left = diaOpt(root.left);
+            DiaInfo right = diaOpt(root.right);
+            int hg = Math.max(left.height,right.height)+1;
+            int dia = Math.max(left.height+right.height+1,Math.max(left.diameter,right.diameter));
+            return new DiaInfo(hg, dia);
+        }
     }
+    
     
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
@@ -111,8 +141,10 @@ public class Code2 {
         // tree.postOrder(root);
         // System.out.println();
         // tree.levelOrder(root);
-        System.out.println(tree.heightOfBT(root));
-        System.out.println(tree.countNode(root));
-        System.out.println(tree.sumOfNode(root));
+        // System.out.println(tree.heightOfBT(root));
+        // System.out.println(tree.countNode(root));
+        // System.out.println(tree.sumOfNode(root));
+        System.out.println(tree.diameterOfBT(root));
+        System.out.println(tree.diaOpt(root).diameter);
     }
 }
