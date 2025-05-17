@@ -126,6 +126,32 @@ public class Code2 {
             int dia = Math.max(left.height+right.height+1,Math.max(left.diameter,right.diameter));
             return new DiaInfo(hg, dia);
         }
+        public static boolean subTree(Node root,Node subroot){
+            if(root == null){
+                return false;
+            }
+            if(root.data == subroot.data){
+                if(isSubTree(root, subroot)){
+                    return true;
+                }
+            }
+            return subTree(root.left, subroot) || subTree(root.right, subroot);
+        }
+        public static boolean isSubTree(Node root,Node subroot){
+            if(root == null && subroot==null){
+                return true;
+            }
+            else if(root == null || subroot == null || root.data != subroot.data){
+                return false;
+            }
+            if(!isSubTree(root.left, subroot.left)){
+                return false;
+            }
+            if(!isSubTree(root.right, subroot.right)){
+                return false;
+            }
+            return true;
+        }
     }
     
     
@@ -144,7 +170,12 @@ public class Code2 {
         // System.out.println(tree.heightOfBT(root));
         // System.out.println(tree.countNode(root));
         // System.out.println(tree.sumOfNode(root));
-        System.out.println(tree.diameterOfBT(root));
-        System.out.println(tree.diaOpt(root).diameter);
+        // System.out.println(tree.diameterOfBT(root));
+        // System.out.println(tree.diaOpt(root).diameter);
+        Node subroot = new Node(2);
+        subroot.left = new Node(4);
+        subroot.right = new Node(5);
+        // subroot.left.left = new Node(8);
+        System.out.println(tree.isSubTree(root, subroot));
     }
 }
