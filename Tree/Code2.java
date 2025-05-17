@@ -81,7 +81,22 @@ public class Code2 {
             int rh = heightOfBT(root.right);
             return Math.max(lh,rh)+1;
         }
-        
+        public static int countNode(Node root){
+            if(root == null){
+                return 0;
+            }
+            int lc = countNode(root.left);
+            int rc = countNode(root.right);
+            return lc+rc+1;
+        }
+        public static int sumOfNode(Node root){
+            if(root == null){
+                return 0;
+            }
+            int ls = sumOfNode(root.left);
+            int rs = sumOfNode(root.right);
+            return ls+rs+root.data;
+        }
     }
     
     public static void main(String[] args) {
@@ -97,6 +112,7 @@ public class Code2 {
         // System.out.println();
         // tree.levelOrder(root);
         System.out.println(tree.heightOfBT(root));
-
+        System.out.println(tree.countNode(root));
+        System.out.println(tree.sumOfNode(root));
     }
 }
