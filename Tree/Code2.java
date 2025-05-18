@@ -206,7 +206,7 @@ public class Code2 {
                     break;
                 }
             }
-            System.out.println(p1.get(i));
+            System.out.println(p1.get(i-1));
         }
         public static boolean getPath(Node root,int n,ArrayList<Integer> p1){
             if(root == null){
@@ -224,6 +224,20 @@ public class Code2 {
             p1.remove(p1.size()-1); 
             return false;  
         }
+        public static Node lca(Node root,int n1,int n2){
+            if(  root == null || root.data == n1 || root.data == n2 ){
+                return root;
+            }
+            Node left = lca(root.left, n1, n2);
+            Node right = lca(root.right, n1, n2);
+            if(left == null){
+                return right;
+            }
+            if(right == null){
+                return left;
+            }
+            return root;
+        } 
     }
     
     
@@ -251,5 +265,6 @@ public class Code2 {
         // System.out.println(tree.isSubTree(root, subroot));
         // tree.TopView(root);
         tree.lowestComAn(root, 4, 5);
+        System.out.println(tree.lca(root,4,5).data);
     }
 }
