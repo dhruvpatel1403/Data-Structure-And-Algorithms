@@ -259,6 +259,25 @@ public class Code2 {
             int dist2 = lcaDist(lca,n2);
             return dist1+dist2;
         }
+        public static int kthAns(Node root,int k,int n){
+            if(root == null){
+                return -1;
+            }
+            if(root.data == n){
+                return 0;
+            }
+            int left = kthAns(root.left, k, n);
+            int right = kthAns(root.right, k, n);
+            if(left == -1 && right == -1){
+                return -1;
+            }
+            int val = Math.max(left, right) + 1;
+            if(val == k){
+                System.out.println(root.data+" ");
+            }
+            return val;
+        }
+        
     }
     
     
@@ -288,5 +307,8 @@ public class Code2 {
         tree.lowestComAn(root, 4, 5);
         System.out.println(tree.lca(root,4,5).data);
         System.out.println(tree.minDist(root, 4, 6));
+        tree.kthAns(root, 1, 4);
+        // tree.sumTree(root);
+        tree.levelOrder(root);
     }
 }
