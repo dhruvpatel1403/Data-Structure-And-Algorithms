@@ -152,6 +152,78 @@ public class Code2 {
             }
             return true;
         }
+        public static class TopInfo{
+            int hd;
+            Node root;
+            public TopInfo(int hd,Node root){
+                this.hd = hd;
+                this.root = root;
+            }
+        }
+        public static void TopView(Node root){
+            // Level Order
+            Queue<TopInfo> q = new LinkedList<>();
+            HashMap<Integer,Node> map = new HashMap<>();
+            int min = 0,max = 0;
+            q.add(new TopInfo(0,root));
+            q.add(null);
+            while(!q.isEmpty()){
+                TopInfo curr = q.remove();
+                if(curr == null){
+                    if(q.isEmpty()){
+                        break;
+                    }
+                    else{
+                        q.add(null);
+                    }
+                }else{
+                    if(!map.containsKey(curr.hd)){
+                        map.put(curr.hd,curr.root);
+                    }
+                    if(curr.root.left != null){
+                        q.add(new TopInfo(curr.hd-1, curr.root.left));
+                        min = Math.min(min,curr.hd-1);
+                    }
+                    if(curr.root.right != null){
+                        q.add(new TopInfo(curr.hd+1, curr.root.right));
+                        max = Math.max(max,curr.hd+1);
+                    }
+                }
+            }
+            for(int i=min;i<=max;i++){
+                System.out.print(map.get(i).data+" ");
+            }
+            System.out.println();
+        }
+        public static void lowestComAn(Node root,int n1,int n2){
+            ArrayList<Integer> p1 = new ArrayList<>();
+            ArrayList<Integer> p2 = new ArrayList<>();
+            getPath(root,n1,p1);
+            getPath(root,n2,p2);
+            int i=0;
+            for(;i<p1.size() && i<p2.size();i++){
+                if(p1.get(i) != p2.get(i)){
+                    break;
+                }
+            }
+            System.out.println(p1.get(i));
+        }
+        public static boolean getPath(Node root,int n,ArrayList<Integer> p1){
+            if(root == null){
+                return false;
+            }
+            p1.add(root.data);
+            if(root.data == n){
+                return true;
+            }
+            boolean left = getPath(root.left, n, p1);
+            boolean right = getPath(root.right, n, p1);
+            if(left || right){
+                return true;
+            }
+            p1.remove(p1.size()-1); 
+            return false;  
+        }
     }
     
     
@@ -176,6 +248,8 @@ public class Code2 {
         subroot.left = new Node(4);
         subroot.right = new Node(5);
         // subroot.left.left = new Node(8);
-        System.out.println(tree.isSubTree(root, subroot));
+        // System.out.println(tree.isSubTree(root, subroot));
+        // tree.TopView(root);
+        tree.lowestComAn(root, 4, 5);
     }
 }
