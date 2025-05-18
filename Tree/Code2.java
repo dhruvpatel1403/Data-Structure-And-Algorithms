@@ -277,7 +277,17 @@ public class Code2 {
             }
             return val;
         }
-        
+        public static int sumTree(Node root){
+            if(root == null){
+                return 0;
+            }
+            int left = (root.left == null) ? 0 : root.left.data;
+            int right = (root.right == null) ? 0 : root.right.data;
+            int ls = sumTree(root.left);
+            int rs = sumTree(root.right);
+            root.data = ls+rs + left +right;
+            return root.data;
+        }
     }
     
     
@@ -308,7 +318,7 @@ public class Code2 {
         System.out.println(tree.lca(root,4,5).data);
         System.out.println(tree.minDist(root, 4, 6));
         tree.kthAns(root, 1, 4);
-        // tree.sumTree(root);
+        tree.sumTree(root);
         tree.levelOrder(root);
     }
 }
