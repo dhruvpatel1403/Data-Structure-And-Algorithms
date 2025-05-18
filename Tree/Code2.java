@@ -237,7 +237,28 @@ public class Code2 {
                 return left;
             }
             return root;
-        } 
+        }
+        public static int lcaDist(Node node,int n){
+            if(node == null){
+                return -1;
+            }
+            if(node.data == n){
+                return 0;
+            }
+            int left = lcaDist(node.left, n);
+            int right = lcaDist(node.right, n);
+            if(left ==-1 && right ==-1){
+                return -1;
+            }
+            int dis = Math.max(left, right)+1;
+            return dis;
+        }
+        public static int minDist(Node root,int n1,int n2){
+            Node lca = lca(root, n1, n2);
+            int dist1 = lcaDist(lca,n1);
+            int dist2 = lcaDist(lca,n2);
+            return dist1+dist2;
+        }
     }
     
     
@@ -266,5 +287,6 @@ public class Code2 {
         // tree.TopView(root);
         tree.lowestComAn(root, 4, 5);
         System.out.println(tree.lca(root,4,5).data);
+        System.out.println(tree.minDist(root, 4, 6));
     }
 }
