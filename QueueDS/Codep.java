@@ -15,7 +15,7 @@ public class Codep {
             return rear == -1 && front ==-1;
         }
         public static boolean isFull(){
-            return rear == front-1;
+            return (rear+1)%size == front;
         }
         public static void add(int val){
             if(isFull()){
