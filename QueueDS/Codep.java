@@ -4,23 +4,30 @@ public class Codep {
         static int array[];
         static int size;
         static int rear;
+        static int front;
         public Queue(int n){
             array = new int[n];
             size = n;
             rear = -1;
+            front = -1;
         }
         public static boolean isEmpty(){
-            return rear == -1;
+            return rear == -1 && front ==-1;
         }
         public static boolean isFull(){
-            return rear == size-1;
+            return rear == front-1;
         }
         public static void add(int val){
             if(isFull()){
                 System.out.println("Queue is already full");
                 return;
             }
-            rear++;
+            if(isEmpty()){
+                rear = front = 0;
+                array[rear] = val;
+                return;
+            }
+            rear= ( rear + 1 ) % size;
             array[rear] = val;
         }
         public static int remove(){
@@ -28,11 +35,13 @@ public class Codep {
                 System.out.println("Array is already empty");
                 return -1;
             }
-            int val = array[0];
-            for(int i=0;i<array.length-1;i++){
-                array[i] = array[i+1];
+            if(front == rear){
+                int val = array[front];
+                front = rear = -1;
+                return val;
             }
-            rear--;
+            int val = array[front];
+            front = ( front + 1 ) % size;
             return val;
         }
     }
