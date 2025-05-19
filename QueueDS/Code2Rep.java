@@ -18,8 +18,26 @@ public class Code2Rep {
             }
         }
     }
+    public static void interLeave(Queue<Integer> q){
+        Queue<Integer> t = new LinkedList<>();
+        int sz = q.size();
+        for(int i=0;i<sz/2;i++){
+            t.add(q.remove());
+        }
+        while(!t.isEmpty()){
+            q.add(t.remove());
+            q.add(q.remove());
+        }
+        System.out.println(q);
+    }
 
     public static void main(String args[]){
-        NonRep("aabccxb");
+        // NonRep("aabccxb");
+        Queue<Integer> q = new LinkedList<>();
+        for(int i=1;i<=10;i++){
+            q.add(i);
+        }
+        System.out.println(q.size());
+        interLeave(q);
     }
 }
