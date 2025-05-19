@@ -32,6 +32,11 @@ public class CodeLL {
                 System.out.println("Queue is already empty");
                 return -1;
             }
+            if(head == tail){
+                int val = head.data;
+                tail = head = null;
+                return val;
+            }
             int val = head.data;
             head = head.next;
             return val;
