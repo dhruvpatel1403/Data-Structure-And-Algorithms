@@ -30,6 +30,16 @@ public class Code2Rep {
         }
         System.out.println(q);
     }
+    public static void reverse(Queue<Integer> q){
+        Stack<Integer> s= new Stack<>();
+        while(!q.isEmpty()){
+            s.push(q.remove());
+        }
+        while(!s.isEmpty()){
+            q.add(s.pop());
+        }
+        System.out.println(q);
+    }
 
     public static void main(String args[]){
         // NonRep("aabccxb");
@@ -37,7 +47,9 @@ public class Code2Rep {
         for(int i=1;i<=10;i++){
             q.add(i);
         }
+        reverse(q);
         System.out.println(q.size());
         interLeave(q);
+        // reverse(q);
     }
 }
