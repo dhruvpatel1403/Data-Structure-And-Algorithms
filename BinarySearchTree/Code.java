@@ -32,13 +32,28 @@ public class Code {
             System.out.print(root.data+" ");
             inOrder(root.right);
         }
+        public static boolean search(Node root,int key){
+            if(root == null){
+                return false;
+            }
+            else if(root.data == key){
+                return true;
+            }
+            else if(root.data > key){
+                return search(root.left, key);
+            }
+            else{
+                return search(root.right, key);
+            }
+        }
     public static void main(String[] args) {
         int arr[] = {5,1,3,4,2,7};
         Node root= null;
         for(int i=0;i<arr.length;i++){
             root = buildTree(arr[i],root);
         }
-        inOrder(root);
+        // inOrder(root);
+        System.out.println(search(root, 10));
     }
     
 }
