@@ -54,6 +54,7 @@ public class Code {
         }
         public static Node delete(Node root,int val){
             if(root == null){
+                System.out.println("Element is Not in the BST");
                 return null;
             }
             if(root.data > val){
@@ -82,8 +83,24 @@ public class Code {
             }
             return root;
         }
+        public static void printInRange(Node root,int k1,int k2){
+            if (root == null) {
+                return;
+            }
+            else if(k1 <= root.data && root.data <= k2){
+                printInRange(root.left, k1, k2);
+                System.out.print(root.data+" ");
+                printInRange(root.right, k1, k2);
+            }
+            else if(root.data > k2){
+                printInRange(root.left, k1, k2);
+            }
+            else{
+                printInRange(root.right, k1, k2);
+            }
+        }
     public static void main(String[] args) {
-        int arr[] = {5,1,3,4,2,7};
+        int arr[] = {8,5,3,6,1,4,10,11,14};
         Node root= null;
         for(int i=0;i<arr.length;i++){
             root = buildTree(arr[i],root);
@@ -92,6 +109,8 @@ public class Code {
         System.out.println();
         delete(root, 3);
         inOrder(root);
+        System.out.println();
+        printInRange(root, 4, 10);
     }
     
 }
