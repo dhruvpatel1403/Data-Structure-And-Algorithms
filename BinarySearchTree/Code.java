@@ -122,8 +122,20 @@ public class Code {
             root.right = left;
             return root;
         }
+        public static boolean validateBST(Node root,Node min, Node max){
+            if(root == null){
+                return true;
+            }
+            if(min != null && root.data < min.data ){
+                return false;
+            }
+            else if(max != null && root.data > max.data){
+                return false;
+            }
+            return validateBST(root.left, min, root) && validateBST(root.right, root, max);
+        }
     public static void main(String[] args) {
-        int arr[] = {8,5,3,1,4,6,10,11,14};
+        int arr[] = {1,2,3,4,5,6};
         Node root= null;
         for(int i=0;i<arr.length;i++){
             root = buildTree(arr[i],root);
@@ -136,8 +148,10 @@ public class Code {
         printInRange(root, 4, 10);
         System.out.println();
         path(root, new ArrayList<>());
-        mirrorBST(root);
+        // mirrorBST(root);
         inOrder(root);
+        System.out.println();
+        System.out.println(validateBST(root, null, null));
     }
     
 }
