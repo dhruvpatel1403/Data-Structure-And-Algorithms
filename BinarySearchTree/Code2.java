@@ -1,5 +1,5 @@
 package BinarySearchTree;
-
+import java.util.*;
 public class Code2 {
     static class Node{
         int data;
@@ -29,8 +29,17 @@ public class Code2 {
         System.out.print(root.data+" ");
         inOrder(root.right);
     }
+    public static void inOrderArray(Node root,ArrayList<Integer> list){
+        if(root == null){
+            return;
+        }
+        inOrderArray(root.left,list);
+        list.add(root.data);
+        inOrder(root.right);
+    }
     public static void main(String[] args) {
         int arr[] = {3,5,6,8,10,11,12};
+        
         Node root = balancedBST(arr,0,arr.length-1);
         inOrder(root);
     }
