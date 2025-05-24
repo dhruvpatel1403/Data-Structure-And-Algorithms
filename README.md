@@ -15,7 +15,8 @@ A collection of implementations for various data structures and algorithms, alon
 - [x] BackTracking
 - [x] ArrayList
 - [x] Linked Lists (Singly, Doubly, Circular)
-- [x] Stacks & Queues
+- [x] Stacks 
+- [x] Queues
 - [x] Greedy Algorithms
 - [x] Binary Trees
 - [x] Binary Search Trees
