@@ -11,11 +11,12 @@ A collection of implementations for various data structures and algorithms, alon
 - [x] Strings
 - [x] Bit Manipulation
 - [x] Recursion
-- [x] Devide And Conquer
+- [x] Divide And Conquer
 - [x] BackTracking
 - [x] ArrayList
 - [x] Linked Lists (Singly, Doubly, Circular)
 - [x] Stacks & Queues
+
 # 🧑‍💻 DSA Problems Solved
 
 ## Arrays (9 problems)
@@ -111,7 +112,7 @@ A collection of implementations for various data structures and algorithms, alon
 | 6 | Most Frequent Number After Key | Easy | O(n) | LeetCode | |
 | 7 | Beautiful ArrayList | Easy | O(n) | LeetCode | |
 
-## Linked List (4 problems)
+## Linked List (16 problems)
 
 | # | Problem | Difficulty | Time | Platform | Companies |
 |---|---------|------------|------|----------|-----------|
@@ -119,11 +120,63 @@ A collection of implementations for various data structures and algorithms, alon
 | 2 | Palindrome Linked List | Medium | O(n) | LeetCode | Amazon, Microsoft |
 | 3 | Remove Nth Node From End | Easy | O(n) | LeetCode | Facebook |
 | 4 | Recursive Linked List Search | Medium | O(n) | LeetCode | |
+| 5 | Detect Cycle in Linked List | Medium | O(n) | LeetCode | Amazon, Microsoft |
+| 6 | Remove Cycle in Linked List | Medium | O(n) | LeetCode | Amazon, Microsoft |
+| 7 | Merge Two Sorted Lists | Easy | O(n) | LeetCode | Amazon, Microsoft |
+| 8 | Zig Zag Linked List | Medium | O(n) | LeetCode | |
+| 9 | Doubly Linked List Implementation | Medium | O(1) | LeetCode | |
+| 10 | Reverse Doubly Linked List | Medium | O(n) | LeetCode | |
+| 11 | Circular Linked List Implementation | Medium | O(1) | LeetCode | |
+| 12 | Intersection of Two Linked Lists | Easy | O(m+n) | LeetCode | Amazon, Microsoft |
+| 13 | Delete N Nodes After M Nodes | Medium | O(n) | LeetCode | |
+| 14 | Swapping Nodes in Linked List | Medium | O(n) | LeetCode | |
+| 15 | Odd Even Linked List | Medium | O(n) | LeetCode | |
+| 16 | Merge k Sorted Lists | Hard | O(nlogk) | LeetCode | Amazon, Facebook |
+
+## Stacks (13 problems)
+
+| # | Problem | Difficulty | Time | Platform | Companies |
+|---|---------|------------|------|----------|-----------|
+| 1 | Stack using ArrayList | Easy | O(1) | LeetCode | |
+| 2 | Stack using LinkedList | Easy | O(1) | LeetCode | |
+| 3 | Push at Bottom of Stack | Medium | O(n) | LeetCode | |
+| 4 | Reverse a Stack | Medium | O(n) | LeetCode | |
+| 5 | Reverse String using Stack | Easy | O(n) | LeetCode | Amazon |
+| 6 | Stock Span Problem | Medium | O(n) | LeetCode | Amazon |
+| 7 | Next Greater Element | Medium | O(n) | LeetCode | Amazon, Microsoft |
+| 8 | Valid Parentheses | Easy | O(n) | LeetCode | All Top Companies |
+| 9 | Duplicate Parentheses | Medium | O(n) | LeetCode | Google |
+| 10 | Largest Rectangle in Histogram | Hard | O(n) | LeetCode | Google, Microsoft |
+| 11 | Simplify Path | Medium | O(n) | LeetCode | Facebook |
+| 12 | Trapping Rain Water | Hard | O(n) | LeetCode | Google, Amazon |
+| 13 | Decode String | Medium | O(n) | LeetCode | Google |
+
+## Queues (15 problems)
+
+| # | Problem | Difficulty | Time | Platform | Companies |
+|---|---------|------------|------|----------|-----------|
+| 1 | Queue using Array | Easy | O(1) | LeetCode | |
+| 2 | Circular Queue using Array | Medium | O(1) | LeetCode | |
+| 3 | Queue using LinkedList | Easy | O(1) | LeetCode | |
+| 4 | Queue using Two Stacks | Medium | O(1) amortized | LeetCode | |
+| 5 | Stack using Two Queues | Medium | O(n) | LeetCode | |
+| 6 | First Non-Repeating Letter | Medium | O(n) | LeetCode | Amazon |
+| 7 | Interleave Two Halves of Queue | Medium | O(n) | LeetCode | |
+| 8 | Queue Reversal | Easy | O(n) | LeetCode | |
+| 9 | Deque Implementation | Medium | O(1) | LeetCode | |
+| 10 | Stack using Deque | Easy | O(1) | LeetCode | |
+| 11 | Queue using Deque | Easy | O(1) | LeetCode | |
+| 12 | Generate Binary Numbers | Easy | O(n) | LeetCode | Microsoft |
+| 13 | Connect Ropes with Min Cost | Medium | O(nlogn) | LeetCode | Amazon |
+| 14 | Job Sequencing Problem | Medium | O(nlogn) | LeetCode | Amazon |
+| 15 | Reverse First K Elements of Queue | Medium | O(n) | LeetCode | |
+| 16 | Maximum of All Subarrays of Size K | Hard | O(n) | LeetCode | Amazon |
+
 ## Summary
-- **Total Problems Solved**: 63
+- **Total Problems Solved**: 104
 - **By Difficulty**:
-  - Easy: 18
-  - Medium: 40
-  - Hard: 5
+  - Easy: 28 
+  - Medium: 68 
+  - Hard: 8 
 - **By Platform**:
-  - LeetCode: 63
+  - LeetCode: 104
