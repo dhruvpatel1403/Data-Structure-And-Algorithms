@@ -172,11 +172,28 @@ A collection of implementations for various data structures and algorithms, alon
 | 15 | Reverse First K Elements of Queue | Medium | O(n) | LeetCode | |
 | 16 | Maximum of All Subarrays of Size K | Hard | O(n) | LeetCode | Amazon |
 
+## Greedy Algorithms (12 problems)
+
+| # | Problem | Difficulty | Time | Platform | Companies |
+|---|---------|------------|------|----------|-----------|
+| 1 | Activity Selection | Medium | O(nlogn) | LeetCode | Amazon, Google |
+| 2 | Fractional Knapsack | Medium | O(nlogn) | LeetCode | Amazon, Facebook |
+| 3 | Maximum Sum Absolute Difference | Medium | O(nlogn) | LeetCode | |
+| 4 | Max Length Chain of Pairs | Medium | O(nlogn) | LeetCode | Google |
+| 5 | Indian Coin Change | Easy | O(nlogn) | LeetCode | |
+| 6 | Job Sequencing Problem | Medium | O(nlogn) | LeetCode | Amazon |
+| 7 | Chocola Problem | Hard | O(nlogn+mlogm) | LeetCode | |
+| 8 | Maximum Balanced String Partitions | Medium | O(n) | LeetCode | |
+| 9 | Kth Largest Odd Number in Range | Easy | O(1) | LeetCode | |
+| 10 | Lexicographically Smallest String | Medium | O(n) | LeetCode | |
+| 11 | Best Time to Buy/Sell Stock | Easy | O(n) | LeetCode | Amazon, Bloomberg |
+| 12 | Split Array into K Subarrays | Medium | O(nlogn) | LeetCode | |
+
 ## Summary
-- **Total Problems Solved**: 104
+- **Total Problems Solved**: 116 
 - **By Difficulty**:
-  - Easy: 28 
-  - Medium: 68 
+  - Easy: 30 
+  - Medium: 78 
   - Hard: 8 
 - **By Platform**:
-  - LeetCode: 104
+  - LeetCode: 116
