@@ -106,6 +106,7 @@ public class Code {
             System.out.print(result[i]+" ");
         }
     }
+   
     public static void main(String args[]){
         // Stack s = new Stack();
         // s.push(5);
