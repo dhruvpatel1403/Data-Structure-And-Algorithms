@@ -156,7 +156,7 @@ A collection of implementations for various data structures and algorithms, alon
 | 12 | Trapping Rain Water | Hard | O(n) | LeetCode | Google, Amazon |
 | 13 | Decode String | Medium | O(n) | LeetCode | Google |
 
-## Queues (15 problems)
+## Queues (16 problems)
 
 | # | Problem | Difficulty | Time | Platform | Companies |
 |---|---------|------------|------|----------|-----------|
@@ -194,7 +194,7 @@ A collection of implementations for various data structures and algorithms, alon
 | 11 | Best Time to Buy/Sell Stock | Easy | O(n) | LeetCode | Amazon, Bloomberg |
 | 12 | Split Array into K Subarrays | Medium | O(nlogn) | LeetCode | |
 
-## Binary Trees (20 problems)
+## Binary Trees (21 problems)
 
 | # | Problem | Difficulty | Time | Platform | Companies |
 |---|---------|------------|------|----------|-----------|
@@ -220,7 +220,7 @@ A collection of implementations for various data structures and algorithms, alon
 | 20 | Find Duplicate Subtrees | Medium | O(n) | LeetCode | Google |
 | 21 | Maximum Path Sum | Hard | O(n) | LeetCode | Facebook, Microsoft |
 
-## Binary Search Trees (16 problems)
+## Binary Search Trees (17 problems)
 
 | # | Problem | Difficulty | Time | Platform | Companies |
 |---|---------|------------|------|----------|-----------|
@@ -243,10 +243,10 @@ A collection of implementations for various data structures and algorithms, alon
 | 17 | Maximum Sum BST in BT | Hard | O(n) | LeetCode | |
 
 ## Summary
-- **Total Problems Solved**: 153 
+- **Total Problems Solved**: 154 
 - **By Difficulty**:
   - Easy: 38 
-  - Medium: 102 
+  - Medium: 103 
   - Hard: 13 
 - **By Platform**:
-  - LeetCode: 153
+  - LeetCode: 154
