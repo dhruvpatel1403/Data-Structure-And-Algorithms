@@ -344,6 +344,14 @@ public class Code {
         int rh = hBt(root.right);
         return Math.max(lh,rh) +1;
     }
+    public static int countN(Node root){
+        if(root == null){
+            return 0;
+        }
+        int lc = countN(root.left);
+        int rc = countN(root.right);
+        return lc + rc +1;
+    }
 } 
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
