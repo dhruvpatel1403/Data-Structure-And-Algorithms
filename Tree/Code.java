@@ -352,6 +352,14 @@ public class Code {
         int rc = countN(root.right);
         return lc + rc +1;
     }
+    public static int sumOfN(Node root){
+        if(root == null){
+            return 0;
+        }
+        int ls = sumOfN(root.left);
+        int rs = sumOfN(root.right);
+        return ls + rs + root.data;
+    }
 } 
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
