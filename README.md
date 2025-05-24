@@ -16,6 +16,10 @@ A collection of implementations for various data structures and algorithms, alon
 - [x] ArrayList
 - [x] Linked Lists (Singly, Doubly, Circular)
 - [x] Stacks & Queues
+- [x] Greedy Algorithms
+- [x] Binary Trees
+- [x] Binary Search Trees
+
 
 # 🧑‍💻 DSA Problems Solved
 
@@ -189,11 +193,59 @@ A collection of implementations for various data structures and algorithms, alon
 | 11 | Best Time to Buy/Sell Stock | Easy | O(n) | LeetCode | Amazon, Bloomberg |
 | 12 | Split Array into K Subarrays | Medium | O(nlogn) | LeetCode | |
 
+## Binary Trees (20 problems)
+
+| # | Problem | Difficulty | Time | Platform | Companies |
+|---|---------|------------|------|----------|-----------|
+| 1 | Build Tree from Preorder | Medium | O(n) | LeetCode | Amazon, Microsoft |
+| 2 | Preorder Traversal | Easy | O(n) | LeetCode | All Top Companies |
+| 3 | Inorder Traversal | Easy | O(n) | LeetCode | All Top Companies |
+| 4 | Postorder Traversal | Easy | O(n) | LeetCode | All Top Companies |
+| 5 | Level Order Traversal | Medium | O(n) | LeetCode | Facebook, Google |
+| 6 | Height of a Tree | Easy | O(n) | LeetCode | |
+| 7 | Count Nodes in Tree | Easy | O(n) | LeetCode | |
+| 8 | Sum of Nodes in Tree | Easy | O(n) | LeetCode | |
+| 9 | Diameter of a Tree | Easy | O(n) | LeetCode | Amazon |
+| 10 | Subtree of Another Tree | Easy | O(n) | LeetCode | Facebook |
+| 11 | Top View of Tree | Medium | O(n) | LeetCode | |
+| 12 | Kth Level of Tree | Medium | O(n) | LeetCode | |
+| 13 | Lowest Common Ancestor | Medium | O(n) | LeetCode | Facebook, Amazon |
+| 14 | Min Distance Between Nodes | Medium | O(n) | LeetCode | |
+| 15 | Kth Ancestor of Node | Medium | O(n) | LeetCode | |
+| 16 | Transform to Sum Tree | Easy | O(n) | LeetCode | |
+| 17 | Check Univalued Tree | Easy | O(n) | LeetCode | |
+| 18 | Invert Binary Tree | Easy | O(n) | LeetCode | All Top Companies |
+| 19 | Delete Leaf Nodes with Value x | Medium | O(n) | LeetCode | |
+| 20 | Find Duplicate Subtrees | Medium | O(n) | LeetCode | Google |
+| 21 | Maximum Path Sum | Hard | O(n) | LeetCode | Facebook, Microsoft |
+
+## Binary Search Trees (16 problems)
+
+| # | Problem | Difficulty | Time | Platform | Companies |
+|---|---------|------------|------|----------|-----------|
+| 1 | Build a BST | Medium | O(nlogn) | LeetCode | |
+| 2 | Search in BST | Easy | O(logn) | LeetCode | All Top Companies |
+| 3 | Delete Node in BST | Medium | O(logn) | LeetCode | Google |
+| 4 | Print in Range in BST | Medium | O(n) | LeetCode | |
+| 5 | Root to Leaf Paths | Medium | O(n) | LeetCode | |
+| 6 | Validate BST | Medium | O(n) | LeetCode | Amazon, Facebook |
+| 7 | Mirror a BST | Medium | O(n) | LeetCode | |
+| 8 | Sorted Array to BST | Easy | O(n) | LeetCode | Microsoft |
+| 9 | Convert BST to Balanced BST | Medium | O(n) | LeetCode | |
+| 10 | Size of Largest BST in BT | Hard | O(n) | LeetCode | Amazon |
+| 11 | AVL Tree Implementation | Hard | O(logn) | LeetCode | |
+| 12 | Red-Black Tree Implementation | Hard | O(logn) | LeetCode | |
+| 13 | Range Sum of BST | Easy | O(n) | LeetCode | Facebook |
+| 14 | Find Closest Element in BST | Medium | O(logn) | LeetCode | |
+| 15 | Kth Smallest Element in BST | Medium | O(n) | LeetCode | Amazon |
+| 16 | Two Sum BSTs | Medium | O(n) | LeetCode | |
+| 17 | Maximum Sum BST in BT | Hard | O(n) | LeetCode | |
+
 ## Summary
-- **Total Problems Solved**: 116 
+- **Total Problems Solved**: 153 
 - **By Difficulty**:
-  - Easy: 30 
-  - Medium: 78 
-  - Hard: 8 
+  - Easy: 38 
+  - Medium: 102 
+  - Hard: 13 
 - **By Platform**:
-  - LeetCode: 116
+  - LeetCode: 153
