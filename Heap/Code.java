@@ -71,6 +71,20 @@ public class Code {
             System.out.println(h.get(0));
         }
     }
+    static class Point implements Comparable<Point> {
+        int x;
+        int y;
+        int distSq;
+        public Point(int x,int y,int distSq){
+            this.x = x;
+            this.y = y;
+            this.distSq = distSq;
+        }
+        @Override
+        public int compareTo(Point p2){
+            return this.distSq - p2.distSq;
+        }
+    }
     public static void main(String[] args) {
         PriorityQueue<Student> pq = new PriorityQueue<>();
         pq.add(new Student("Dhruv",1));
@@ -89,5 +103,17 @@ public class Code {
         h.remove();
         System.out.println(h.h);
         h.peek();
+
+        int point[][] = {{3,3},{5,-1},{-2,4}};
+        int k = 2;
+        PriorityQueue<Point> pq1 = new PriorityQueue<>();
+        for(int i = 0;i<point.length;i++){
+            pq1.add(new Point(point[i][0], point[i][1], point[i][0]*point[i][0] + point[i][1]*point[i][1]));
+        }
+
+        for(int i=0;i<k;i++){
+            Point pt = pq1.remove();
+            System.out.println(pt.x+" "+ pt.y);
+        }
     }
 }
