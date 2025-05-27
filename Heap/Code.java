@@ -1,7 +1,6 @@
 package Heap;
 import java.util.*;
 
-import sorting.sorting;
 public class Code {
     static class Student implements Comparable<Student>{
         String name;
@@ -27,6 +26,9 @@ public class Code {
                 h.set(par, temp);
             }
         }
+        public void peek(){
+            System.out.println(h.get(0));
+        }
     }
     public static void main(String[] args) {
         PriorityQueue<Student> pq = new PriorityQueue<>();
@@ -44,5 +46,6 @@ public class Code {
         h.insert(2);
         h.insert(1);
         System.out.println(h.h);
+        h.peek();
     }
 }
