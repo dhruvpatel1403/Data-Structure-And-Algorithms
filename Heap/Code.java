@@ -115,5 +115,21 @@ public class Code {
             Point pt = pq1.remove();
             System.out.println(pt.x+" "+ pt.y);
         }
+
+        PriorityQueue<Integer> pq2 = new PriorityQueue<>();
+
+        int ropes[] = {2,3,3,4,6};
+        for(int i = 0;i<ropes.length;i++){
+            pq2.add(ropes[i]);
+        }
+
+        int cost = 0;
+        while(pq2.size() > 1){
+            int min = pq2.remove();
+            int min2 = pq2.remove();
+            cost += min + min2;
+            pq2.add(min+min2);
+        }
+        System.out.println(cost);
     }
 }
