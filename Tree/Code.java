@@ -206,6 +206,8 @@ public class Code {
             }else{
                 if(!map.containsKey(curr.hd)){
                     map.put(curr.hd,curr.node);
+                }else{
+                    map.put(curr.hd,curr.node);
                 }
                 if(curr.node.left != null){
                     q.add(new Info(curr.node.left,curr.hd-1));
@@ -378,12 +380,17 @@ public class Code {
         // System.out.println(tree.countNodes(root));
         // System.out.println(tree.sumNodes(root));
         // System.out.println(tree.diameter(root));
-        // Node subroot = new Node(2);
-        // subroot.left = new Node(4);
-        // subroot.right = new Node(5);
+        Node subroot = new Node(20);
+        subroot.left = new Node(8);
+        subroot.right = new Node(22);
+        subroot.left.left = new Node(5);
+        subroot.left.right = new Node(3);
+        subroot.left.right.left = new Node(10);
+        subroot.left.right.right = new Node(14);
+        subroot.right.right = new Node(25);
         // // subroot.left.left = new Node(8);
         // System.out.println(tree.isSubTree(root, subroot));
-        // tree.topView(root);
+        tree.topView(subroot);
         // tree.printKthLevel(root, 3);
         // Node tar = new Node(4);
         // tree.kLevelRecursive(root, 2, 1);
@@ -391,8 +398,8 @@ public class Code {
         // System.out.println(tree.lca(root, 4, 5).data);
         // System.out.println(tree.minDist(root, 4, 5));
         // tree.kthAncesster(root, 1, 4);
-        tree.levelOrder(root);
-        tree.transFormSum(root);
-        tree.levelOrder(root);
+        // tree.levelOrder(root);
+        // tree.transFormSum(root);
+        // tree.levelOrder(root);
     }
 }
