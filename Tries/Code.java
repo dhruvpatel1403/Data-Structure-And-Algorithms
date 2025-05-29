@@ -23,7 +23,7 @@ public class Code {
         }
         curr.eow = true;
     }
-    public static boolean search(String key){
+    public static boolean search(String key){ // O(L)
         Node curr = root;
         for(int i=0;i<key.length();i++){
             int idx = key.charAt(i)-'a';
@@ -34,7 +34,7 @@ public class Code {
         }
         return curr.eow;
     }
-    public static boolean wordProblem(String key){
+    public static boolean wordProblem(String key){// o(L)
         if(key.length() == 0){
             return true;
         }
@@ -45,12 +45,23 @@ public class Code {
         }
         return false;
     }
+    public static boolean startWith(String key){
+        Node curr = root;
+        for(int i=0;i<key.length();i++){
+            int idx = key.charAt(i) - 'a';
+            if(curr.children[idx] == null){
+                return false;
+            }
+            curr = curr.children[idx];
+        }
+        return true;
+    }
     public static void main(String[] args) {
         String arr[] = {"i","like","sam","samsung","mobile","ice"};
         for(int i=0;i<arr.length;i++){
             insert(arr[i]);
         }
         // System.out.println(search("thee"));
-        System.out.println(wordProblem("ilikesamsung"));
+        System.out.println(startWith("lik"));
     }
 }
