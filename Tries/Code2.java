@@ -43,12 +43,30 @@ public class Code2 {
             }
         }
     }
+    public static String ans = "";
+    public static void longestWord(Node root,StringBuilder temp){
+        if(root == null){
+            return;
+        }
+        for(int i=0;i<root.children.length;i++){
+            if(root.children[i] != null && root.children[i].eow == true){
+                temp.append((char)(i+'a'));
+                if(temp.length()>ans.length()){
+                    ans = temp.toString();
+                }
+                longestWord(root.children[i], temp);
+                temp.deleteCharAt(temp.length()-1);
+            }
+        }
+    }
     public static void main(String[] args) {
-        String[] res = {"dog","dove","duck","zebra"};
+        String[] res = {"a","banana","app","appl","ap","apply","apple"};
         for(int i=0;i<res.length;i++){
             insert(res[i]);
         }
-        root.freq=-1;
-        findPrefix(root, "");
+        // root.freq=-1;
+        // findPrefix(root, "");
+        longestWord(root, new StringBuilder());
+        System.out.println(ans);
     }
 }
