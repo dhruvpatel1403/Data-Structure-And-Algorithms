@@ -41,7 +41,6 @@ public class Code {
                     q.add(e.dst);
                 }
             }
-            
         }
     }
     public static void DFS(ArrayList<Edge>[] graph,boolean isVisited[],int curr){
@@ -52,6 +51,19 @@ public class Code {
                 DFS(graph, isVisited, graph[curr].get(i).dst);
             }
         }
+    }
+    public static boolean hashPath(ArrayList<Edge>[] graph,boolean isVisited[],int src,int dest){
+        if(src == dest){
+            return true;
+        }
+        isVisited[src] = true;
+        for(int i=0;i<graph[src].size();i++){
+            Edge e = graph[src].get(i);
+            if(!isVisited[e.dst] && hashPath(graph, isVisited,e.dst , dest)){
+                return true;
+            }
+        }
+        return false;
     }
     public static void main(String[] args) {
         int v = 5;
@@ -94,5 +106,7 @@ public class Code {
         BFS(graph);
         System.out.println();
         DFS(graph, new boolean[graph.length], 0);
+        System.out.println();
+        System.out.println(hashPath(graph, new boolean[v], 1, 5));
     }
 }
