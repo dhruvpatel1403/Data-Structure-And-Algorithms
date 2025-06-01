@@ -11,21 +11,38 @@ public class Code {
             this.wt = w;
         }
     }
+    // public static void BFS(ArrayList<Edge>[] graph){
+    //     Queue<Integer> q = new LinkedList<>();
+    //     boolean visited[] = new boolean[graph.length];
+    //     q.add(graph[0].get(0).src);
+    //     while(!q.isEmpty()){
+    //         int curr = q.remove();
+    //         if(!visited[curr]){
+    //             visited[curr] = true;
+    //             System.out.print(curr + " ");
+    //             for(int i=0;i<graph[curr].size();i++){
+    //                 q.add(graph[curr].get(i).dst);
+    //             }
+    //         }
+    //     } 
+    // }
     public static void BFS(ArrayList<Edge>[] graph){
         Queue<Integer> q = new LinkedList<>();
-        boolean visited[] = new boolean[graph.length];
-        q.add(graph[0].get(0).src);
+        boolean isVisited[] = new boolean[graph.length];
+        q.add(0);
+        
         while(!q.isEmpty()){
             int curr = q.remove();
-            if(!visited[curr]){
-                visited[curr] = true;
-                System.out.print(curr + " ");
+            if(!isVisited[curr]){
+                isVisited[curr] = true;
+                System.out.print(curr+" ");
                 for(int i=0;i<graph[curr].size();i++){
-                    q.add(graph[curr].get(i).dst);
+                    Edge e = graph[curr].get(i);
+                    q.add(e.dst);
                 }
             }
+            
         }
-
     }
     public static void main(String[] args) {
         int v = 5;
