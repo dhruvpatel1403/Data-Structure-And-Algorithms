@@ -22,7 +22,7 @@ public class Code3 {
         }
         curr.eow = true;
     }
-    public static boolean serch(String key){
+    public static boolean search(String key){
         Node curr = root;
         for(int i=0;i<key.length();i++){
             int ind = key.charAt(i) -'a';
@@ -33,11 +33,24 @@ public class Code3 {
         }
         return curr.eow;
     }
+    public static boolean wordCheck(String key){
+        if(key.length() == 0){
+            return true;
+        }
+        for(int i=1;i<=key.length();i++){
+            if(search(key.substring(0, i)) && wordCheck(key.substring(i))){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
         String[] res = {"a","banana","app","appl","ap","apply","apple"};
         for(int i=0;i<res.length;i++){
             insert(res[i]);
         }
-        System.out.println(serch("app"));
+        String word = "bananaapple";
+        System.out.println(wordCheck(word));
+        // System.out.println(search("app"));
     }
 }
