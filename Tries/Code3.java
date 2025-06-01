@@ -20,13 +20,24 @@ public class Code3 {
             }
             curr = curr.children[idx];
         }
-        curr.eow = false;
+        curr.eow = true;
     }
-    
+    public static boolean serch(String key){
+        Node curr = root;
+        for(int i=0;i<key.length();i++){
+            int ind = key.charAt(i) -'a';
+            if(curr.children[ind] == null){
+                return false;
+            }
+            curr = curr.children[ind];
+        }
+        return curr.eow;
+    }
     public static void main(String[] args) {
         String[] res = {"a","banana","app","appl","ap","apply","apple"};
         for(int i=0;i<res.length;i++){
             insert(res[i]);
         }
+        System.out.println(serch("app"));
     }
 }
