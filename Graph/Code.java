@@ -44,6 +44,15 @@ public class Code {
             
         }
     }
+    public static void DFS(ArrayList<Edge>[] graph,boolean isVisited[],int curr){
+        System.out.print(curr+" ");
+        isVisited[curr] = true;
+        for(int i=0;i<graph[curr].size();i++){
+            if(!isVisited[graph[curr].get(i).dst]){
+                DFS(graph, isVisited, graph[curr].get(i).dst);
+            }
+        }
+    }
     public static void main(String[] args) {
         int v = 5;
         ArrayList<Edge>[] graph = new ArrayList[v]; // null convert it to new ArrayList
@@ -83,6 +92,7 @@ public class Code {
         }
 
         BFS(graph);
-
+        System.out.println();
+        DFS(graph, new boolean[graph.length], 0);
     }
 }
