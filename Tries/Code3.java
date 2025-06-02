@@ -44,6 +44,7 @@ public class Code3 {
         }
         return false;
     }
+    
     public static void main(String[] args) {
         String[] res = {"a","banana","app","appl","ap","apply","apple"};
         for(int i=0;i<res.length;i++){
