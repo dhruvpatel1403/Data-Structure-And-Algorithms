@@ -94,6 +94,28 @@ public class Code {
         stack[curr] = false;
         return false;
     }
+    public static void topSort(ArrayList<Edge>[] graph){
+        boolean[] vis = new boolean[graph.length];
+        Stack<Integer> s = new Stack<>();
+
+        for(int i=0;i<graph.length;i++){
+            if(!vis[i]){
+                topSortUtil(graph,vis,s,i);
+            }
+        }
+        while(!s.isEmpty()){
+            System.out.print(s.pop()+" ");
+        }
+    }
+    public static void topSortUtil(ArrayList<Edge>[] graph,boolean[] vis,Stack<Integer> s,int curr){
+        vis[curr] = true;
+        for(int i=0;i<graph[curr].size();i++){
+            if(!vis[graph[curr].get(i).dst]){
+                topSortUtil(graph, vis, s, graph[curr].get(i).dst);
+            }
+        }
+        s.push(curr);
+    }
     public static void main(String[] args) {
         int v = 5;
         ArrayList<Edge>[] graph = new ArrayList[v]; // null convert it to new ArrayList
@@ -131,7 +153,6 @@ public class Code {
             Edge e = graph[2].get(i);
             System.out.println(e.dst);
         }
-
         BFS(graph);
         System.out.println();
         DFS(graph, new boolean[graph.length], 0);
@@ -139,5 +160,7 @@ public class Code {
         System.out.println(hashPath(graph, new boolean[v], 1, 5));
         System.out.println();
         System.out.println(isCycle(graph));
+        System.out.println();
+        topSort(graph);
     }
 }
