@@ -20,6 +20,10 @@ A collection of implementations for various data structures and algorithms, alon
 - [x] Greedy Algorithms
 - [x] Binary Trees
 - [x] Binary Search Trees
+- [x] Heaps
+- [x] HashMaps
+- [x] Tries
+- [x] Graphs
 
 
 # 🧑‍💻 DSA Problems Solved
@@ -282,15 +286,28 @@ A collection of implementations for various data structures and algorithms, alon
 | 6  | Start With Problem                 | Medium     | O(n)     | LeetCode |                        |
 | 7  | Longest Word with All Prefixes     | Hard       | O(n)     | LeetCode |                        |
 
-
+### ✅ Graph (12 problems)
+| #  | Problem                                | Difficulty | Time           | Platform | Companies              |
+|----|----------------------------------------|------------|----------------|----------|------------------------|
+| 1  | Creating Graph                         | Easy       | O(n + m)       | LeetCode |                        |
+| 2  | BFS (Breadth-First Search)             | Medium     | O(n + m)       | LeetCode |                        |
+| 3  | DFS (Depth-First Search)               | Medium     | O(n + m)       | LeetCode |                        |
+| 4  | Has Path?                              | Medium     | O(n + m)       | LeetCode |                        |
+| 5  | Connected Components                   | Medium     | O(n + m)       | LeetCode |                        |
+| 6  | Cycle Detection in Graph (DFS, Undirected) | Medium | O(n + m)   | LeetCode |                        |
+| 7  | Bipartite Graph Check                  | Medium     | O(n + m)       | LeetCode |                        |
+| 8  | Cycle Detection in DFS (Directed Graph)| Medium     | O(n + m)       | LeetCode |                        |
+| 9  | Topological Sorting using DFS          | Medium     | O(n + m)       | LeetCode |                        |
+| 10 | Topological Sort using BFS (Kahn's Algorithm)| Medium| O(n + m)  | LeetCode |                        |
+| 11 | All Paths from Source to Destination   | Hard       | O(2^n)         | LeetCode |                        |
+| 12 | Dijkstra's Algorithm                   | Medium     | O((n + m)logn) | LeetCode | Google, Amazon        |
 
 🏁 Summary
-
-- 🔥 **Total Problems Solved**: **173**  
+- 🔥 **Total Problems Solved**: **185**  
 - 🟢 **Difficulty Breakdown**:  
-  - **Easy**: 41  
-  - **Medium**: 116  
-  - **Hard**: 16  
+  - **Easy**: 42  
+  - **Medium**: 126  
+  - **Hard**: 17  
 - 💻 **By Platform**:  
-  - **LeetCode**: 173  
+  - **LeetCode**: 185  
 - 🚀 **Company Tags**: Amazon, Google, Facebook, Microsoft, Uber, Lyft, and many more!
