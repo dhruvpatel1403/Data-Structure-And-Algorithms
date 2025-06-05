@@ -36,7 +36,20 @@ public class Code2 {
             }
         }
     }
-    
+    public static boolean hashPath(ArrayList<Edge>[] graph,int src,int dst,boolean vis[]){
+        if(src==dst){
+            return true;
+        }
+        vis[src] = true;
+        for(int i=0;i<graph[src].size();i++){
+            if(!vis[graph[src].get(i).dst]){
+                if(hashPath(graph, graph[src].get(i).dst, dst, vis)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
         int v = 4;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -63,8 +76,8 @@ public class Code2 {
 
         // Call BFS and DFS
         BFS(graph);
-        System.out.println();
         DFS(graph, 0, new boolean[graph.length]);
         System.out.println();
+        System.out.println(hashPath(graph, 0, 4, new boolean[graph.length]));
     }
 }
