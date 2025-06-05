@@ -242,11 +242,55 @@ A collection of implementations for various data structures and algorithms, alon
 | 16 | Two Sum BSTs | Medium | O(n) | LeetCode | |
 | 17 | Maximum Sum BST in BT | Hard | O(n) | LeetCode | |
 
-## Summary
-- **Total Problems Solved**: 154 
-- **By Difficulty**:
-  - Easy: 38 
-  - Medium: 103 
-  - Hard: 13 
-- **By Platform**:
-  - LeetCode: 154
+## 📚 Heap (8 problems)
+
+| #  | Problem                           | Difficulty | Time     | Platform | Companies           |
+|----|-----------------------------------|------------|----------|----------|---------------------|
+| 1  | Priority Queue in JCF (Objects)   | Easy       | O(logn)  | LeetCode | All                 |
+| 2  | Implement Heap in Java            | Medium     | O(n)     | LeetCode | Amazon              |
+| 3  | Insert into Heap                  | Medium     | O(logn)  | LeetCode |                     |
+| 4  | Remove from Heap                  | Medium     | O(logn)  | LeetCode |                     |
+| 5  | Heap Sort                         | Medium     | O(nlogn) | LeetCode |                     |
+| 6  | Nearby Cars (K closest)          | Medium     | O(nlogk) | LeetCode | Uber, Lyft          |
+| 7  | Connect N Ropes with Min Cost     | Medium     | O(nlogn) | LeetCode | Amazon, Google      |
+| 8  | Sliding Window Maximum            | Hard       | O(n)     | LeetCode | Facebook, Google    |
+
+---
+
+## 🗂️ HashMaps (6 problems)
+
+| #  | Problem                          | Difficulty | Time     | Platform | Companies              |
+|----|----------------------------------|------------|----------|----------|------------------------|
+| 1  | Majority Elements                | Medium     | O(n)     | LeetCode | Amazon, Facebook       |
+| 2  | Valid Anagrams                   | Easy       | O(n)     | LeetCode | All                    |
+| 3  | Count Distinct Elements          | Medium     | O(n)     | LeetCode |                        |
+| 4  | Find Itinerary for Tickets       | Medium     | O(n)     | LeetCode |                        |
+| 5  | Largest Subarray with Sum 0      | Medium     | O(n)     | LeetCode | Amazon                 |
+| 6  | Subarray Sum Equals K            | Medium     | O(n)     | LeetCode | Google, Microsoft      |
+
+---
+
+## 🌳 Tries (7 problems)
+
+| #  | Problem                            | Difficulty | Time     | Platform | Companies              |
+|----|------------------------------------|------------|----------|----------|------------------------|
+| 1  | Creating Tries                     | Easy       | O(n)     | LeetCode |                        |
+| 2  | Inserting into Tries               | Easy       | O(n)     | LeetCode |                        |
+| 3  | Searching in Tries                 | Easy       | O(n)     | LeetCode |                        |
+| 4  | Word Break Problem                 | Medium     | O(n^2)   | LeetCode | Google, Amazon         |
+| 5  | Prefix Problem                     | Medium     | O(n)     | LeetCode |                        |
+| 6  | Start With Problem                 | Medium     | O(n)     | LeetCode |                        |
+| 7  | Longest Word with All Prefixes     | Hard       | O(n)     | LeetCode |                        |
+
+
+
+🏁 Summary
+
+- 🔥 **Total Problems Solved**: **173**  
+- 🟢 **Difficulty Breakdown**:  
+  - **Easy**: 41  
+  - **Medium**: 116  
+  - **Hard**: 16  
+- 💻 **By Platform**:  
+  - **LeetCode**: 173  
+- 🚀 **Company Tags**: Amazon, Google, Facebook, Microsoft, Uber, Lyft, and many more!
