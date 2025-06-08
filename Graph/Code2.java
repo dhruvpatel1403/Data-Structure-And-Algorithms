@@ -67,10 +67,33 @@ public class Code2 {
                 return true;
             }
             if(!vis[e.dst]){
-                detectCycleUtil(graph, vis, e.dst, curr);
+                return detectCycleUtil(graph, vis, e.dst, curr);
             }
         }
         return false;
+    }
+    public static void topologicalSort(ArrayList<Edge>[] graph){
+        Stack<Integer> s = new Stack<>();
+        boolean[] vis = new boolean[graph.length];
+        for(int i=0;i<graph.length;i++){
+            if(!vis[i]){
+                topologicalSortUtil(graph,vis,s,i);
+            }
+        }
+        while(!s.isEmpty()){
+            System.out.print(s.pop()+" ");
+        }
+    }
+    public static void topologicalSortUtil(ArrayList<Edge>[] graph,boolean vis[],Stack<Integer> s,int curr){
+        vis[curr] = true;
+
+        for(int i=0;i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i);
+            if(!vis[e.dst]){
+                topologicalSortUtil(graph, vis, s, e.dst);
+            }
+        }
+        s.push(curr);
     }
     public static void main(String[] args) {
         int v = 4;
@@ -80,27 +103,37 @@ public class Code2 {
             graph[i] = new ArrayList<>();
         }
 
-        // 0
+        // // 0
+        // graph[0].add(new Edge(0, 1, 1));
+        // graph[0].add(new Edge(0, 2, 1));
+
+        // // 1
+        // graph[1].add(new Edge(1, 0, 1));
+        // graph[1].add(new Edge(1, 3, 1));
+
+        // // 2
+        // graph[2].add(new Edge(2, 0, 1));
+        // graph[2].add(new Edge(2, 3, 1));
+
+        // // 3
+        // graph[3].add(new Edge(3, 1, 1));
+        // graph[3].add(new Edge(3, 2, 1));
+        
         graph[0].add(new Edge(0, 1, 1));
         graph[0].add(new Edge(0, 2, 1));
 
         // 1
-        graph[1].add(new Edge(1, 0, 1));
         graph[1].add(new Edge(1, 3, 1));
 
         // 2
-        graph[2].add(new Edge(2, 0, 1));
         graph[2].add(new Edge(2, 3, 1));
 
-        // 3
-        graph[3].add(new Edge(3, 1, 1));
-        graph[3].add(new Edge(3, 2, 1));
-
         // Call BFS and DFS
-        BFS(graph);
-        DFS(graph, 0, new boolean[graph.length]);
-        System.out.println();
-        System.out.println(hashPath(graph, 0, 4, new boolean[graph.length]));
-        System.out.println(detectCycle(graph));
+        // BFS(graph);
+        // DFS(graph, 0, new boolean[graph.length]);
+        // System.out.println();
+        // System.out.println(hashPath(graph, 0, 4, new boolean[graph.length]));
+        // System.out.println(detectCycle(graph));
+        topologicalSort(graph);
     }
 }
