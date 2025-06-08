@@ -50,6 +50,28 @@ public class Code2 {
         }
         return false;
     }
+    public static boolean detectCycle(ArrayList<Edge>[] graph){
+        boolean[] vis = new boolean[graph.length];
+        for(int i=0;i<graph.length;i++){
+            if(!vis[i]){
+                return detectCycleUtil(graph,vis,i,-1);
+            }
+        }
+        return false;
+    }
+    public static boolean detectCycleUtil(ArrayList<Edge>[] graph,boolean vis[],int curr,int par){
+        vis[curr] = true;
+        for(int i=0;i<graph[curr].size();i++){
+            Edge e= graph[curr].get(i);
+            if(vis[e.dst] && e.dst != par){
+                return true;
+            }
+            if(!vis[e.dst]){
+                detectCycleUtil(graph, vis, e.dst, curr);
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
         int v = 4;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -79,5 +101,6 @@ public class Code2 {
         DFS(graph, 0, new boolean[graph.length]);
         System.out.println();
         System.out.println(hashPath(graph, 0, 4, new boolean[graph.length]));
+        System.out.println(detectCycle(graph));
     }
 }
