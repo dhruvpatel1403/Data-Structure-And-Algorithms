@@ -27,6 +27,7 @@ public class Code2 {
         }
         System.out.println();
     }
+
     public static void DFS(ArrayList<Edge>[] graph,int curr,boolean vis[]){
         vis[curr] = true;
         System.out.print(curr+" ");
@@ -128,6 +129,17 @@ public class Code2 {
         System.out.println();
 
     }
+    public static void printAllPath(ArrayList<Edge>[] graph,int src,int dest,String path){
+        path+=src;
+        if(src == dest){
+            System.out.println(path);
+            return;
+        }
+        for(int i=0;i<graph[src].size();i++){
+            Edge e = graph[src].get(i);
+            printAllPath(graph, e.dst, dest, path);
+        }
+    }
     public static void main(String[] args) {
         int v = 4;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -170,5 +182,8 @@ public class Code2 {
         topologicalSort(graph);
         System.out.println();
         topSortBFS(graph);
+        int src = 0;
+        int dst = 3;
+        printAllPath(graph, src, dst, "");
     }
 }
