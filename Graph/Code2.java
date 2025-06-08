@@ -95,6 +95,39 @@ public class Code2 {
         }
         s.push(curr);
     }
+    public static void calInd(ArrayList<Edge>[] graph,int[] ind){
+        for(int i=0;i<graph.length;i++){
+            for(int j=0;j<graph[i].size();j++){
+                Edge e= graph[i].get(j);
+                ind[e.dst]++;
+            }
+        }
+    }
+    public static void topSortBFS(ArrayList<Edge>[] graph){
+        int ind[] = new int[graph.length];
+        calInd(graph, ind);
+        Queue<Integer> q = new LinkedList<>();
+
+        for(int i=0;i<ind.length;i++){
+            if(ind[i]==0){
+                q.add(i);
+            }
+        }
+
+        while(!q.isEmpty()){
+            int curr = q.remove();
+            System.out.print(curr+" ");
+            for(int i=0;i<graph[curr].size();i++){
+                Edge e = graph[curr].get(i);
+                ind[e.dst]--;
+                if(ind[e.dst]==0){
+                    q.add(e.dst);
+                }
+            }
+        }
+        System.out.println();
+
+    }
     public static void main(String[] args) {
         int v = 4;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -135,5 +168,7 @@ public class Code2 {
         // System.out.println(hashPath(graph, 0, 4, new boolean[graph.length]));
         // System.out.println(detectCycle(graph));
         topologicalSort(graph);
+        System.out.println();
+        topSortBFS(graph);
     }
 }
