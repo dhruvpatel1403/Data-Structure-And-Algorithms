@@ -140,6 +140,55 @@ public class Code2 {
             printAllPath(graph, e.dst, dest, path);
         }
     }
+    static class Pair implements Comparable<Pair>{
+        int n;
+        int path;
+        public Pair(int n,int path){
+            this.n = n;
+            this.path = path;
+        }
+        @Override
+        public int compareTo(Pair p2){
+            return this.path - p2.path;
+        }
+    }
+    public static void dijkstra(ArrayList<Edge>[] graph,int src){ // o(v + E*log(v))
+        int dis[] = new int[graph.length];
+        boolean vis[] = new boolean[graph.length];
+
+        for(int i=0;i<dis.length;i++){
+            if( src != i){
+                dis[i] = Integer.MAX_VALUE;
+            }
+        }
+
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        pq.add(new Pair(0, 0));
+
+        while(!pq.isEmpty()){
+            Pair curr = pq.remove();
+            if(!vis[curr.n]){
+                vis[curr.n] = true;
+                for(int i=0;i<graph[curr.n].size();i++){
+                    Edge e = graph[curr.n].get(i);
+                    int u = e.src;
+                    int v = e.dst;
+                    int wt = e.wt;
+                    if(dis[u] + wt < dis[v]){
+                        dis[v] = dis[u] + wt;
+                        pq.add(new Pair(v,dis[v]));
+                    }
+                }
+            }
+        
+        }
+
+        for(int i=0;i<dis.length;i++){
+            System.out.print(dis[i]+ " ");
+        }
+        System.out.println();
+
+    }
     public static void main(String[] args) {
         int v = 4;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -185,5 +234,8 @@ public class Code2 {
         int src = 0;
         int dst = 3;
         printAllPath(graph, src, dst, "");
+
+        System.out.println();
+        dijkstra(graph, src);
     }
 }
