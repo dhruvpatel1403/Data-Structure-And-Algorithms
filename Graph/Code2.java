@@ -189,6 +189,34 @@ public class Code2 {
         System.out.println();
 
     }
+    public static void bellmanFord(ArrayList<Edge>[] graph,int src){
+
+        int dis[] = new int[graph.length];
+        for(int i=0;i<dis.length;i++){
+            if(i != src){
+                dis[i] = Integer.MAX_VALUE;
+            }
+        }
+
+        int V = graph.length;
+        for(int i=0;i<V-1;i++){
+            for(int j=0;j<graph.length;j++){
+                for(int k=0;k<graph[j].size();k++){
+                    Edge e= graph[j].get(k);
+                    int u = e.src;
+                    int v = e.dst;
+                    int wt = e.wt;
+                    if( dis[u] != Integer.MAX_VALUE && dis[u]+wt < dis[v]){
+                        dis[v] = dis[u] + wt;
+                    }
+                }
+            }
+        }
+        for(int i=0;i<dis.length;i++){
+            System.out.print(dis[i]+ " ");
+        }
+        System.out.println();
+    }
     public static void main(String[] args) {
         int v = 4;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -237,5 +265,6 @@ public class Code2 {
 
         System.out.println();
         dijkstra(graph, src);
+        bellmanFord(graph, src);
     }
 }
