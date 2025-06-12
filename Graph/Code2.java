@@ -163,7 +163,7 @@ public class Code2 {
         }
 
         PriorityQueue<Pair> pq = new PriorityQueue<>();
-        pq.add(new Pair(0, 0));
+        pq.add(new Pair(src, 0));
 
         while(!pq.isEmpty()){
             Pair curr = pq.remove();
@@ -217,6 +217,39 @@ public class Code2 {
         }
         System.out.println();
     }
+    static class PrimsPair implements Comparable<PrimsPair>{
+        int v;
+        int cost;
+        public PrimsPair(int v,int cost){
+            this.v = v;
+            this.cost = cost;
+        }
+        @Override
+        public int compareTo(PrimsPair p2){
+            return this.cost - p2.cost;
+        }
+    }
+    public static void prims(ArrayList<Edge>[] graph){
+        boolean vis[] = new boolean[graph.length];
+        PriorityQueue<PrimsPair> pq = new PriorityQueue<>();
+
+        pq.add(new PrimsPair(0, 0));
+        int finalCost = 0;
+
+        while(!pq.isEmpty()){
+            PrimsPair curr = pq.remove();
+            if(!vis[curr.v]){
+                vis[curr.v] = true;
+                finalCost += curr.cost;
+
+                for(int i=0;i<graph[curr.v].size();i++){
+                    Edge e= graph[curr.v].get(i);
+                    pq.add(new PrimsPair(e.dst, e.wt));
+                }
+            }
+        }
+        System.out.println("Minimum cost : "+ finalCost);
+    }
     public static void main(String[] args) {
         int v = 4;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -266,5 +299,6 @@ public class Code2 {
         System.out.println();
         dijkstra(graph, src);
         bellmanFord(graph, src);
+        prims(graph);
     }
 }
