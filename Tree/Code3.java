@@ -1,4 +1,5 @@
 package Tree;
+import java.util.*;
 public class Code3 {
     public static class Node{
         int data;
@@ -24,6 +25,34 @@ public class Code3 {
         curr.right = buildTree(arr);
         return curr;
     }
+    public static void levelOrder(Node root){
+        if(root == null){
+            return;
+        }
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while(!q.isEmpty()){
+            Node curr = q.remove();
+            if(curr == null){
+                System.out.println();
+                if(q.isEmpty()){
+                    break;
+                }
+                else{
+                    q.add(null);
+                }
+            }else{
+                System.out.print(curr.data+" ");
+                if(curr.left != null){
+                    q.add(curr.left);
+                }
+                if(curr.right != null){
+                    q.add(curr.right);
+                }
+            }
+        }
+    }
     public static void preOrder(Node root){
         if(root == null){
             return;
@@ -36,5 +65,7 @@ public class Code3 {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildTree(nodes);
         preOrder(root);
+        System.out.println();
+        levelOrder(root);
     }
 }
