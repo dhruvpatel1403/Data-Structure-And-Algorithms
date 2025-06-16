@@ -77,6 +77,34 @@ public class Code3 {
         int rc = countNodes(root.right);
         return lc + rc + 1;
     }
+    public static int sum(Node root){
+        if(root == null){
+            return 0;
+        }
+        int ls = sum(root.left);
+        int rs = sum(root.right);
+        return (ls + rs + root.data);
+    }
+    static class DiaInfo{
+        int h;
+        int d;
+        public DiaInfo(int h,int d){
+            this.h = h;
+            this.d = d;
+        }
+    }
+    public static DiaInfo diameter(Node root){
+        if(root == null){
+            return new DiaInfo(0, 0);
+        }
+        DiaInfo left = diameter(root.left);
+        DiaInfo right = diameter(root.right);
+
+        int h = Math.max(left.h, right.h)+1;
+        int d = Math.max(Math.max(left.d,right.d),left.h+right.h+1);
+
+        return new DiaInfo(h, d);
+    }
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildTree(nodes);
@@ -85,5 +113,7 @@ public class Code3 {
         levelOrder(root);
         System.out.println(height(root));
         System.out.println(countNodes(root));
+        System.out.println(sum(root));
+        System.out.println(diameter(root).d);
     }
 }
