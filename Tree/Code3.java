@@ -105,6 +105,30 @@ public class Code3 {
 
         return new DiaInfo(h, d);
     }
+    public static boolean subTree(Node root,Node subroot){
+        if(root == null){
+            return false;
+        }
+        if(root.data == subroot.data){
+            if(subTreeHelper(root,subroot)){
+                return true;
+            }
+        }
+        return subTree(root.left, subroot) || subTree(root.right, subroot);
+    }
+    public static boolean subTreeHelper(Node root,Node subroot){
+
+        if(root==null && subroot == null){
+            return true;
+        }
+
+        else if(root == null || root.data != subroot.data || subroot == null){
+            return false;
+        }
+
+        return subTreeHelper(root.left, subroot.left) && subTreeHelper(root.right, subroot.right);
+
+    }
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildTree(nodes);
@@ -115,5 +139,11 @@ public class Code3 {
         System.out.println(countNodes(root));
         System.out.println(sum(root));
         System.out.println(diameter(root).d);
+
+        Node subroot = new Node(2);
+        subroot.left = new Node(4);
+        subroot.right = new Node(5);
+
+        System.out.println(subTree(root, subroot));
     }
 }
