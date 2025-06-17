@@ -129,6 +129,53 @@ public class Code3 {
         return subTreeHelper(root.left, subroot.left) && subTreeHelper(root.right, subroot.right);
 
     }
+    public static class TopInfo{
+        int hd;
+        Node node;
+        public TopInfo(int hd,Node node){
+            this.hd = hd;
+            this.node = node;
+        }
+    }
+
+    public static void topView(Node root){
+        if(root == null){
+            return;
+        }
+        Queue<TopInfo> q = new LinkedList<>();
+        HashMap<Integer,Node> hm = new HashMap<>();
+        int min = 0,max = 0;
+        q.add(new TopInfo(0, root));
+        q.add(null);
+        while(!q.isEmpty()){
+            TopInfo curr = q.remove();
+            if(curr == null){
+                if(q.isEmpty()){
+                    break;
+                }
+                else{
+                    q.add(null);
+                }
+            }
+            else{
+                if(!hm.containsKey(curr.hd)){
+                    hm.put(curr.hd, curr.node);
+                }
+                if( curr.node.left != null){
+                    q.add(new TopInfo(curr.hd - 1, curr.node.left));
+                    min = Math.min(min , curr.hd - 1);
+                }
+                if( curr.node.right != null){
+                    q.add(new TopInfo(curr.hd + 1, curr.node.right));
+                    max = Math.max(max, curr.hd + 1);
+                }
+            }
+        }
+
+        for(int i = min;i<= max;i++){
+            System.out.print(hm.get(i).data+" ");
+        }
+    }
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildTree(nodes);
@@ -145,5 +192,6 @@ public class Code3 {
         subroot.right = new Node(5);
 
         System.out.println(subTree(root, subroot));
+        topView(root);
     }
 }
