@@ -245,7 +245,24 @@ public class Code3 {
         }
         return Math.max( ld , rd) + 1;
     }
-    
+    public static int kthAncesster(Node root,int n,int k){
+        if(root == null){
+            return -1;
+        }
+        if(root.data == n){
+            return 0;
+        }
+        int lAns = kthAncesster(root.left, n, k);
+        int rAns = kthAncesster(root.right, n, k);
+        if( lAns == -1 && rAns == -1){
+            return -1;
+        }
+        int dis = Math.max(lAns,rAns) + 1;
+        if( dis == k){
+            System.out.println(root.data);
+        }
+        return dis;
+    }
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildTree(nodes);
@@ -268,6 +285,6 @@ public class Code3 {
         System.out.println();
         System.out.println(lca(root, 3, 5).data);
         System.out.println(minDist(root, 4, 5));
-        System.out.println(kthAncesster(root, 5, 2));
+        kthAncesster(root, 4, 1);
     }
 }
