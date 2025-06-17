@@ -263,6 +263,17 @@ public class Code3 {
         }
         return dis;
     }
+    public static int sumTree(Node root){
+        if(root == null){
+            return 0;
+        }
+        int left = root.left == null ? 0 : root.left.data;
+        int right = root.right == null ? 0 : root.right.data;
+        int ls = sumTree(root.left);
+        int rs = sumTree(root.right);
+        root.data =  left + right + ls + rs ;
+        return root.data;
+    }
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildTree(nodes);
@@ -286,5 +297,7 @@ public class Code3 {
         System.out.println(lca(root, 3, 5).data);
         System.out.println(minDist(root, 4, 5));
         kthAncesster(root, 4, 1);
+        sumTree(root);
+        levelOrder(root);
     }
 }
