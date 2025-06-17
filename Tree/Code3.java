@@ -176,22 +176,53 @@ public class Code3 {
             System.out.print(hm.get(i).data+" ");
         }
     }
+    public static void kthLevel(Node root,int k){
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        int level=1;
+        while(!q.isEmpty()){
+            Node curr = q.remove();
+            if(curr == null){
+                if(q.isEmpty()){
+                    break;
+                }
+                else{
+                    q.add(null);
+                    level++;
+                }
+            }
+            else{
+                if( level == k ){
+                    System.out.print(curr.data+" ");
+                }
+                if( curr.left != null){
+                    q.add(curr.left);
+                }
+                if( curr.right != null ){
+                    q.add( curr.right );
+                }
+            }
+        }
+    }
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildTree(nodes);
-        preOrder(root);
-        System.out.println();
-        levelOrder(root);
-        System.out.println(height(root));
-        System.out.println(countNodes(root));
-        System.out.println(sum(root));
-        System.out.println(diameter(root).d);
+        // preOrder(root);
+        // System.out.println();
+        // levelOrder(root);
+        // System.out.println(height(root));
+        // System.out.println(countNodes(root));
+        // System.out.println(sum(root));
+        // System.out.println(diameter(root).d);
 
-        Node subroot = new Node(2);
-        subroot.left = new Node(4);
-        subroot.right = new Node(5);
+        // Node subroot = new Node(2);
+        // subroot.left = new Node(4);
+        // subroot.right = new Node(5);
 
-        System.out.println(subTree(root, subroot));
-        topView(root);
+        // System.out.println(subTree(root, subroot));
+        // topView(root);
+        // System.out.println();
+        kthLevel(root, 3);
     }
 }
