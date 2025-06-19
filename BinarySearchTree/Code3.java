@@ -81,6 +81,17 @@ public class Code3 {
         path1.remove(path1.size()-1);
         
     }
+    public static Node mirror(Node root){
+        if(root==null){
+            return null;
+        }
+
+        Node lefts = mirror(root.left);
+        Node rights = mirror(root.right);
+        root.left = rights;
+        root.right = lefts;
+        return root;
+    }
     public static void main(String[] args) {
         int arr[] = {8,5,3,1,4,6,10,11,14};
         Node root= null;
@@ -92,5 +103,8 @@ public class Code3 {
         // System.out.println(serch(7, root));
         // printInRange(root, 3, 5);
         path(root, new ArrayList<Integer>());
+        mirror(root);
+        System.out.println();
+        inOrder(root);
     }
 }
