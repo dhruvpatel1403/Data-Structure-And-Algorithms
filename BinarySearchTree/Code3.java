@@ -1,5 +1,7 @@
 package BinarySearchTree;
 
+import java.util.*;
+
 public class Code3 {
     public static class Node{
         int data;
@@ -60,15 +62,35 @@ public class Code3 {
             printInRange(root.left, n1, n2);
         }
     }
+    public static void printPath(ArrayList<Integer> path){
+        for(int i=0;i<path.size();i++){
+            System.out.print(path.get(i)+" --> ");
+        }
+        System.out.println();
+    }
+    public static void path(Node root,ArrayList<Integer> path1){
+        if(root == null){
+            return;
+        }
+        path1.add(root.data);
+        if(root.left == null && root.right == null){
+            printPath(path1);
+        }
+        path(root.left, path1);
+        path(root.right, path1);
+        path1.remove(path1.size()-1);
+        
+    }
     public static void main(String[] args) {
-        int arr[] = {1,2,3,4,5,6};
+        int arr[] = {8,5,3,1,4,6,10,11,14};
         Node root= null;
         for(int i=0;i<arr.length;i++){
             root = buildTree(arr[i],root);
         }
-        inOrder(root);
-        System.out.println();
-        System.out.println(serch(7, root));
-        printInRange(root, 3, 5);
+        // inOrder(root);
+        // System.out.println();
+        // System.out.println(serch(7, root));
+        // printInRange(root, 3, 5);
+        path(root, new ArrayList<Integer>());
     }
 }
