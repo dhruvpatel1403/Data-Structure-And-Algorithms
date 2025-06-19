@@ -23,6 +23,28 @@ public class Code3 {
         }
         return root;
     }
+    public static boolean serch(int val,Node root){
+        if(root == null){
+            return false;
+        }
+        if(root.data == val){
+            return true;
+        }
+        else if(root.data > val){
+            return serch(val, root.left);
+        }
+        else{
+            return serch(val, root.right);
+        }
+    }
+    public static void inOrder(Node root){
+        if(root == null){
+            return;
+        }
+        inOrder(root.left);
+        System.out.print(root.data+" ");
+        inOrder(root.right);
+    }
     
     public static void main(String[] args) {
         int arr[] = {1,2,3,4,5,6};
