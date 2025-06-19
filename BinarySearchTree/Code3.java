@@ -45,6 +45,7 @@ public class Code3 {
         System.out.print(root.data+" ");
         inOrder(root.right);
     }
+      
     
     public static void main(String[] args) {
         int arr[] = {1,2,3,4,5,6};
