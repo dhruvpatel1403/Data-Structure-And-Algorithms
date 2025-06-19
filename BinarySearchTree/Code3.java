@@ -45,8 +45,21 @@ public class Code3 {
         System.out.print(root.data+" ");
         inOrder(root.right);
     }
-      
-    
+    public static void printInRange(Node root,int n1,int n2){
+        if(root == null){
+            return;
+        }
+        if(root.data >= n1 && root.data <= n2){
+            printInRange(root.left, n1, n2);
+            System.out.print(root.data + " ");
+            printInRange(root.right, n1, n2);
+        }else if(root.data < n1){
+            printInRange(root.right, n1, n2);
+        }
+        else{
+            printInRange(root.left, n1, n2);
+        }
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,3,4,5,6};
         Node root= null;
