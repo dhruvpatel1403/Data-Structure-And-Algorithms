@@ -92,8 +92,20 @@ public class Code3 {
         root.right = lefts;
         return root;
     }
+    public static boolean isValidBST(Node root,Node min,Node max){
+        if(root == null){
+            return true;
+        }
+        if(min != null && root.data <=min.data){
+            return false;
+        }
+        if(max != null && root.data >= max.data){
+            return false;
+        }
+        return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+    }
     public static void main(String[] args) {
-        int arr[] = {8,5,3,1,4,6,10,11,14};
+        int arr[] = {8,5,3,6,10,11,14};
         Node root= null;
         for(int i=0;i<arr.length;i++){
             root = buildTree(arr[i],root);
@@ -103,8 +115,11 @@ public class Code3 {
         // System.out.println(serch(7, root));
         // printInRange(root, 3, 5);
         path(root, new ArrayList<Integer>());
+        System.out.println(isValidBST(root, null, null));
         mirror(root);
         System.out.println();
         inOrder(root);
+        System.out.println();
+        System.out.println(isValidBST(root, null, null));
     }
 }
