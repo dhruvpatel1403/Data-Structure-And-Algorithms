@@ -104,6 +104,37 @@ public class Code3 {
         }
         return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
     }
+    public static Node delete(Node root,int val){
+        if(root.data > val){
+            root.left =  delete(root.left, val);
+        }
+        else if(root.data < val){
+            root.right = delete(root.right, val);
+        }
+        else{
+            if(root.left == null && root.right == null){
+                return null;
+            }
+            if(root.left ==null){
+                return root.right;
+            }
+            else if(root.right == null){
+                return root.left;
+            }
+            else{
+                Node IS = InorderSuccessor(root.right);
+                root.data = IS.data;
+                root.right = delete(root.right, IS.data);
+            }
+        }
+        return root;
+    }
+    public static Node InorderSuccessor(Node root){
+        while(root.left !=null){
+            root = root.left;
+        }
+        return root;
+    }
     public static void main(String[] args) {
         int arr[] = {8,5,3,6,10,11,14};
         Node root= null;
@@ -116,10 +147,12 @@ public class Code3 {
         // printInRange(root, 3, 5);
         path(root, new ArrayList<Integer>());
         System.out.println(isValidBST(root, null, null));
-        mirror(root);
+        // mirror(root);
         System.out.println();
         inOrder(root);
         System.out.println();
         System.out.println(isValidBST(root, null, null));
+        delete(root, 5);
+        inOrder(root);
     }
 }
