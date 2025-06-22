@@ -40,6 +40,18 @@ public class Code3 {
             }
         }
     }
+    public static boolean hashPath(ArrayList<Edge>[] graph,boolean vis[],int src,int dst){
+        if(src == dst){
+            return true;
+        }
+        vis[src] = true;
+        for(int i=0;i<graph[src].size();i++){
+            if(!vis[graph[src].get(i).dst] && hashPath(graph, vis, graph[src].get(i).dst, dst)){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
         int v = 5;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -74,5 +86,6 @@ public class Code3 {
         BFS(graph);
         System.out.println();
         DFS(graph, new boolean[v], 0);
+        System.out.println(hashPath(graph, new boolean[v], 0, 4));
     }
 }
