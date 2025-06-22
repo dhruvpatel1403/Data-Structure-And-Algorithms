@@ -135,6 +135,43 @@ public class Code3 {
         }
         return root;
     }
+    public static Node arrayToBST(int arr[],int st,int end){
+        if(st>end){
+            return null;
+        }
+        int mid = st + (end -st)/2;
+        Node root = new Node(arr[mid]);
+        root.left = arrayToBST(arr, st, mid-1);
+        root.right = arrayToBST(arr, mid + 1, end);
+        return root;
+    }
+    public static void levelOrder(Node root){
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        while(!q.isEmpty()){
+            Node curr = q.remove();
+            if(curr == null){
+                System.out.println();
+                if(q.isEmpty()){
+                    break;
+                }else{
+                    q.add(null);
+                }
+            }
+            else{
+                System.out.print(curr.data+" ");
+
+                if(curr.left != null){
+                    q.add(curr.left);
+                }
+
+                if(curr.right != null){
+                    q.add(curr.right);
+                }
+            }
+        }
+    }
     public static void main(String[] args) {
         int arr[] = {8,5,3,6,10,11,14};
         Node root= null;
@@ -145,14 +182,19 @@ public class Code3 {
         // System.out.println();
         // System.out.println(serch(7, root));
         // printInRange(root, 3, 5);
-        path(root, new ArrayList<Integer>());
-        System.out.println(isValidBST(root, null, null));
-        // mirror(root);
+        // path(root, new ArrayList<Integer>());
+        // System.out.println(isValidBST(root, null, null));
+        // // mirror(root);
+        // System.out.println();
+        // inOrder(root);
+        // System.out.println();
+        // System.out.println(isValidBST(root, null, null));
+        // delete(root, 5);
+        // inOrder(root);
+        int arr2[] = { 3,5,6,8,10,11,12};
+        Node root1 = arrayToBST(arr2, 0, arr2.length-1);
+        inOrder(root1);
         System.out.println();
-        inOrder(root);
-        System.out.println();
-        System.out.println(isValidBST(root, null, null));
-        delete(root, 5);
-        inOrder(root);
+        levelOrder(root1);
     }
 }
