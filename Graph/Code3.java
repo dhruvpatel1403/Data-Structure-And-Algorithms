@@ -28,7 +28,18 @@ public class Code3 {
         }
     }
 
-    
+    public static void DFS(ArrayList<Edge>[] graph,boolean vis[],int curr){
+
+        vis[curr]= true;
+
+        System.out.print(curr+" ");
+
+        for(int i=0;i<graph[curr].size();i++){
+            if(!vis[graph[curr].get(i).dst]){
+                DFS(graph, vis, graph[curr].get(i).dst );
+            }
+        }
+    }
     public static void main(String[] args) {
         int v = 5;
         ArrayList<Edge>[] graph = new ArrayList[v];
