@@ -11,6 +11,24 @@ public class Code3 {
             this.wt = wt;
         }
     }
+    public static void BFS(ArrayList<Edge>[] graph){
+        Queue<Integer> q = new LinkedList<>();
+        boolean vis[] = new boolean[graph.length];
+        q.add(0);
+
+        while(!q.isEmpty()){
+            int curr = q.remove();
+            if(!vis[curr]){
+                System.out.print(curr+" ");
+                vis[curr] = true;
+                for(int i=0;i<graph[curr].size();i++){
+                    q.add(graph[curr].get(i).dst);
+                }
+            }
+        }
+    }
+
+    
     public static void main(String[] args) {
         int v = 5;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -33,16 +51,17 @@ public class Code3 {
 
 
         // 3
-
         graph[3].add(new Edge(3,2,1));
         graph[3].add(new Edge(3,1,3));
 
 
         // 4
         graph[4].add(new Edge(2,4,2));
-        for(int i=0;i<graph[1].size();i++){
-            System.out.print(graph[1].get(i).dst+" ");
-        }
-
+        // for(int i=0;i<graph[1].size();i++){
+        //     System.out.print(graph[1].get(i).dst+" ");
+        // }
+        BFS(graph);
+        System.out.println();
+        DFS(graph, new boolean[v], 0);
     }
 }
