@@ -40,6 +40,7 @@ public class Code3 {
             }
         }
     }
+    
     public static boolean hashPath(ArrayList<Edge>[] graph,boolean vis[],int src,int dst){
         if(src == dst){
             return true;
@@ -48,6 +49,29 @@ public class Code3 {
         for(int i=0;i<graph[src].size();i++){
             if(!vis[graph[src].get(i).dst] && hashPath(graph, vis, graph[src].get(i).dst, dst)){
                 return true;
+            }
+        }
+        return false;
+    }
+    public static boolean detect_cycle(ArrayList<Edge>[] graph){
+        boolean vis[] = new boolean[graph.length];
+        for(int i=0;i<graph.length;i++){
+            if(!vis[i]){
+                if(detect_cycle_util(graph,vis,i,-1)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public static boolean detect_cycle_util(ArrayList<Edge>[] graph,boolean vis[],int curr,int par){
+        vis[curr] = true;
+        for(int i=0;i<graph[curr].size();i++){
+            if(vis[graph[curr].get(i).dst] && graph[curr].get(i).dst != par){
+                return true;
+            }
+            if(!vis[graph[curr].get(i).dst]){
+                return detect_cycle_util(graph, vis, graph[curr].get(i).dst, curr);
             }
         }
         return false;
@@ -87,5 +111,6 @@ public class Code3 {
         System.out.println();
         DFS(graph, new boolean[v], 0);
         System.out.println(hashPath(graph, new boolean[v], 0, 4));
+        detect_cycle(graph);
     }
 }
