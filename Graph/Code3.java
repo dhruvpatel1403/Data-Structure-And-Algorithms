@@ -127,6 +127,17 @@ public class Code3 {
         }
         s.push(curr);
     }
+    public static void all_path(ArrayList<Edge>[] graph,int src,int dst,String path,boolean vis[]){
+        if(src == dst){
+            System.out.println(path+src);
+            return;
+        }
+        vis[src] = true;
+        for(int i=0;i<graph[src].size();i++){
+            all_path(graph, graph[src].get(i).dst, dst, path+src+" ",vis);
+        }
+        vis[src] = false; // backtrack
+    }
     public static void main(String[] args) {
         int v = 6;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -172,6 +183,7 @@ graph[3].add(new Edge(3, 1, 1));
         // detect_cycle(graph);
         // detect_cycle_DFS(graph);
         // System.out.println(detect_cycle(graph));
-        topSort(graph);
+        // topSort(graph);
+        all_path(graph, 5, 1, "", new boolean[v]);
     }
 }
