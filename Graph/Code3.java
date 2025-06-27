@@ -106,8 +106,29 @@ public class Code3 {
         stack[curr] = false;
         return false;
     }
+    public static void topSort(ArrayList<Edge>[] graph){
+        Stack<Integer> s= new Stack<>();
+        boolean vis[] = new boolean[graph.length];
+        for(int i=0;i<graph.length;i++){
+            if(!vis[i]){
+                top_sort_util(graph,i,vis,s);
+            }
+        }   
+        while(!s.isEmpty()){
+            System.out.print(s.pop()+" ");
+        } 
+    }
+    public static void top_sort_util(ArrayList<Edge>[] graph,int curr,boolean vis[],Stack<Integer> s){
+        vis[curr] = true;
+        for(int i=0;i<graph[curr].size();i++){
+            if(!vis[graph[curr].get(i).dst]){
+                top_sort_util(graph, graph[curr].get(i).dst, vis, s);
+            }
+        }
+        s.push(curr);
+    }
     public static void main(String[] args) {
-        int v = 4;
+        int v = 6;
         ArrayList<Edge>[] graph = new ArrayList[v];
         for(int i=0;i<v;i++){
             graph[i] = new ArrayList<>();
@@ -134,18 +155,23 @@ public class Code3 {
 
         // // 4
         // graph[4].add(new Edge(2,4,2));
-        graph[0].add(new Edge(0, 1,1));
-        graph[1].add(new Edge(1, 2,2));
-        graph[2].add(new Edge(2, 0,3));
+        graph[5].add(new Edge(5, 0, 1));
+graph[5].add(new Edge(5, 2, 1));
+graph[4].add(new Edge(4, 0, 1));
+graph[4].add(new Edge(4, 1, 1));
+graph[2].add(new Edge(2, 3, 1));
+graph[3].add(new Edge(3, 1, 1));
+
         // for(int i=0;i<graph[1].size();i++){
         //     System.out.print(graph[1].get(i).dst+" ");
         // }
-        BFS(graph);
-        System.out.println();
-        DFS(graph, new boolean[v], 0);
+        // BFS(graph);
+        // System.out.println();
+        // DFS(graph, new boolean[v], 0);
         // System.out.println(hashPath(graph, new boolean[v], 0, 4));
         // detect_cycle(graph);
         // detect_cycle_DFS(graph);
-        System.out.println(detect_cycle(graph));
+        // System.out.println(detect_cycle(graph));
+        topSort(graph);
     }
 }
