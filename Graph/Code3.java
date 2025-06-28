@@ -138,6 +138,30 @@ public class Code3 {
         }
         vis[src] = false; // backtrack
     }
+    public static void topsort_kahns(ArrayList<Edge>[] graph){
+        int indegree[] = new int[graph.length];
+        Queue<Integer> q = new LinkedList<>();
+        for(int i=0;i<graph.length;i++){
+            for(int j=0;j<graph[i].size();j++){
+                indegree[graph[i].get(j).dst]++;
+            }
+        }
+        for(int i=0;i<indegree.length;i++){
+           if(indegree[i] == 0){
+                q.add(i);
+            }
+        }
+        while(!q.isEmpty()){
+            int curr = q.remove();
+            System.out.print(curr+" ");
+            for(int i=0;i<graph[curr].size();i++){
+                indegree[graph[curr].get(i).dst]--;
+                if(indegree[graph[curr].get(i).dst] == 0){
+                    q.add(graph[curr].get(i).dst);
+                }
+            }
+        }   
+    }
     public static void main(String[] args) {
         int v = 6;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -185,5 +209,6 @@ graph[3].add(new Edge(3, 1, 1));
         // System.out.println(detect_cycle(graph));
         // topSort(graph);
         all_path(graph, 5, 1, "", new boolean[v]);
+        topsort_kahns(graph);
     }
 }
