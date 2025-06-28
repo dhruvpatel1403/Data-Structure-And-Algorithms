@@ -162,8 +162,52 @@ public class Code3 {
             }
         }   
     }
+    public static class DijPair implements Comparable<DijPair>{
+        int n;
+        int path;
+        public DijPair(int n,int path){
+            this.n = n;
+            this.path = path;
+        }
+        @Override
+        public int compareTo(DijPair p2){
+            return this.path - p2.path;
+        }
+    }
+    public static void dijkstra(ArrayList<Edge>[] graph,int src){
+        PriorityQueue<DijPair> pq = new PriorityQueue<>();
+        boolean vis[] = new boolean[graph.length];
+        int dis[] = new int[graph.length];
+        for(int i=0;i<dis.length;i++){
+            if(i != src){
+                dis[i] = Integer.MAX_VALUE;
+            }
+        }
+
+        pq.add(new DijPair(src, 0));
+        while(!pq.isEmpty()){
+            DijPair curr = pq.remove();
+            vis[curr.n] = true;
+            for(int i=0;i<graph[curr.n].size();i++){
+                Edge e = graph[curr.n].get(i);
+                if(!vis[e.dst]){
+                    int u = e.src;
+                    int v= e.dst;
+                    int wt = e.wt;
+                    if(dis[u] + wt < dis[v]){
+                        dis[v] = dis[u] + wt;
+                        pq.add(new DijPair(v, dis[v]));
+                    }
+                }
+            }
+        }
+        for(int i=0;i<dis.length;i++){
+            System.out.print(dis[i]+" ");
+        }
+        System.out.println();
+    }
     public static void main(String[] args) {
-        int v = 6;
+        int v = 5;
         ArrayList<Edge>[] graph = new ArrayList[v];
         for(int i=0;i<v;i++){
             graph[i] = new ArrayList<>();
@@ -190,12 +234,12 @@ public class Code3 {
 
         // // 4
         // graph[4].add(new Edge(2,4,2));
-        graph[5].add(new Edge(5, 0, 1));
-graph[5].add(new Edge(5, 2, 1));
-graph[4].add(new Edge(4, 0, 1));
-graph[4].add(new Edge(4, 1, 1));
-graph[2].add(new Edge(2, 3, 1));
-graph[3].add(new Edge(3, 1, 1));
+        graph[0].add(new Edge(0, 1, 2));
+        graph[0].add(new Edge(0, 2, 4));
+        graph[1].add(new Edge(1, 2, 1));
+        graph[1].add(new Edge(1, 3, 7));
+        graph[2].add(new Edge(2, 4, 3));
+        graph[3].add(new Edge(3, 4, 1));
 
         // for(int i=0;i<graph[1].size();i++){
         //     System.out.print(graph[1].get(i).dst+" ");
@@ -208,7 +252,9 @@ graph[3].add(new Edge(3, 1, 1));
         // detect_cycle_DFS(graph);
         // System.out.println(detect_cycle(graph));
         // topSort(graph);
-        all_path(graph, 5, 1, "", new boolean[v]);
-        topsort_kahns(graph);
+        // all_path(graph, 5, 1, "", new boolean[v]);
+        // topsort_kahns(graph);
+        // System.out.println();
+        dijkstra(graph, 0);
     }
 }
