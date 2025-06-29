@@ -1,4 +1,5 @@
 package Arrays;
+import java.util.Arrays;
 
 public class Assignment {
     public static boolean isTwice(int arr[]){
@@ -45,10 +46,24 @@ public class Assignment {
             }
         }
     }
+    
+    public static boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        char[] sSort = s.toCharArray();
+        char[] tSort = t.toCharArray();
+        Arrays.sort(sSort);
+        Arrays.sort(tSort);
+        return Arrays.equals(sSort, tSort);
+    }
+
     public static void main(String[] args) {
         int arr[] = { 10,11,12,4,5,6};
         // System.out.println(isTwice(arr));
         searchInRotated(arr, 16, 0, arr.length-1);
+        System.out.println(isAnagram("car","rac"));
     }    
     
 }
