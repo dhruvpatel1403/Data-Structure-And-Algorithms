@@ -233,6 +233,40 @@ public class Code3 {
         }
         System.out.println();
     }
+    public static class PrimsPair implements Comparable<PrimsPair>{
+        int v;
+        int cost;
+        public PrimsPair(int v,int cost){
+            this.v = v;
+            this.cost = cost;
+        }
+        @Override
+        public int compareTo(PrimsPair p2){
+            return this.cost - p2.cost;
+        }
+    }
+    public static void prims(ArrayList<Edge>[] graph){
+        PriorityQueue<PrimsPair> pq = new PriorityQueue<>();
+        boolean vis[] = new boolean[graph.length];
+        int finalCost = 0;
+        pq.add(new PrimsPair(0,0));
+
+        while(!pq.isEmpty()){
+            PrimsPair curr = pq.remove();
+            if(!vis[curr.v]){
+                vis[curr.v] = true;
+                finalCost += curr.cost;
+                for(int i=0;i<graph[curr.v].size();i++){
+                    Edge e = graph[curr.v].get(i);
+                    if(!vis[e.dst]){
+                        pq.add(new PrimsPair(e.dst,e.wt));
+                    }
+                    
+                }
+            }
+        }
+        System.out.println("FInal cost is "+finalCost);
+    }
     public static void main(String[] args) {
         int v = 5;
         ArrayList<Edge>[] graph = new ArrayList[v];
@@ -284,5 +318,6 @@ public class Code3 {
         // System.out.println();
         dijkstra(graph, 0);
         bellmanFord(graph, 0);
+        prims(graph);
     }
 }
