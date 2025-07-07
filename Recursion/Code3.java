@@ -1,4 +1,4 @@
-
+import java.util.*;
 public class Code3 {
     public static void printDec(int n){
         if(n==0){
@@ -48,7 +48,20 @@ public class Code3 {
         }
         return found;
     }
-    
+    public static void remveDup(String str,int ind,boolean arr[],StringBuilder ans){
+        if(ind == str.length()){
+            System.out.println(ans);
+            return;
+        }
+        char curr = str.charAt(ind);
+        if(arr[curr - 'a'] == true){
+            remveDup(str, ind+1, arr, ans);
+        }else{
+            ans.append(curr);
+            arr[curr-'a'] = true;
+            remveDup(str, ind+1, arr, ans);
+        }
+        }
     public static void main(String[] args) {
         printDec(5);
         System.out.println();
@@ -59,5 +72,6 @@ public class Code3 {
         int arr[] = { 5,5,5,5};
         System.out.println(findFirstOcc(arr, 0, 5));
         System.out.println(lastOccu(arr, 0, 5));
+        remveDup("appnacollege", 0, new boolean[26], new StringBuilder(""));
     }
 }
