@@ -62,6 +62,12 @@ public class Code3 {
             remveDup(str, ind+1, arr, ans);
         }
         }
+        public static int frdPair(int n){
+            if(n == 1 || n == 2){
+                return n;
+            }
+            return frdPair(n-1) + (n-1) * frdPair(n-2);
+        }
     public static void main(String[] args) {
         printDec(5);
         System.out.println();
@@ -73,5 +79,6 @@ public class Code3 {
         System.out.println(findFirstOcc(arr, 0, 5));
         System.out.println(lastOccu(arr, 0, 5));
         remveDup("appnacollege", 0, new boolean[26], new StringBuilder(""));
+        System.out.println(frdPair(3));
     }
 }
