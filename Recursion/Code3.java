@@ -68,6 +68,16 @@ public class Code3 {
             }
             return frdPair(n-1) + (n-1) * frdPair(n-2);
         }
+        public static void printBSt(int n,int last,String str){
+            if(n == 0){
+                System.out.println(str);
+                return;
+            }
+            printBSt(n-1, 0, str+"0");
+            if(last == 0){
+                printBSt(n-1, 1, str+"1");
+            }
+        }
     public static void main(String[] args) {
         printDec(5);
         System.out.println();
@@ -80,5 +90,6 @@ public class Code3 {
         System.out.println(lastOccu(arr, 0, 5));
         remveDup("appnacollege", 0, new boolean[26], new StringBuilder(""));
         System.out.println(frdPair(3));
+        printBSt(3, 0, "");
     }
 }
