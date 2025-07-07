@@ -33,8 +33,22 @@ public class Code3 {
         if(arr[ind] == key){
             return ind;
         }
-        return findFirstOcc(arr, ind++, key);
+        return findFirstOcc(arr, ind+1, key);
     }
+    public static int lastOccu(int arr[],int ind,int key){
+        if(ind == arr.length){
+            return -1;
+        }
+        int found = lastOccu(arr, ind+1, key);
+        if(found != -1){
+            return found;
+        }
+        if(arr[ind] == key){
+            return ind;
+        }
+        return found;
+    }
+    
     public static void main(String[] args) {
         printDec(5);
         System.out.println();
@@ -42,5 +56,8 @@ public class Code3 {
         System.out.println();
         System.out.println(findFact(5));
         System.out.println(sumOfN(5));
+        int arr[] = { 5,5,5,5};
+        System.out.println(findFirstOcc(arr, 0, 5));
+        System.out.println(lastOccu(arr, 0, 5));
     }
 }
