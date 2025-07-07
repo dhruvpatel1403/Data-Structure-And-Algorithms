@@ -78,6 +78,14 @@ public class Code3 {
                 printBSt(n-1, 1, str+"1");
             }
         }
+        public static void printsubSet(String str,String ans,int ind){
+            if(ind == str.length()){
+                System.out.println(ans);
+                return;
+            }
+            printsubSet(str, ans+str.charAt(ind), ind+1);
+            printsubSet(str, ans, ind+1);
+        }
     public static void main(String[] args) {
         printDec(5);
         System.out.println();
@@ -91,5 +99,6 @@ public class Code3 {
         remveDup("appnacollege", 0, new boolean[26], new StringBuilder(""));
         System.out.println(frdPair(3));
         printBSt(3, 0, "");
+        printsubSet("abc", "", 0);
     }
 }
