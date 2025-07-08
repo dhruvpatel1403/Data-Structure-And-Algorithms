@@ -165,7 +165,78 @@ public class Code3 {
         int wl = gridWays(i, j+1, n, m);
         return wr + wl;
     }
+    public static boolean isSafeDigit(int arr[][],int row,int col,int digit){
+        for(int i=0;i<arr.length;i++){
+            if(arr[i][col] == digit || arr[row][i] == digit){
+                return false;
+            }
+        }
+        row = (row/3)* 3;
+        col = (col/3) * 3;
+        for(int i=row;i<row+3;i++){
+            for(int j=col;j<col+3;j++){
+                if(arr[i][j] == digit){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    public static boolean sudoku(int arr[][],int row,int col){
+        if(col==arr[0].length){
+            row++;
+            col=0;
+        }
+        if(row==arr.length){
+            return true;
+        }
+        if(arr[row][col] != 0){
+            return sudoku(arr, row, col+1);
+        }
+        for(int digit=1;digit<=9;digit++){
+            if(isSafeDigit(arr,row,col,digit)){
+                arr[row][col]=digit;
+                if(sudoku(arr, row, col+1)){
+                    return true;
+                }
+                arr[row][col] = 0;
+            }
+        }
+        return false;
+    }
+    public static void printBoard(int[][] board) {
+        for (int i = 0; i < 9; i++) {
+            if (i % 3 == 0 && i != 0) {
+                System.out.println("---------------------");
+            }
+            for (int j = 0; j < 9; j++) {
+                if (j % 3 == 0 && j != 0) {
+                    System.out.print("| ");
+                }
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+    
     public static void main(String[] args) {
+        int[][] board = {
+            {5, 3, 0, 0, 7, 0, 0, 0, 0},
+            {6, 0, 0, 1, 9, 5, 0, 0, 0},
+            {0, 9, 8, 0, 0, 0, 0, 6, 0},
+            {8, 0, 0, 0, 6, 0, 0, 0, 3},
+            {4, 0, 0, 8, 0, 3, 0, 0, 1},
+            {7, 0, 0, 0, 2, 0, 0, 0, 6},
+            {0, 6, 0, 0, 0, 0, 2, 8, 0},
+            {0, 0, 0, 4, 1, 9, 0, 0, 5},
+            {0, 0, 0, 0, 8, 0, 0, 7, 9}
+        };
+        if (sudoku(board, 0, 0)) {
+            System.out.println("Sudoku solved!");
+            printBoard(board);
+        } else {
+            System.out.println("No solution exists.");
+        }
         // printDec(5);
         // System.out.println();
         // printInc(5);
@@ -183,6 +254,6 @@ public class Code3 {
         int n=7;
         // nQueens(n, new char[n][n], 0);
         // System.out.println(count);
-        System.out.println(gridWays(0, 0, 3, 3));
+        // System.out.println(gridWays(0, 0, 3, 3));
     }
 }
