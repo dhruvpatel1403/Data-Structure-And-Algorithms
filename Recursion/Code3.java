@@ -154,6 +154,17 @@ public class Code3 {
         return true;
     }
     static int count=0;
+    public static int gridWays(int i,int j,int n,int m){
+        if(i == n-1 && j== m-1){
+            return 1;
+        }
+        else if(i == n || j == m){
+            return 0;
+        }
+        int wr = gridWays(i+1, j, n, m);
+        int wl = gridWays(i, j+1, n, m);
+        return wr + wl;
+    }
     public static void main(String[] args) {
         // printDec(5);
         // System.out.println();
@@ -170,7 +181,8 @@ public class Code3 {
         // printsubSet("abc", "", 0);
         // permutation("abcd", "");
         int n=7;
-        nQueens(n, new char[n][n], 0);
-        System.out.println(count);
+        // nQueens(n, new char[n][n], 0);
+        // System.out.println(count);
+        System.out.println(gridWays(0, 0, 3, 3));
     }
 }
