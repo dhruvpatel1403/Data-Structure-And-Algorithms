@@ -51,6 +51,16 @@ public class Code {
         newNode.next = temp.next;
         temp.next = newNode;
     }
+    public int removeFirst(){
+        if(head.next == null){
+            int data = head.data;
+            head = null;
+            return data;
+        }
+        int val = head.data;
+        head = head.next;
+        return val;
+    }
     public static void main(String[] args) {
         Code ll = new Code();
         ll.addFirst(10);
@@ -58,6 +68,7 @@ public class Code {
         ll.addLast(20);
         ll.printLinkedList();
         ll.addMiddle(2, 0);
+        ll.removeFirst();
         ll.printLinkedList();
     }
 }
