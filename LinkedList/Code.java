@@ -75,6 +75,19 @@ public class Code {
         temp.next = null;
         return val;
     }
+    public Node reverse(){
+        Node prev= null;
+        Node curr = head;
+        Node next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return tail;
+    }
+    
     public static void main(String[] args) {
         Code ll = new Code();
         ll.addFirst(10);
@@ -84,6 +97,7 @@ public class Code {
         ll.addMiddle(2, 0);
         ll.removeFirst();
         ll.removeLast();
+        ll.reverse();
         ll.printLinkedList();
     }
 }
