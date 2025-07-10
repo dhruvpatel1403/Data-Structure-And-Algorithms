@@ -22,7 +22,14 @@ public class Code {
         newNode.next = head;
         head = newNode;
     }
-    
+    public void printLinkedList(){
+        Node temp = head;
+        while(temp != null){
+            System.out.print(temp.data+"-> ");
+            temp = temp.next;
+
+        }
+    }
     public static void main(String[] args) {
         Code ll = new Code();
         ll.addFirst(10);
