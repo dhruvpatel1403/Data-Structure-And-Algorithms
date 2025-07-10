@@ -75,7 +75,7 @@ public class Code {
         temp.next = null;
         return val;
     }
-    public Node reverse(){
+    public void reverse(){
         Node prev= null;
         Node curr = head;
         Node next;
@@ -85,19 +85,51 @@ public class Code {
             prev = curr;
             curr = next;
         }
-        return tail;
+        head = prev;
     }
-    
+    public static boolean isPalindrome(){
+        Node slow = head;
+        Node fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node prev = null;
+        Node curr = slow;
+        Node next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node right = prev;
+        Node left = head;
+        while(right != null){
+            if(left.data != right.data){
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
     public static void main(String[] args) {
         Code ll = new Code();
-        ll.addFirst(10);
-        ll.addFirst(15);
+        // ll.addFirst(10);
+        // ll.addFirst(15);
+        // ll.addLast(20);
+        // ll.printLinkedList();
+        // ll.addMiddle(2, 0);
+        // ll.removeFirst();
+        // ll.removeLast();
+        ll.addLast(10);
         ll.addLast(20);
-        ll.printLinkedList();
-        ll.addMiddle(2, 0);
-        ll.removeFirst();
-        ll.removeLast();
+        ll.addLast(30);
+        ll.addLast(20);
+        ll.addLast(10);
         ll.reverse();
         ll.printLinkedList();
+        System.out.println(ll.isPalindrome());
     }
 }
