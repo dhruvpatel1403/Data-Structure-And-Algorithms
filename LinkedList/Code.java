@@ -54,11 +54,25 @@ public class Code {
     public int removeFirst(){
         if(head.next == null){
             int data = head.data;
-            head = null;
+            head = tail = null;
             return data;
         }
         int val = head.data;
         head = head.next;
+        return val;
+    }
+    public int removeLast(){
+        if(head == tail){
+            int val = head.data;
+            head = tail = null;
+            return val;
+        }
+        int val = tail.data;
+        Node temp = head;
+        while(temp.next != tail){
+            temp = temp.next;
+        }
+        temp.next = null;
         return val;
     }
     public static void main(String[] args) {
@@ -69,6 +83,7 @@ public class Code {
         ll.printLinkedList();
         ll.addMiddle(2, 0);
         ll.removeFirst();
+        ll.removeLast();
         ll.printLinkedList();
     }
 }
