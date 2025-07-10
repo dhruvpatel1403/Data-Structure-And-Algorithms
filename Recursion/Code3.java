@@ -218,7 +218,6 @@ public class Code3 {
             System.out.println();
         }
     }
-    
     public static void main(String[] args) {
         int[][] board = {
             {5, 3, 0, 0, 7, 0, 0, 0, 0},
