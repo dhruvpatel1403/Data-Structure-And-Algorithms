@@ -40,12 +40,24 @@ public class Code {
         tail.next = newNode;
         tail = newNode;
     }
-    
+    public void addMiddle(int ind,int data){
+        Node newNode = new Node(data);
+        int i=0;
+        Node temp = head;
+        while( i < ind -1 && temp != null){
+            temp = temp.next;
+            i++;
+        }
+        newNode.next = temp.next;
+        temp.next = newNode;
+    }
     public static void main(String[] args) {
         Code ll = new Code();
         ll.addFirst(10);
         ll.addFirst(15);
         ll.addLast(20);
+        ll.printLinkedList();
+        ll.addMiddle(2, 0);
         ll.printLinkedList();
     }
 }
