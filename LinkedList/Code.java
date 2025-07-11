@@ -22,7 +22,7 @@ public class Code {
         newNode.next = head;
         head = newNode;
     }
-    public void printLinkedList(){
+    public static void printLinkedList(){
         Node temp = head;
         while(temp != null){
             System.out.print(temp.data+" --> ");
@@ -126,6 +126,32 @@ public class Code {
         }
         return false;
     }
+    public static void removeCycle(){
+        // detect cycle
+        Node slow = head;
+        Node fast = head;
+        boolean flag= false;
+        while( fast != null && fast.next != null ){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast){
+                flag = true;
+                break;
+            }
+        }
+        if(!flag){
+            System.out.println("Cycle doesnot exist");
+            return;
+        }
+        slow = head;
+        Node prev = null;
+        while(slow != fast){
+            slow = slow.next;
+            prev = fast;
+            fast = fast.next;
+        }
+        prev.next = null;
+    }
     public static void main(String[] args) {
         Code ll = new Code();
         // ll.addFirst(10);
@@ -135,14 +161,14 @@ public class Code {
         // ll.addMiddle(2, 0);
         // ll.removeFirst();
         // ll.removeLast();
-        ll.addLast(10);
-        ll.addLast(20);
-        ll.addLast(30);
-        ll.addLast(20);
-        ll.addLast(10);
-        ll.reverse();
-        ll.printLinkedList();
-        System.out.println(ll.isCycle());
+        
+        head = new Node(3);
+        head.next = new Node(4);
+        head.next.next = new Node(5);
+        head.next.next.next = head.next;
+        // printLinkedList();
+        removeCycle();
+        printLinkedList();
         // System.out.println(ll.isPalindrome());
     }
 }
