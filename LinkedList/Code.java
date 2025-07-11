@@ -114,6 +114,18 @@ public class Code {
         }
         return true;
     }
+    public boolean isCycle(){
+        Node slow = head;
+        Node fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast){
+                return true;
+            }
+        }
+        return false;
+    }
     public static void main(String[] args) {
         Code ll = new Code();
         // ll.addFirst(10);
@@ -130,6 +142,7 @@ public class Code {
         ll.addLast(10);
         ll.reverse();
         ll.printLinkedList();
-        System.out.println(ll.isPalindrome());
+        System.out.println(ll.isCycle());
+        // System.out.println(ll.isPalindrome());
     }
 }
