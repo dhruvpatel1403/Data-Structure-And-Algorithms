@@ -22,7 +22,7 @@ public class Code {
         newNode.next = head;
         head = newNode;
     }
-    public static void printLinkedList(){
+    public void printLinkedList(){
         Node temp = head;
         while(temp != null){
             System.out.print(temp.data+" --> ");
@@ -152,6 +152,37 @@ public class Code {
         }
         prev.next = null;
     }
+    public void zigzag(){
+        //find mid
+        Node slow = head;
+        Node fast = head.next;
+        while ( fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        // reverse after mid
+        Node prev = null;
+        Node curr = slow;
+        Node next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node left = head;
+        Node right = prev;
+
+        // zigzag
+        while(right != null){
+            Node leftNx = left.next;
+            Node rightNx = right.next;
+            left.next = right;
+            right.next = leftNx;
+            left = leftNx;
+            right = rightNx;
+        }
+    }
     public static void main(String[] args) {
         Code ll = new Code();
         // ll.addFirst(10);
@@ -162,13 +193,21 @@ public class Code {
         // ll.removeFirst();
         // ll.removeLast();
         
-        head = new Node(3);
-        head.next = new Node(4);
-        head.next.next = new Node(5);
-        head.next.next.next = head.next;
+        // head = new Node(3);
+        // head.next = new Node(4);
+        // head.next.next = new Node(5);
+        // head.next.next.next = head.next;
+        // // printLinkedList();
+        // removeCycle();
         // printLinkedList();
-        removeCycle();
-        printLinkedList();
         // System.out.println(ll.isPalindrome());
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.addLast(5);
+        ll.printLinkedList();
+        ll.zigzag();
+        ll.printLinkedList();
     }
 }
