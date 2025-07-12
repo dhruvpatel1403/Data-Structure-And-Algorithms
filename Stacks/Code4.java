@@ -19,7 +19,25 @@ public class Code4 {
             System.out.print(ans[i]+" ");
         }
     }
-   
+    public static void stockSpan(int arr[]){
+        int ans[] = new int[arr.length];
+        Stack<Integer> s = new Stack<>();
+        for(int i=0;i<arr.length;i++){
+            while(!s.isEmpty() && arr[s.peek()]<arr[i]){
+                s.pop();
+            }
+            if(s.isEmpty()){
+                ans[i] = 1;
+            }
+            else{
+                ans[i] = i-s.peek();
+            }
+            s.push(i);
+        }
+        for(int i=0;i<ans.length;i++){
+            System.out.print(ans[i]+" ");
+        }
+    }
     public static void main(String[] args) {
         int arr[] = {100,80,60,70,60,85,100};
         stockSpan(arr);
