@@ -43,6 +43,6 @@ public class Code4 {
         Node root = buildetree(arr);
         preorder(root);
         System.out.println();
-        in
+        inOrder(root);
     }
 }
