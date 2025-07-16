@@ -74,6 +74,14 @@ public class Code4 {
         int rh = height(root.right);
         return Math.max(lh,rh) + 1;
     }
+    public static int countNodes(Node root){
+        if(root == null){
+            return 0;
+        }
+        int lc = countNodes(root.left);
+        int rc = countNodes(root.right);
+        return lc + rc + 1;
+    }
     
     public static void main(String[] args) {
         int arr[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
