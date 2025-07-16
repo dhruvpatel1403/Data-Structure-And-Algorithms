@@ -90,6 +90,24 @@ public class Code4 {
         int rs = sumNodes(root.right);
         return ls + rs + root.data;
     }
+    static class DiaInfo{
+        int hg;
+        int d;
+        public DiaInfo(int hg,int d){
+            this.hg = hg;
+            this.d = d;
+        }
+    }
+    public static DiaInfo diameter(Node root){
+        if(root == null){
+            return new DiaInfo(0, 0);
+        }
+        DiaInfo leftInfo = diameter(root.left);
+        DiaInfo rightInfo = diameter(root.right);
+        int hg = Math.max(leftInfo.hg, rightInfo.hg) + 1;
+        int d =  Math.max(Math.max(leftInfo.d,rightInfo.d),leftInfo.hg+rightInfo.hg);
+        return new DiaInfo(hg, d);
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildetree(arr);
@@ -101,5 +119,6 @@ public class Code4 {
         System.out.println(height(root));
         System.out.println(countNodes(root));
         System.out.println(sumNodes(root));
+        System.out.println(diameter(root).d);
     }
 }
