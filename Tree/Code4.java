@@ -82,7 +82,14 @@ public class Code4 {
         int rc = countNodes(root.right);
         return lc + rc + 1;
     }
-    
+    public static int  sumNodes(Node root){
+        if(root == null){
+            return 0;
+        }
+        int ls = sumNodes(root.left);
+        int rs = sumNodes(root.right);
+        return ls + rs + root.data;
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildetree(arr);
@@ -93,5 +100,6 @@ public class Code4 {
         // levelOrder(root);
         System.out.println(height(root));
         System.out.println(countNodes(root));
+        System.out.println(sumNodes(root));
     }
 }
