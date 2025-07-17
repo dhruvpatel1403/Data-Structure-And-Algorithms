@@ -168,6 +168,20 @@ public class Code4 {
             System.out.print(map.get(i).data + " ");
         }
     }
+    public static Node lca(Node root,int n1,int n2){
+        if(root == null || root.data == n1 || root.data == n2){
+            return  root;
+        }
+        Node leftlca = lca(root.left, n1, n2);
+        Node rightlca = lca(root.right, n1, n2);
+        if(leftlca == null){
+            return rightlca;
+        }
+        if(rightlca == null){
+            return leftlca;
+        }
+        return root;
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildetree(arr);
@@ -184,6 +198,7 @@ public class Code4 {
         // subroot.left = new Node(4);
         // subroot.right = new Node(5);
         // System.out.println(isSubTree(root, subroot));
-        topView(root);
+        // topView(root);
+        System.out.println(lca(root, 3, 5).data);
     }
 }
