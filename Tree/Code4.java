@@ -108,6 +108,26 @@ public class Code4 {
         int d =  Math.max(Math.max(leftInfo.d,rightInfo.d),leftInfo.hg+rightInfo.hg);
         return new DiaInfo(hg, d);
     }
+    public static boolean isSubTree(Node root,Node subroot){
+        if(root == null){
+            return false;
+        }
+        if(root.data == subroot.data){
+            if(isSubTreeHelper(root,subroot)){
+                return true;
+            }
+        }
+        return isSubTree(root.left, subroot) || isSubTree(root.right, subroot);
+    }
+    public static boolean isSubTreeHelper(Node root,Node subroot){
+        if(root == null && subroot == null){
+            return true;
+        }
+        else if(root == null || subroot == null || root.data != subroot.data){
+            return false;
+        }
+        return isSubTreeHelper(root.left, subroot.left) && isSubTreeHelper(root.right, subroot.right);
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildetree(arr);
@@ -116,9 +136,13 @@ public class Code4 {
         // inOrder(root);
         // System.out.println();
         // levelOrder(root);
-        System.out.println(height(root));
-        System.out.println(countNodes(root));
-        System.out.println(sumNodes(root));
-        System.out.println(diameter(root).d);
+        // System.out.println(height(root));
+        // System.out.println(countNodes(root));
+        // System.out.println(sumNodes(root));
+        // System.out.println(diameter(root).d);
+        Node subroot = new Node(2);
+        subroot.left = new Node(4);
+        subroot.right = new Node(5);
+        System.out.println(isSubTree(root, subroot));
     }
 }
