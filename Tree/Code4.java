@@ -182,6 +182,27 @@ public class Code4 {
         }
         return root;
     }
+    public static int minDist(Node root,int n1,int n2){
+        Node lca = lca(root, n1, n2);
+        int d1 = lcaDist(lca,n1);
+        int d2 = lcaDist(lca,n2);
+        return d1 + d2;
+    }
+    public static int lcaDist(Node root,int n){
+        if(root == null){
+            return -1;
+        }
+        if(root.data == n){
+            return 0;
+        }
+        int left = lcaDist(root.left, n);
+        int right = lcaDist(root.right, n);
+        if(left ==-1 && right ==-1){
+            return -1;
+        }
+        return Math.max(left,right) + 1;
+    }
+    
     public static void main(String[] args) {
         int arr[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildetree(arr);
@@ -199,6 +220,8 @@ public class Code4 {
         // subroot.right = new Node(5);
         // System.out.println(isSubTree(root, subroot));
         // topView(root);
-        System.out.println(lca(root, 3, 5).data);
+        // System.out.println(lca(root, 3, 5).data);
+        // System.out.println(minDist(root, 3, 5));
+        kthAns(root, 5, 2);
     }
 }
