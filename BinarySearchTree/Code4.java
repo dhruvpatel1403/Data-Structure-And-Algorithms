@@ -80,15 +80,26 @@ public class Code4 {
         }
         return root.left;
     }
+    public static void printInRange(Node root,int n1,int n2){
+        if(root == null){
+            return;
+        }
+        printInRange(root.left, n1, n2);
+        if(n1<=root.data && root.data<= n2){
+            System.out.print(root.data+" ");
+        }
+        printInRange(root.right, n1, n2);
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,3,4,5,6};
         Node root = null;
         for(int i=0;i<arr.length;i++){
             root = buildTree(root, arr[i]);
         }
-        inOrder(root);
-        System.out.println(search(root, 5));
-        root = delete(root, 5);
-        inOrder(root);
+        // inOrder(root);
+        // System.out.println(search(root, 5));
+        // root = delete(root, 5);
+        // inOrder(root);
+        printInRange(root, 3, 5);
     }
 }
