@@ -202,7 +202,24 @@ public class Code4 {
         }
         return Math.max(left,right) + 1;
     }
-    
+    public static int kthAns(Node root,int n,int k){
+        if(root == null){
+            return -1;
+        }
+        if(root.data == n){
+            return 0;
+        }
+        int left = kthAns(root.left, n, k);
+        int right = kthAns(root.right, n, k);
+        if(left == -1 && right == -1){
+            return -1;
+        }
+        int d = Math.max(left, right) + 1;
+        if(d == k){
+            System.out.println(root.data+ " ");
+        }
+        return d;
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         Node root = buildetree(arr);
