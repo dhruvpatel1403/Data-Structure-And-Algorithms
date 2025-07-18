@@ -31,6 +31,20 @@ public class Code4 {
         System.out.print(root.data+" ");
         inOrder(root.right);
     }
+    public static boolean search(Node root,int val){
+        if(root == null){
+            return false;
+        }
+        if(root.data == val){
+            return true;
+        }
+        else if(root.data > val){
+            return search(root.left, val);
+        }
+        else{
+            return search(root.right, val);
+        }
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,3,4,5,6};
         Node root = null;
@@ -38,5 +52,6 @@ public class Code4 {
             root = buildTree(root, arr[i]);
         }
         inOrder(root);
+        System.out.println(search(root, 5));
     }
 }
