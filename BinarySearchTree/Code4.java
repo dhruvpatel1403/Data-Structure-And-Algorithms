@@ -23,11 +23,20 @@ public class Code4 {
         }
         return root;
     }
+    public static void inOrder(Node root){
+        if(root == null){
+            return;
+        }
+        inOrder(root.left);
+        System.out.print(root.data+" ");
+        inOrder(root.right);
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,3,4,5,6};
         Node root = null;
         for(int i=0;i<arr.length;i++){
             root = buildTree(root, arr[i]);
         }
+        inOrder(root);
     }
 }
