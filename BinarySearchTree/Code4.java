@@ -45,6 +45,41 @@ public class Code4 {
             return search(root.right, val);
         }
     }
+    public static Node delete(Node root,int val){
+        if(root == null){
+            return null;
+        }
+        if(root.data > val){
+            root.left =  delete(root.left, val);
+        }
+        else if(root.data < val){
+            root.right = delete(root.right, val);
+        }
+        else{
+            if(root.left == null && root.right == null){
+                return null;
+            }
+            else if(root.left == null){
+                return root.right;
+            }
+            else if(root.right == null){
+                return root.left;
+            }
+            else{
+                Node inOrder = findInOder(root.right);
+                root.data = inOrder.data;
+                root.right = delete(root.right, inOrder.data);
+
+            }
+        }
+        return root;
+    }
+    public static Node findInOder(Node root){
+        while(root.left != null){
+            root = root.left;
+        }
+        return root.left;
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,3,4,5,6};
         Node root = null;
@@ -53,5 +88,7 @@ public class Code4 {
         }
         inOrder(root);
         System.out.println(search(root, 5));
+        root = delete(root, 5);
+        inOrder(root);
     }
 }
