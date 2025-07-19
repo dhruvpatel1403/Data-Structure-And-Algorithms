@@ -60,29 +60,50 @@ public class Code4 {
         }
         return false;
     }
+    public static boolean detect_cycle_directed(ArrayList<Edge>[] graph) {
+    boolean[] vis = new boolean[graph.length];
+    boolean[] stack = new boolean[graph.length];
+
+    for (int i = 0; i < graph.length; i++) {
+        if (!vis[i]) {
+            if (detect_cycle_directed_util(graph, i, vis, stack)) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+public static boolean detect_cycle_directed_util(ArrayList<Edge>[] graph, int curr, boolean[] vis, boolean[] stack) {
+    vis[curr] = true;
+    stack[curr] = true;
+
+    for (Edge e : graph[curr]) {
+        if (stack[e.dst]) {
+            return true; // back edge found
+        }
+
+        if (!vis[e.dst]) {
+            if (detect_cycle_directed_util(graph, e.dst, vis, stack)) {
+                return true;
+            }
+        }
+    }
+
+    stack[curr] = false; // backtrack
+    return false;
+}
+
     public static void main(String[] args) {
         int V = 5;
         ArrayList<Edge>[] graph = new ArrayList[V];
         for(int i=0;i<V;i++){
             graph[i] = new ArrayList<>();
         }
-       graph[0].add(new Edge(0, 1, 2));
-graph[1].add(new Edge(1, 0, 2));
-
-graph[0].add(new Edge(0, 2, 4));
-graph[2].add(new Edge(2, 0, 4));
-
+       graph[0].add(new Edge(0, 1, 1));
 graph[1].add(new Edge(1, 2, 1));
-graph[2].add(new Edge(2, 1, 1));
+// No edge back to 0
 
-graph[1].add(new Edge(1, 3, 7));
-graph[3].add(new Edge(3, 1, 7));
-
-graph[2].add(new Edge(2, 4, 3));
-graph[4].add(new Edge(4, 2, 3));
-
-graph[3].add(new Edge(3, 4, 1));
-graph[4].add(new Edge(4, 3, 1));
 
         // for(int i=0;i<V;i++){
         //     for(int j=0;j<graph[i].size();j++){
@@ -90,9 +111,10 @@ graph[4].add(new Edge(4, 3, 1));
         //         System.out.println(e.src+" -- "+ e.dst);
         //     }
         // }
-        BFS(graph);
-        System.out.println();
-        DFS(graph, 0, new boolean[V]);
-        System.out.println(cycle(graph));
+        // BFS(graph);
+        // System.out.println();
+        // DFS(graph, 0, new boolean[V]);
+        // System.out.println(cycle(graph));
+        System.out.println(detect_cycle_directed(graph));
     }
 }
