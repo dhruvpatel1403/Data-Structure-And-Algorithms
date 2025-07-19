@@ -90,6 +90,18 @@ public class Code4 {
         }
         printInRange(root.right, n1, n2);
     }
+    public static boolean validateBST(Node root,Node min,Node max){
+        if(root == null){
+            return true;
+        }
+        if(min != null && root.data < min.data){
+            return false;
+        }
+        if(max != null && root.data > max.data){
+            return false;
+        }
+        return validateBST(root.left, min, root) && validateBST(root.right, root, max);
+    }
     public static void main(String[] args) {
         int arr[] = {1,2,3,4,5,6};
         Node root = null;
@@ -100,6 +112,7 @@ public class Code4 {
         // System.out.println(search(root, 5));
         // root = delete(root, 5);
         // inOrder(root);
-        printInRange(root, 3, 5);
+        // printInRange(root, 3, 5);
+        System.out.println(validateBST(root, null, null));
     }
 }
