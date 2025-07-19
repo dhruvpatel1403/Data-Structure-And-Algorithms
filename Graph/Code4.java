@@ -26,7 +26,15 @@ public class Code4 {
             }
         }
     }
-    
+    public static void DFS(ArrayList<Edge>[] graph,int curr,boolean vis[]){
+        vis[curr] = true;
+        System.out.print(curr+" ");
+        for(int i=0;i<graph[curr].size();i++){
+            if(!vis[graph[curr].get(i).dst]){
+                DFS(graph,graph[curr].get(i).dst, vis);
+            }
+        }
+    }
     public static void main(String[] args) {
         int V = 5;
         ArrayList<Edge>[] graph = new ArrayList[V];
@@ -46,5 +54,7 @@ public class Code4 {
         //     }
         // }
         BFS(graph);
+        System.out.println();
+        DFS(graph, 0, new boolean[V]);
     }
 }
