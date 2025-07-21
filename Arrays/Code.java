@@ -79,23 +79,26 @@ public class Code{
         }
         System.out.println("Maximum Sub array sum is : "+max_sum);
     }
-    public static void maxSumPrefix(int arr[]){
+    public static void maxSumPrefix(int nums[]){
 
-        int prefix[] = new int[arr.length];
-        prefix[0] = arr[0];
-
-        for(int i=1;i<arr.length;i++){
-            prefix[i] = prefix[i-1] + arr[i];
+        int[] presum = new int[nums.length];
+        presum[0] = nums[0];
+        int maxsum = Integer.MIN_VALUE;
+        int curr = presum[0];
+        for (int i = 1; i < nums.length; i++) {
+            presum[i] = presum[i - 1] + nums[i];
         }
 
-        int max_sum=Integer.MIN_VALUE;
-        for(int i=0;i<arr.length;i++){
-            for(int j=i+1;j<arr.length;j++){
-                int sum = i==0 ? prefix[j] : prefix[j] - prefix[i-1];
-                max_sum = Math.max(max_sum,sum);
+        for (int i = 0; i < presum.length; i++) {
+            for (int j = i; j < presum.length; j++) {
+                curr = i == 0 ? presum[j] : presum[j] - presum[i - 1];
+                if (curr > maxsum) {
+                    maxsum = curr;
+                }
+
             }
         }
-        System.out.println(max_sum);
+        System.out.println(maxsum);
     }
     public static void kdanesAlgo(int arr[]){
         int sum=0;
@@ -228,7 +231,7 @@ public class Code{
         return -1;
     }
     public static void main(String args[]){
-        int arr[] = {7,1,5,3,6,4};
+        int arr[] = {-1,0};
         // search(arr, 0, 0);
         // binarySearch(arr, 2);
         // reverseArray(arr);
@@ -238,7 +241,6 @@ public class Code{
         subArraySum(arr);
         maxSumPrefix(arr);
         kdanesAlgo(arr);
-        trappindWater(arr);
-        buySell(arr);
+        
     }
 }
