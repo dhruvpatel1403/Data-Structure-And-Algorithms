@@ -115,7 +115,36 @@ public static boolean detect_cycle_directed_util(ArrayList<Edge>[] graph, int cu
         }
         s.push(curr);
     }
+    public static void indegree(ArrayList<Edge>[] graph,int ind[]){
+        for(int i=0;i<graph.length;i++){
+            for(int j=0;j<graph[i].size();j++){
+                Edge e = graph[i].get(j);
+                ind[e.dst]++;
+            }
+        }
+    }
+    public static void top_sort_kahns(ArrayList<Edge>[] graph){
+        int ind[] = new int[graph.length];
+        Queue<Integer> q = new LinkedList<>();
+        indegree(graph,ind);
+        for(int i=0;i<ind.length;i++){
+            if(ind[i] == 0){
+                q.add(i);
+            }
+        }
+        while(!q.isEmpty()){
+            int curr = q.remove();
+            System.out.print(curr+" ");
+            for(int i=0;i<graph[curr].size();i++){
+                Edge e= graph[curr].get(i);
+                ind[e.dst]--;
+                if(ind[e.dst] == 0){
+                    q.add(e.dst);
+                }
+            }
+        }
 
+    }
     public static void main(String[] args) {
         int V = 5;
         ArrayList<Edge>[] graph = new ArrayList[V];
@@ -123,7 +152,7 @@ public static boolean detect_cycle_directed_util(ArrayList<Edge>[] graph, int cu
             graph[i] = new ArrayList<>();
         }
        graph[0].add(new Edge(0, 1, 1));
-graph[1].add(new Edge(1, 2, 1));
+        graph[1].add(new Edge(1, 2, 1));
 // No edge back to 0
 
 
@@ -139,5 +168,7 @@ graph[1].add(new Edge(1, 2, 1));
         // System.out.println(cycle(graph));
         System.out.println(detect_cycle_directed(graph));
         topo_sort(graph);
+        System.out.println();
+        top_sort_kahns(graph);
     }
 }
