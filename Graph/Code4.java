@@ -189,6 +189,32 @@ public static boolean detect_cycle_directed_util(ArrayList<Edge>[] graph, int cu
             System.out.print(dij[i]+" ");
         }
     }
+    public static void bellmanFord(ArrayList<Edge>[] graph,int src){
+        int dis[] = new int[graph.length];
+        dis[src] = 0;
+        for(int i=0;i<graph.length;i++){
+            if(i != src){
+                dis[i] = Integer.MAX_VALUE;
+            }
+        }
+        for(int i=0;i<graph.length-1;i++){
+            for(int j=0;j<graph.length;j++){
+                for(int k=0;k<graph[j].size();k++){
+                    Edge e = graph[j].get(k);
+                    int u = e.src;
+                    int v = e.dst;
+                    int wt = e.wt;
+                    if(dis[u]+wt<dis[v]){
+                        dis[v] = dis[u]+wt;
+                    }
+                }
+            }
+        }
+        for(int i=0;i<dis.length;i++){
+            System.out.print(dis[i]+" ");
+        }
+
+    }
     public static void main(String[] args) {
         int V = 3;
         ArrayList<Edge>[] graph = new ArrayList[V];
@@ -216,5 +242,7 @@ public static boolean detect_cycle_directed_util(ArrayList<Edge>[] graph, int cu
         top_sort_kahns(graph);
         System.out.println();
         dijkstra(graph, 0);
+        System.out.println();
+        bellmanFord(graph, 0);
     }
 }
