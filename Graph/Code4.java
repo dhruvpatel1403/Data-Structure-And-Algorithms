@@ -145,8 +145,52 @@ public static boolean detect_cycle_directed_util(ArrayList<Edge>[] graph, int cu
         }
 
     }
+    static class DijPair implements Comparable<DijPair>{
+        int path;
+        int v;
+        public DijPair(int v,int path){
+            this.v = v;
+            this.path = path;
+        }
+        @Override
+        public int compareTo(DijPair p2){
+            return this.path - p2.path;
+        }
+    }
+    public static void dijkstra(ArrayList<Edge>[] graph,int src){
+        PriorityQueue<DijPair> pq = new PriorityQueue<>();
+        int dij[] = new int[graph.length];
+        boolean vis[] = new boolean[graph.length];
+        dij[src] = 0;
+        for(int i=0;i<graph.length;i++){
+            if(src != i){
+                dij[i] = Integer.MAX_VALUE;
+            }
+        }
+        pq.add(new DijPair(src, 0));
+        while(!pq.isEmpty()){
+            DijPair curr = pq.remove();
+            if(!vis[curr.v]){
+                vis[curr.v] = true;
+                for(int i=0;i<graph[curr.v].size();i++){
+                Edge e = graph[curr.v].get(i);
+                int u= e.src;
+                int v = e.dst;
+                int wt = e.wt;
+                if(dij[u]+ wt < dij[v]){
+                    dij[v] = dij[u] + wt;
+                    pq.add(new DijPair(v, dij[v]));
+                }
+            }
+            }
+            
+        }
+        for(int i=0;i<dij.length;i++){
+            System.out.print(dij[i]+" ");
+        }
+    }
     public static void main(String[] args) {
-        int V = 5;
+        int V = 3;
         ArrayList<Edge>[] graph = new ArrayList[V];
         for(int i=0;i<V;i++){
             graph[i] = new ArrayList<>();
@@ -170,5 +214,7 @@ public static boolean detect_cycle_directed_util(ArrayList<Edge>[] graph, int cu
         topo_sort(graph);
         System.out.println();
         top_sort_kahns(graph);
+        System.out.println();
+        dijkstra(graph, 0);
     }
 }
