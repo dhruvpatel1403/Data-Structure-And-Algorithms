@@ -93,6 +93,28 @@ public static boolean detect_cycle_directed_util(ArrayList<Edge>[] graph, int cu
     stack[curr] = false; // backtrack
     return false;
 }
+    public static void topo_sort(ArrayList<Edge>[] graph){
+        Stack<Integer> s= new Stack<>();
+        boolean vis[] = new boolean[graph.length];
+        for(int i=0;i<graph.length;i++){
+            if(!vis[i]){
+                topo_sort_util(graph,i,s,vis);
+            }
+        }
+        while(!s.isEmpty()){
+            System.out.print(s.pop()+" ");;
+        }
+    }
+    public static void topo_sort_util(ArrayList<Edge>[] graph,int curr,Stack<Integer> s,boolean vis[]){
+        vis[curr] = true;
+        for(int i=0;i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i);
+            if(!vis[e.dst]){
+                topo_sort_util(graph, e.dst, s, vis);
+            }
+        }
+        s.push(curr);
+    }
 
     public static void main(String[] args) {
         int V = 5;
@@ -116,5 +138,6 @@ graph[1].add(new Edge(1, 2, 1));
         // DFS(graph, 0, new boolean[V]);
         // System.out.println(cycle(graph));
         System.out.println(detect_cycle_directed(graph));
+        topo_sort(graph);
     }
 }
